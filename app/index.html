@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="App" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Cửa hàng DAS</title>
+    <meta name="description" content="Bán hàng online">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="components/boostrap/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="components/jquery/jquery.min.js"></script>
+    <link rel="stylesheet" href="app.css">
+    <script type="text/javascript" src="components/boostrap-js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+    <!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+-->
+    <div class="header_bg">
+        <div id="topwebsite">
+            <div class="content-topwebsite">
+                <div data-toggle="tooltip" data-placement="bottom" title="Tam" class="content-topwebsite"><img src="images/clock.png"/>
+                    <h3>THỜI GIAN</h3>
+                    <p>08:30 sáng - 10:00 tối</p>
+                </div>
+            </div>
+            <div data-toggle="tooltip" data-placement="bottom" title="Get update on what  is sharing public" class="content-topwebsite boxed-content left-aligned"><img src="images/car.png"/>
+                <h3>GIAO HÀNG TOÀN QUỐC</h3>
+                <p>Miễn phí khi mua nhiều</p>
+            </div>
+            <div class="content-topwebsite"><img src="images/phone.png"/>
+                <h3>ĐẶT HÀNG NHANH</h3>
+                <p>(08) 7307 1441</p>
+            </div>
+            <div class="content-topwebsite">
+                <h3>BẢO HÀNH 365 NGÀY</h3>
+                <p>Đổi trả trong 7 ngày</p>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="header">
+                <div class="logo">
+                    <a href="index.html"><img height="45" width="110" src="images/logo.png" alt=""/> </a>
+                </div>
+                <div class="h_icon">
+                    <ul class="icon1 sub-icon1">
+                        <li><i id="number">0</i></li>
+                        <li><a class="active-icon c1" href="#"></a>
+                        </li>
+                        <li><i id="cart">Giỏ hàng</i></li>
+                    </ul>
+                </div>
+                <!-- start login sang -->
+                <div id="login">
+                    <div class="dropdown">
+                        <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Đăng nhập<span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <button id = "loginbtn" class="btn btn-primary">Đăng nhập<span class="glyphicon glyphicon-log-in"></span></button>
+                            </li>
+                            <li>
+                                <button class="btn btn-default" style="background: #3b5998">Đăng nhập với facebook<span class="glyphicon glyphicon-phone"></span></button>
+                            </li>
+                            <li>
+                                <button class="btn btn-danger">Đăng nhập với google<span class="glyphicon glyphicon-phone"></span></button>
+                            </li>
+                            <li>
+                                <button class="btn btn-default" style="background:#17a4eb">Đăng nhập với twitter<span class="glyphicon glyphicon-phone"></span></button>
+                            </li>
+                            <li>
+                                <button class="btn btn-primary">Tạo tài khoản<span class="glyphicon glyphicon-user"></span></button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- form login-->
+                <div class="modal-bg">
+                    <div id="modal-login">
+                        <div class="login-page">
+                            <div class="form"><a id="login-page" href="/" class="close">&#215</a>
+                                <form  class="login-form">
+                                    <p class="email">
+                                        <input name="username" type="text" placeholder="Email" id="username" class="form-control input-lg"/>
+                                    </p>
+                                    <br>
+                                    <p class="password">
+                                        <input name="password" type="password" placeholder="Password" id="password" class="form-control input-lg"/>
+                                        <button class="btn btn-primary" id="btnlogin">Login</button>
+                                    </p>
+                                    <p class="message">Not registered? <a href="/" id="refSignUp"> Create an account </a></p></br>
+                                <div class="social-login"><a href="/auth/facebook" class="btn btn-default" style="width: 155px;background: #3b5998"><span class="fa fa-facebook" ></span> Facebook</a><a href="/auth/google" class="btn btn-danger" style=";width: 155px;"><span class="fa fa-google-plus"></span> Google</a></div>
+                                </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end login sang -->
+            <div class="h_search">
+                <form>
+                    <input type="text" value="">
+                    <input type="submit" value="">
+                </form>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="header_btm">
+        <div class="wrap">
+            <div class="header_sub">
+                <div class="h_menu">
+                    <ul>
+                        <li class="active"><a href="index.html">Home</a></li> |
+                        <li><a href="sale.html">store</a></li> |
+                        <li><a href="service.html">services</a></li> |
+                        <li><a href="contact.html">Contact us</a></li>
+                    </ul>
+                </div>
+                <div class="top-nav">
+                    <nav class="nav">	        	
+                        <a href="#" id="w3-menu-trigger"> </a>
+                        <ul class="nav-list" style="">
+                            <li class="nav-item"><a class="active" href="index.html">Home</a></li>
+                            <li class="nav-item"><a href="sale.html">Sale</a></li>
+                            <li class="nav-item"><a href="handbags.html">Handbags</a></li>
+                            <li class="nav-item"><a href="accessories.html">Accessories</a></li>
+                            <li class="nav-item"><a href="shoes.html">Shoes</a></li>
+                            <li class="nav-item"><a href="service.html">Services</a></li>
+                            <li class="nav-item"><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </nav>
+                    <div class="search_box">
+                        <form>
+                            <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
+                        </form>
+                    </div>
+                    <div class="clear"> </div>
+
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div ng-view></div>
+    <!-- //r -->
+    <!-- start slider -->
+
+    <!-- start footer -->
+    <div class="footer_bg1">
+        <div class="wrap">
+            <div class="footer">
+
+                <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
+                <!--end scroll_top_btn -->
+                <div class="copy">
+                    <p class="link">&copy;  All rights reserved | Template by&nbsp;&nbsp;<a href="http://w3layouts.com/"> DAS</a></p>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <script src="components/angular/angular.min.js"></script>
+    <script src="components/angular-route/angular-route.min.js"></script>
+    <script src="app.js"></script>
+    <script src="components/login/script.js"></script>
+    <script src="store/store.js"></script>
+    <script src="cart/cart.js"></script>
+    <script src="services/services.js"></script>
+    <script src="components/responsive-menu/responsive.menu.js"></script>
+    
+</body>
+</html>
