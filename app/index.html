@@ -25,7 +25,7 @@
     <!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
 -->
-    <div class="header_bg">
+    <div class="header_bg" ng-controller="LoginCtrl">
         <div id="topwebsite">
             <div class="content-topwebsite">
                 <div data-toggle="tooltip" data-placement="bottom" title="Tam" class="content-topwebsite"><img src="images/clock.png"/>
@@ -60,7 +60,7 @@
                     </ul>
                 </div>
                 <!-- start login sang -->
-                <div id="login">
+                <div id="login" ng-show="!authData">
                     <div class="dropdown">
                         <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Đăng nhập<span class="caret"></span></button>
                         <ul class="dropdown-menu">
@@ -68,49 +68,87 @@
                                 <button id = "loginbtn" class="btn btn-primary">Đăng nhập<span class="glyphicon glyphicon-log-in"></span></button>
                             </li>
                             <li>
-                                <button class="btn btn-default" style="background: #3b5998">Đăng nhập với facebook<span class="glyphicon glyphicon-phone"></span></button>
+                                <button ng-click="loginFacebook()" class="btn btn-default" style="background: #3b5998">Đăng nhập với facebook<span class="glyphicon glyphicon-phone"></span></button>
                             </li>
                             <li>
-                                <button class="btn btn-danger">Đăng nhập với google<span class="glyphicon glyphicon-phone"></span></button>
+                                <button ng-click="loginGoogle()" class="btn btn-danger">Đăng nhập với google<span class="glyphicon glyphicon-phone"></span></button>
                             </li>
                             <li>
-                                <button class="btn btn-default" style="background:#17a4eb">Đăng nhập với twitter<span class="glyphicon glyphicon-phone"></span></button>
+                                <button ng-click="loginTwitter()" class="btn btn-default" style="background:#17a4eb">Đăng nhập với twitter<span class="glyphicon glyphicon-phone"></span></button>
                             </li>
                             <li>
-                                <button class="btn btn-primary">Tạo tài khoản<span class="glyphicon glyphicon-user"></span></button>
+                                <button id = "createbtn" class="btn btn-primary">Tạo tài khoản<span class="glyphicon glyphicon-user"></span></button>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <!-- form login-->
+                <!--- dăng xuất---->
+                <div id="login" ng-show="authData">
+                    <div class="dropdown">
+                        <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Xin chào, {{user.name}}<span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <button id = "loginbtn" class="btn btn-primary">Sữa thông tin<span class="glyphicon glyphicon-log-in"></span></button>
+                            </li>
+                            <li>
+                                <button ng-click="logout()" class="btn btn-default" style="background: #3b5998">Đăng xuất<span class="glyphicon glyphicon-phone"></span></button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--- dăng xuất---->
                 <div class="modal-bg">
                     <div id="modal-login">
                         <div class="login-page">
                             <div class="form"><a id="login-page" href="/" class="close">&#215</a>
                                 <form  class="login-form">
                                     <p class="email">
-                                        <input name="username" type="text" placeholder="Email" id="username" class="form-control input-lg"/>
+                                        <input ng-model="credential.email" name="username" type="text" placeholder="Email" id="username" class="form-control input-lg"/>
                                     </p>
-                                    <br>
+                                    <br/>
                                     <p class="password">
-                                        <input name="password" type="password" placeholder="Password" id="password" class="form-control input-lg"/>
-                                        <button class="btn btn-primary" id="btnlogin">Login</button>
+                                        <input ng-model="credential.password" name="password" type="password" placeholder="Password" id="password" class="form-control input-lg"/>
+                                        <button ng-click="loginEmail()" class="btn btn-primary" id="btnlogin">Login</button>
                                     </p>
-                                    <p class="message">Not registered? <a href="/" id="refSignUp"> Create an account </a></p></br>
-                                <div class="social-login"><a href="/auth/facebook" class="btn btn-default" style="width: 155px;background: #3b5998"><span class="fa fa-facebook" ></span> Facebook</a><a href="/auth/google" class="btn btn-danger" style=";width: 155px;"><span class="fa fa-google-plus"></span> Google</a></div>
+                                    <p class="message">Not registered? <a href="/" id="refSignUp"> Create an account </a></p><br/>
+                                    
                                 </form>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- end login sang -->
+                <div class="modalcreate-bg">
+                    <div id="modal-create">
+                        <div class="create-page">
+                            <div class="form"><a id="create-page" href="/" class="close">&#215</a>
+                                <form  class="login-form">
+                                    <p class="email" style="margin-top:10px;">
+                                        <input ng-model="createData.email"  name="email" type="text" placeholder="Email" id="email" class="form-control input-lg"/>
+                                    </p>
+                                    <br/>
+                                    <p class="password">
+                                        <input ng-model="createData.password" name="passwordcreate" type="password" placeholder="Password" id="passwordcreate" class="form-control input-lg"/>
+                                        <br/>
+                                        <input ng-model="confirm" name="passwordconfirm" type="password" placeholder="Password" id="passwordconfirm" class="form-control input-lg"/>
+                                        <button ng-click="createUser()" class="btn btn-primary" id="btnlogin">Create</button>
+                                    </p>
+                                    
+                                    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="h_search">
+                    <form>
+                        <input type="text" value="">
+                        <input type="submit" value="">
+                    </form>
+                </div>
+                <div class="clear"></div>
             </div>
-            <!-- end login sang -->
-            <div class="h_search">
-                <form>
-                    <input type="text" value="">
-                    <input type="submit" value="">
-                </form>
-            </div>
-            <div class="clear"></div>
         </div>
     </div>
     <div class="header_btm">
@@ -169,12 +207,14 @@
     </div>
     <script src="components/angular/angular.min.js"></script>
     <script src="components/angular-route/angular-route.min.js"></script>
+    <script src="components/firebase/firebase.js"></script>
+    <script src="components/angularfire/angularfire.min.js"></script>
     <script src="app.js"></script>
     <script src="components/login/script.js"></script>
     <script src="store/store.js"></script>
     <script src="cart/cart.js"></script>
     <script src="services/services.js"></script>
     <script src="components/responsive-menu/responsive.menu.js"></script>
-    
+
 </body>
 </html>

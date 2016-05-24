@@ -57,15 +57,15 @@ body {
 	position: relative;
 	border: 1px solid rgb(216, 216, 216);
 	width: 40.3333%;
-	margin: 0.5% 12% 0;
+	margin: 0.6% 7% 0;
 	border-radius: 2px;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
-	-o-border-radius: 2px;
+	-o-border-radius: 2px; 
 }
 .h_search input[type="text"]{
 	-webkit-appearance: none;
-	padding: 6px 16px;
+	padding: 6px 5px;
 	outline: none;
 	color: #312c3c;
 	background: #FFFFFF;
@@ -75,6 +75,7 @@ body {
 	position: relative;
 	font-size: 0.8725em;
 	text-transform: capitalize;
+    
 }
 .h_search input[type="submit"]{
 	-webkit-appearance: none;
@@ -1566,7 +1567,7 @@ p.para{
     width: 200px;
     margin-top: 5px;
 }
-#modal-login{ 
+#modal-login, #modal-create{ 
     position: absolute;
     background-color:#F5F5F6;
     top:50%; 
@@ -1574,7 +1575,7 @@ p.para{
     z-index:2;
     border-radius:3px;
     width:400px;
-    height:300px;
+    height:250px;
     margin-top:-130px;
     margin-left:-170px;
     border-bottom: 3px solid #5DC3A7;
@@ -1582,14 +1583,14 @@ p.para{
     display: none;
     font-size: 20px;
 }
-.login-page {
+.login-page, .create-page {
     clear: left;
     width: 360px;
     padding: 0 0;
     float: right;
     margin-bottom: 100px;
 }
-.modal-bg{
+.modal-bg, .modalcreate-bg{
     position:fixed;
     left:0;right:0;
     top:0;bottom:0;
