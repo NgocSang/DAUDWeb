@@ -1,0 +1,18 @@
+/*-- start details--*/
+.single{
+	padding:2% 0;
+}
+.left_sidebar{
+	width: 22.3333%;
+	float: left;
+	margin-left: 4.33333%;
+}
+.span1_of_1{
+	float: left;
+	width: 52.3333%;
+}
+.span1_of_1_des{
+	float: right;
+	width: 44.3333%;
+	margin-left: 3.333%;
+}

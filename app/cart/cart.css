@@ -1,0 +1,52 @@
+/*css trang cart*/
+.row{
+    font-family: 'Source Sans Pro', sans-serif;
+    width: 90%;
+    margin: auto;
+    
+    margin-top: 10px;
+}
+#information{
+    width: 45%;
+    height: auto;
+    
+    margin: 10px 0px 0px 50px;
+    float: left;
+}
+#products{
+    width: 45%;
+    height: auto;
+    
+    float: left;
+    margin-top: 10px;
+}
+.form-control{
+    width: 90%;
+}
+#update{
+    width: 50px;
+}
+#order{
+    width: 100%;
+}
+.breadcrumb{
+    margin-bottom: 0!important;
+    background: #e4e4e4;
+    padding-left: 0;
+    
+}
+.breadcrumb a{
+    color: #9d9d9d;
+}
+.active{
+    font-weight: bold;
+    color: #337ab7 !important;
+}
+#information h4{
+    font-size:17px;
+    font-weight: bold;
+}
+#products h4{
+    font-size:17px;
+    font-weight: bold;
+}
