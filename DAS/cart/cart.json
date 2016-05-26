@@ -1,0 +1,36 @@
+﻿{
+  "cart": [
+    {
+      "name": "áo thun 1",
+      "color": "đen",
+      "size": "XL",
+      "price": 123,
+      "count": 3,
+      "image": "https://media.lamsao.com//Resources/Data/News/Auto/trangbh/201306/c3042cce8305ca93abe0ef0edadc3cf9.jpg"
+    },
+    {
+      "name": "áo thun 1",
+      "color": "đen",
+      "size": "XL",
+      "price": 123,
+      "count": 3,
+      "image": "https://media.lamsao.com//Resources/Data/News/Auto/trangbh/201306/c3042cce8305ca93abe0ef0edadc3cf9.jpg"
+    },
+    {
+      "name": "áo thun 1",
+      "color": "đen",
+      "size": "XL",
+      "price": 123,
+      "count": 3,
+      "image": "https://media.lamsao.com//Resources/Data/News/Auto/trangbh/201306/c3042cce8305ca93abe0ef0edadc3cf9.jpg"
+    },
+    {
+      "name": "áo thun 1",
+      "color": "đen",
+      "size": "XL",
+      "price": 123,
+      "count": 3,
+      "image": "https://media.lamsao.com//Resources/Data/News/Auto/trangbh/201306/c3042cce8305ca93abe0ef0edadc3cf9.jpg"
+    }
+  ]
+}

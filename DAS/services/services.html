@@ -1,0 +1,21 @@
+<div class="main_bg">
+    <div class="wrap">	
+        <div class="main">
+            <!-- start service -->
+            <div class="service">
+                <div class="ser-main">
+                    <h4>Our Services</h4>
+                    <div class="ser-grid">
+                        <div class="ser-grid-list" ng-class="{'fad':show}" ng-repeat="s in data">
+                            <a href="details.html"><img ng-src="{{s.icon}}" alt=""></a>
+                            <h5>{{s.title}}</h5>
+                            <p class="para">{{s.description}}</p>
+                        </div>
+                    </div>
+                </div>
+           
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
