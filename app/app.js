@@ -1,7 +1,7 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-var app = angular.module('App', ['firebase', 'ngRoute', 'App.store', 'App.cart']);
+var app = angular.module('App', ['firebase', 'ngRoute', 'App.store', 'App.cart', 'App.services','App.contact','App.details']);
 
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.otherwise(
