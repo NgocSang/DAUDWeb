@@ -75,7 +75,6 @@ body {
     position: relative;
     font-size: 0.8725em;
     text-transform: capitalize;
-
 }
 .h_search input[type="submit"]{
     -webkit-appearance: none;
