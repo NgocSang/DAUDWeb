@@ -1,0 +1,61 @@
+.service{
+	margin: 2% 0;
+}
+.ser-main{
+	float: left;
+	width: 68.33333%;
+	margin-right: 2.3333%;
+	font-family: 'Source Sans Pro', sans-serif;
+    
+}
+.ser-main h4{
+	font-family: 'bebas_neueregular';
+	font-size: 2em;
+	color: #777777;
+	text-shadow: 0 1px 0 #ffffff;
+	margin-bottom: 2%;
+}
+.ser-grid{
+	padding: 4% 0;
+	text-align: center;
+	border-bottom: 1px solid rgb(238, 238, 238);
+}
+.ser-grid:last-child{
+	border-bottom:none;
+}
+.ser-grid-list{
+	float: left;
+	width: 28.33333%;
+	margin-left: 6.33333%;
+}
+.ser-grid-list:first-child{
+	margin-left: 0;
+}
+.ser-grid-list h5{
+	margin: 2% 0 4%;
+}
+.ser-grid-list h5 a{
+	text-transform: capitalize;
+	font-size: 1.8em;
+	color: #4CCFC1;
+	font-family: 'bebas_neueregular';
+	text-shadow: 0 1px 0 #ffffff;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+.ser-grid-list h5 a:hover{
+	color:#999999;
+}
+p.para{
+	font-size: 0.8725em;
+	color: #555555;
+	line-height: 1.8em;
+}
+.left_sidebar{
+	width: 22.3333%;
+	float: left;
+	margin-left: 4.33333%;
+    
+}

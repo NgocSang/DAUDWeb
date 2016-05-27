@@ -1282,6 +1282,7 @@ p.para{
         width: 100%;
         float: none;
         margin-left: 0%;
+        clear: left;
     }
     .ser-grid-list h5 a {
         font-size: 1.5em;
@@ -1471,9 +1472,11 @@ p.para{
     background: #40C4B2 !important;
     border: none !important;
     font-family: 'Source Sans Pro', sans-serif;
+    color: white;
 }
-.btn-danger,.btn-dafault{
+.btn-danger, .btn-default{
     font-family: 'Source Sans Pro', sans-serif;
+    color: white !important;
 }
 #login .dropdown-menu li button{
     width: 200px;
@@ -1549,3 +1552,9 @@ p.para{
     display: block;
 
 }
+.dropdown li{
+    width:250px;
+    padding-left: 25px;
+    color: white;
+}
+
