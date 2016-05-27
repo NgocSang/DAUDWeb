@@ -1,0 +1,17 @@
+.row{
+    font-family: 'Source Sans Pro', sans-serif;
+    width: 95%;
+    margin: auto;
+    height: 90px;
+    margin-top: 80px;
+    
+}
+.breadcrumb{
+    margin-bottom: 0!important;
+    background: #e4e4e4;
+    padding-left: 0;
+    
+}
+.breadcrumb a{
+    color: #9d9d9d;
+}
