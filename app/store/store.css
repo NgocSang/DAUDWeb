@@ -1,11 +1,4 @@
-.row{
-    font-family: 'Source Sans Pro', sans-serif;
-    width: 95%;
-    margin: auto;
-    height: 90px;
-    margin-top: 80px;
-    
-}
+
 .breadcrumb{
     margin-bottom: 0!important;
     background: #e4e4e4;
@@ -14,4 +7,29 @@
 }
 .breadcrumb a{
     color: #9d9d9d;
+}
+
+#order-bar{
+    width: 100%;
+    height: auto;
+    margin-top:20px;
+   
+}
+#formSearch{
+    width: 80%;
+    height: auto;
+    margin: auto;
+}
+#formSearch .filter{
+    width: 20%;
+    height: 30px;
+    float: left;
+    margin-right: 20px;
+}
+#formSearch .label{
+    float:left; 
+    font-weight:bold;
+    color: black;
+    font-size: 17px;
+    margin-top:5px;
 }
