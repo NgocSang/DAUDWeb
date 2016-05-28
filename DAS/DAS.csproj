@@ -71,6 +71,7 @@
     <Content Include="fonts\BebasNeue-webfont.ttf" />
     <Content Include="services\services.json" />
     <Content Include="cart\cart.json" />
+    <Content Include="cart\checkout.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

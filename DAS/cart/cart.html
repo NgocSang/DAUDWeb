@@ -18,30 +18,32 @@
 <div class="row">
     <div id="information" class="col-sm-12 col-md-6">
         <h4>Thông tin người mua/nhận hàng</h4>
-        <form>
+        <form name="contactForm">
             <div class="form-group">
                 <label>Tên</label>
-                <input type="text" class="required form-control" id="txtCustomerName"/>
+                <input ng-model="name" type="text" class="required form-control" id="txtCustomerName"/>
             </div>
             <div class="form-group">
                 <label>Điện thoại liên lạc</label>
-                <input type="text" class="required form-control" id="txtPhone"/>
+                <input ng-model="phone" type="text" class="required form-control" id="txtPhone"/>
             </div>
             <div class="form-group">
                 <label>Email</label>
-                <input type="email" class="required form-control" id="txtEmail"/>
+                <input name="email" ng-model="email" type="email" class="required form-control" id="txtEmail"/>
             </div>
             <div class="form-group">
                 <label>Địa chỉ</label>
-                <textarea row="4" class="required form-control" id="txtNote"></textarea>
+                <textarea ng-model="address" row="4" class="required form-control" id="txtNote"></textarea>
             </div>
 
         </form>
     </div>
     <div id="products">
         <h4>Chi tiết sản phẩm bán hàng</h4>
+        
         <table class="table table-striped">
-            <tr class="item-row" ng-repeat="item in data">
+            <tr class="item-row" ng-repeat="item in data.item">
+                
                 <td>
                     <img class="img-responsive" ng-src="item.image"/>
                 </td>
@@ -70,11 +72,11 @@
                         </form>
                     </div>
                     <span>đ</span>
-                    <b>747,00</b>
+                    <b>{{item.price * item.count}}</b>
                 </td>
 
             </tr>
-            <tr>
+            <tr ng-show="data.item.length > 0">
                 <td colspan="2" class="text-right">Tổng cộng:</td>
                 <td colspan="2">
                     <span>đ</span>
@@ -83,6 +85,9 @@
             </tr>
         </table>
         <hr>
-        <button class="js-btnPlaceOrder btn btn-info fw" id="order">Đặt hàng</button>
+
+        <h3 class="empty-cart" ng-show="data.item === undefined">Hiện bạn chưa chọn mặt hàng. Hãy quay về shop để chọn mua hàng</h3>
+        <button ng-show="data.item.length > 0" ng-click="checkout()" class="js-btnPlaceOrder btn btn-info fw" id="order">Đặt hàng</button>
+        
     </div>
 </div>

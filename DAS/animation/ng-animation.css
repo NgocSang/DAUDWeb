@@ -5,7 +5,17 @@ button.ng-enter
     animation: 2s rubberBand
 }
 
-.ser-grid-list.fad-add{animation: 7s bounce;}
+.ser-grid-list.fad-add
+{
+    animation: 2s fadeIn;
+
+}
+
+tr
+{
+    animation: 2s fadeIn;
+}
+
 
 
 /*.ser-grid-list.ng-move,

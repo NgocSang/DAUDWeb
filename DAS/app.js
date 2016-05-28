@@ -10,7 +10,7 @@ app.config(['$routeProvider', function ($routeProvider) {
         });
 }]);
 
-app.controller("LoginCtrl", function ($scope, $firebaseAuth) {
+app.controller("LoginCtrl", function ($scope, $firebaseAuth, uidAuth) {
     var ref = new Firebase("https://doanungdungweb.firebaseio.com");
     $scope.auth = $firebaseAuth(ref);
 
@@ -29,6 +29,7 @@ app.controller("LoginCtrl", function ($scope, $firebaseAuth) {
     }
 
     $scope.confirm = "";
+
 
     $scope.auth.$onAuth(function (authData) {
         $scope.authData = authData;
@@ -50,16 +51,23 @@ app.controller("LoginCtrl", function ($scope, $firebaseAuth) {
     });
 
     $scope.loginEmail = function () {
-        $scope.auth.$authWithPassword($scope.credential);
+        $scope.auth.$authWithPassword($scope.credential).then(function(authData){
+            uidAuth.setUid(authData.uid);
+        });
+        
         turnOffLogin();
     };
 
     $scope.loginFacebook = function () {
-        $scope.auth.$authWithOAuthPopup("facebook");
+        $scope.auth.$authWithOAuthPopup("facebook").then(function (authData) {
+            uidAuth.setUid(authData.uid);
+        });
     };
 
     $scope.loginGoogle = function () {
-        $scope.auth.$authWithOAuthPopup("google");
+        $scope.auth.$authWithOAuthPopup("google").then(function (authData) {
+            uidAuth.setUid(authData.uid);
+        });
     };
 
     $scope.loginTwitter = function () {
@@ -91,5 +99,37 @@ app.controller("LoginCtrl", function ($scope, $firebaseAuth) {
             })
         }
         turnOffCreate();
+    };
+});
+
+
+app.service('uidAuth', function ($firebaseObject, $firebaseArray) {
+
+    var uid;
+
+
+    var getUid = function () {
+        return uid;
+    };
+
+
+    var setUid = function (uid) {
+        uid = uid.replace(":", "");
+        this.uid = uid;
+
+        //var ref = new Firebase("https://das-shop.firebaseio.com/cart/" + uid);
+        //var obj = $firebaseObject(ref);
+        //var item = {};
+        //item[uid] = 1;
+        //obj.set(item);
+
+        var ref = new Firebase("https://das-shop.firebaseio.com/cart/");
+        var obj = ref.child(uid);
+        obj.set(0);
+    };
+
+    return {
+        getUid: getUid,
+        setUid: setUid
     };
 });

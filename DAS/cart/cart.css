@@ -55,6 +55,12 @@
 
 
 /* uQ */
-.remove-item{
+.remove-item
+{
     cursor:pointer;
+}
+
+.empty-cart.ng-show
+{
+    animation: 2s swing;
 }

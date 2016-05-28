@@ -22,7 +22,7 @@ services.controller("ServicesCtrl", ["$scope", "$firebaseObject",
         var ref = new Firebase("https://das-shop.firebaseio.com/service");
         var obj = $firebaseObject(ref);
         obj.$bindTo($scope, "data").then(function () {
-            $scope.show = true;
+            //$scope.show = true;
         });
     }
 ]);
