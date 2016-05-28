@@ -42,7 +42,7 @@
         <h4>Chi tiết sản phẩm bán hàng</h4>
         
         <table class="table table-striped">
-            <tr class="item-row" ng-repeat="item in data.item">
+            <tr class="item-row" ng-repeat="item in data">
                 
                 <td>
                     <img class="img-responsive" ng-src="item.image"/>
@@ -76,7 +76,7 @@
                 </td>
 
             </tr>
-            <tr ng-show="data.item.length > 0">
+            <tr ng-show="data.length > 0">
                 <td colspan="2" class="text-right">Tổng cộng:</td>
                 <td colspan="2">
                     <span>đ</span>
@@ -86,8 +86,8 @@
         </table>
         <hr>
 
-        <h3 class="empty-cart" ng-show="data.item === undefined">Hiện bạn chưa chọn mặt hàng. Hãy quay về shop để chọn mua hàng</h3>
-        <button ng-show="data.item.length > 0" ng-click="checkout()" class="js-btnPlaceOrder btn btn-info fw" id="order">Đặt hàng</button>
+        <h3 class="empty-cart" ng-show="data == 0">Hiện bạn chưa chọn mặt hàng. Hãy quay về shop để chọn mua hàng</h3>
+        <button ng-show="data.length > 0" ng-click="checkout()" class="js-btnPlaceOrder btn btn-info fw" id="order">Đặt hàng</button>
         
     </div>
 </div>

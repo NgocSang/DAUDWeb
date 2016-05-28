@@ -1,6 +1,6 @@
 ﻿
 
-button.ng-enter
+button:hover
 {
     animation: 2s rubberBand
 }
@@ -16,7 +16,20 @@ tr
     animation: 2s fadeIn;
 }
 
+.ng-show
+{
+    animation: 2s fadeIn;
+}
 
+.ng-hide
+{
+    animation: 2s bounceOut;
+}
+
+.empty-cart
+{
+    animation: 2s swing;
+}
 
 /*.ser-grid-list.ng-move,
 .ser-grid-list.ng-enter,

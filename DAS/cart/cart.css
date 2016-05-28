@@ -60,7 +60,7 @@
     cursor:pointer;
 }
 
-.empty-cart.ng-show
+.empty-cart
 {
     animation: 2s swing;
 }

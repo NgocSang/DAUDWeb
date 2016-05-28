@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-var cart = angular.module('App.cart', ['ngRoute']);
+var cart = angular.module('App.cart', ['ngRoute', 'App']);
 
 cart.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/cart', {
@@ -11,19 +11,18 @@ cart.config(['$routeProvider', function($routeProvider) {
 
 
 
-
-var refC;
+var a;
 cart.controller('CartCtrl', 
     function ($scope, $firebaseObject, $firebaseArray, uidAuth) {
+        a = $scope;
+        var refCart = new Firebase("https://das-shop.firebaseio.com/cart/" + uidAuth.uid);
+        var objCart = $firebaseArray(refCart);
+        //obj.$bindTo($scope, "data").then(function () {
+        //    var item = $("tr");
+        //});
 
-        var ref = new Firebase("https://das-shop.firebaseio.com/cart/" + uidAuth.getUid());
-        var obj = $firebaseObject(ref);
-        obj.$bindTo($scope, "data").then(function () {
-            //var item = $("tr");
-            //for (var i = 0; i < item.length; ++i)
-            //    item[i].className += "animated bounceInDown";
-            //item[i].style.webkitAnimationDuration = (i + 3) + 's';
-            //item[i].style.animationDuration = (i + 3) + 's';
+        objCart.$loaded().then(function (data) {
+            $scope.data = data;
         });
 
         //var uid = 1215534412;
@@ -40,9 +39,10 @@ cart.controller('CartCtrl',
             item[index].className += " animated flipOutY";
 
             setTimeout(function () {
-                $scope.data.item.splice(index, 1);
-                $scope.$apply();
-            }, 2000);
+                objCart.$remove(index);
+                //$scope.data.item.splice(index, 1);
+                //$scope.$apply();
+            }, 1000);
         }
 
 
@@ -69,28 +69,33 @@ cart.controller('CartCtrl',
                 return;
             }
 
+
+
             var checkout = {};
             checkout.user = { "name": $scope.name, "phone": $scope.phone, "email": $scope.email, "address": $scope.address };
-            checkout.item = $scope.data.item;
+            checkout.item = $scope.data;
 
 
-
-            var ref = new Firebase("https://das-shop.firebaseio.com/checkout");
+            var refCheckout = new Firebase("https://das-shop.firebaseio.com/checkout");
             
-            var obj = $firebaseArray(ref);
-            obj.$add(checkout);
+            var objCheckout = $firebaseArray(refCheckout);
+            objCheckout.$add(checkout);
             //var obj = $firebaseObject(ref);
             //obj.data.push(checkout);
             //obj.$apply();
 
-            $scope.data.item = [];
-            $scope.$apply();
-
-
+            //$scope.data = 0;
             $scope.name = "";
             $scope.phone = "";
             $scope.email = "";
             $scope.address = "";
+            //$scope.$apply();
+
+            $scope.data = 0;
+            for (var i = 0; i < objCart.length; ++i)
+                $scope.removeItem(i);
+                //objCart.$remove(i);
+//            objCart.$save(0);
 
             alert("Đơn đặt hàng của bạn đã được lưu lại\nChúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất để giao hàng");
         }

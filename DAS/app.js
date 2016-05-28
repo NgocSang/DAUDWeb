@@ -34,6 +34,8 @@ app.controller("LoginCtrl", function ($scope, $firebaseAuth, uidAuth) {
     $scope.auth.$onAuth(function (authData) {
         $scope.authData = authData;
 
+        uidAuth.setUid(authData.uid);
+
         switch ($scope.authData.provider) {
             case "facebook":
                 $scope.user.name = $scope.authData.facebook.displayName;
@@ -117,15 +119,24 @@ app.service('uidAuth', function ($firebaseObject, $firebaseArray) {
         uid = uid.replace(":", "");
         this.uid = uid;
 
-        //var ref = new Firebase("https://das-shop.firebaseio.com/cart/" + uid);
-        //var obj = $firebaseObject(ref);
+        var ref = new Firebase("https://das-shop.firebaseio.com/cart/" + uid);
+        ref.on("value", function (snapshot) {
+            var item = snapshot.val();
+            if (item === null)
+            {
+                var ref = new Firebase("https://das-shop.firebaseio.com/cart/");
+                var obj = ref.child(uid);
+                obj.set(0);
+            }
+            
+        });
         //var item = {};
         //item[uid] = 1;
         //obj.set(item);
 
-        var ref = new Firebase("https://das-shop.firebaseio.com/cart/");
-        var obj = ref.child(uid);
-        obj.set(0);
+        //var ref = new Firebase("https://das-shop.firebaseio.com/cart/");
+        //var obj = ref.child(uid);
+        //obj.set(0);
     };
 
     return {
