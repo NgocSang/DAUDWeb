@@ -49,12 +49,12 @@
         <div class="wrap">
             <div class="header">
                 <div class="logo">
-                    <a href="index.html"><img height="45" width="110" src="images/logo.png" alt=""/> </a>
+                    <a ng-href="#"><img height="45" width="110" src="images/logo.png" alt=""/> </a>
                 </div>
                 <div class="h_icon">
                     <ul class="icon1 sub-icon1">
                         <li><i id="number">0</i></li>
-                        <li><a class="active-icon c1" href="index.html#/cart"></a>
+                        <li><a class="active-icon c1" ng-href="#/cart"></a>
                         </li>
                         <li><i id="cart">Giỏ hàng</i></li>
                     </ul>
@@ -98,7 +98,7 @@
                 <div class="modal-bg">
                     <div id="modal-login">
                         <div class="login-page">
-                            <div class="form"><a id="login-page" href="/" class="close">&#215</a>
+                            <div class="form"><a id="login-page" ng-href="#" class="close">&#215</a>
                                 <form  class="login-form" ng-submit="loginEmail()">
                                     <p class="email">
                                         <input ng-model="credential.email" name="username" type="text" placeholder="Email" id="username" class="form-control input-lg"/>
@@ -108,7 +108,7 @@
                                         <input ng-model="credential.password" name="password" type="password" placeholder="Password" id="password" class="form-control input-lg"/>
                                         <button type="submit" class="btn btn-primary" id="btnlogin">Login</button>
                                     </p>
-                                    <p class="message">Not registered? <a href="/" id="refSignUp"> Create an account </a></p><br/>
+                                    <p class="message">Not registered? <a ng-href="#" id="refSignUp"> Create an account </a></p><br/>
                                 </form>
                             </div>
                         </div>
@@ -118,7 +118,7 @@
                 <div class="modalcreate-bg">
                     <div id="modal-create">
                         <div class="create-page">
-                            <div class="form"><a id="create-page" href="/" class="close">&#215</a>
+                            <div class="form"><a id="create-page" ng-href="#" class="close">&#215</a>
                                 <form  class="login-form" ng-submit="createUser()">
                                     <p class="email" style="margin-top:10px;">
                                         <input ng-model="createData.email"  name="email" type="text" placeholder="Email" id="email" class="form-control input-lg"/>
@@ -150,21 +150,21 @@
             <div class="header_sub">
                 <div class="h_menu">
                     <ul>
-                        <li class="active"><a href="/">Home</a></li> |
-                        <li><a href="#/store">store</a></li> |
-                        <li><a href="#/services">services</a></li> |
-                        <li><a href="#/contact">Contact us</a></li>
+                        <li class="active"><a ng-href="#">Home</a></li> |
+                        <li><a ng-href="#/store">store</a></li> |
+                        <li><a ng-href="#/services">services</a></li> |
+                        <li><a ng-href="#/contact">Contact us</a></li>
 
                     </ul>
                 </div>
                 <div class="top-nav">
                     <nav class="nav">	        	
-                        <a href="#" id="w3-menu-trigger"> </a>
+                        <a ng-href="#" id="w3-menu-trigger"> </a>
                         <ul class="nav-list" style="">
                             <li class="nav-item"><a href="/">Home</a></li>
-                            <li><a href="#/store">Store</a></li>
-                            <li><a href="#/services">Services</a></li>
-                            <li><a href="#/contact">Contact</a></li>
+                            <li><a ng-href="#/store">Store</a></li>
+                            <li><a ng-href="#/services">Services</a></li>
+                            <li><a ng-href="#/contact">Contact</a></li>
                         </ul>
                     </nav>
                     <div class="search_box">
@@ -188,7 +188,7 @@
         <div class="wrap">
             <div class="footer">
 
-                <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
+                <a ng-href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
                 <!--end scroll_top_btn -->
                 <div class="copy">
                     <p class="link">&copy;  All rights reserved | Template by&nbsp;&nbsp;<a href="http://teamdas.esy.es/default.html"> DAS</a></p>

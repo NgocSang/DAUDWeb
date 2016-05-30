@@ -453,20 +453,25 @@ body {
 .grid1_of_3{
     float: left;
     width: 29.333%;
-    margin-left: 4.3333%;
+    margin: 50px 2% 0px;
     border: 1px solid rgb(223, 223, 223);
     position: relative;
 }
-.grid1_of_3:first-child{
-    margin-left: 0;
+
+.grid1_of_3 *{
+    text-align: center;
 }
+
 .grid1_of_3 a{
     padding: 2%;
     display: block;
 }
+
 .grid1_of_3 img{
+    height: 200px;
     margin-top: 8%;
 }
+
 .grid1_of_3 h3{
     margin: 6% 0 8%;
     font-size: 1.8em;
@@ -476,9 +481,11 @@ body {
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
+
 .grid1_of_3:hover h3,.grid1_of_3:hover h4 span{
     color: rgb(24, 141, 118);
 }
+
 .b_btm{
     position: absolute;
     width: 100%;
@@ -487,14 +494,17 @@ body {
     display: block;
     bottom: 0px;
 }
+
 .price{
     display: block;
     margin-bottom: 40px;
 }
+
 .price h4{
     font-size: 1.5em;
     color: #999999;
 }
+
 .price h4 span{
     display: inline-block;
     font-size: 1.1em;

@@ -30,21 +30,23 @@ app.controller("LoginCtrl", function ($scope, $firebaseAuth, Auth) {
     $scope.confirm = "";
     
     Auth.$onAuth(function (authData) {
-        $scope.authData = authData;
+        if (authData != null) {
+            $scope.authData = authData;
         
-        switch ($scope.authData.provider) {
-            case "facebook":
-                $scope.user.name = $scope.authData.facebook.displayName;
-                break;
-            case "google":
-                $scope.user.name = $scope.authData.google.displayName;
-                break;
-            case "twitter":
-                $scope.user.name = $scope.authData.twitter.displayName;
-                break;
-            case "password":
-                $scope.user.name = "sang";
-                break;
+            switch ($scope.authData.provider) {
+                case "facebook":
+                    $scope.user.name = $scope.authData.facebook.displayName;
+                    break;
+                case "google":
+                    $scope.user.name = $scope.authData.google.displayName;
+                    break;
+                case "twitter":
+                    $scope.user.name = $scope.authData.twitter.displayName;
+                    break;
+                case "password":
+                    $scope.user.name = "sang";
+                    break;
+            }
         }
     });
     

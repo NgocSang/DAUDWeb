@@ -2,6 +2,12 @@
 <link rel="stylesheet" href="../components/index-css/owl.carousel.css">
 
 <div id="da-slider" class="da-slider">
+    <!--div class="da-slide" ng-repeat="item in top4">
+        <h2>{{item.name}}</h2>
+        <p>{{item.description}}</p>
+        <a ng-href="#/store/details/{{item.$id}}" class="da-link">View Details</a>
+        <div class="da-img"><img ng-src="{{item.imgUrl}}" alt="ProductImage"/></div>
+    </div-->
     <div class="da-slide">
         <h2>welcome to aditii</h2>
         <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane.</p>
@@ -113,22 +119,17 @@
 <div class="main_bg">
     <div class="wrap">
         <div class="main">
-            <!-- start grids_of_3 -->
-            <div class="grids_of_3">
-                <div class="grid1_of_3">
-                    <a href="#/store/details/1">
-                        <img src="images/pic1.jpg" alt=""/>
-                        <h3>branded shoes</h3>
-                        <div class="price">
-                            <h4>$300<span>indulge</span></h4>
-                        </div>
-                        <span class="b_btm"></span>
-                    </a>
-                </div>
-                
-                <div class="clear"></div>
+            <div class="grid1_of_3" ng-repeat="item in featured">
+                <a ng-href="#/store/details/{{item.$id}}">
+                    <img ng-src="{{item.imgUrl}}" alt="ProductImage"/>
+                    <h3>{{item.name}}</h3>
+                    <div class="price">
+                        <h4>{{item.price}} VND<span>View Detail</span></h4>
+                    </div>
+                    <span class="b_btm"></span>
+                </a>
             </div>
-            <!-- end grids_of_3 -->
+            <div class="clear"></div>
         </div>
     </div>
 </div>

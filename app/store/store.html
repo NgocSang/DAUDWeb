@@ -9,12 +9,12 @@
     <form id="formSearch" > 
         <label class="label">Màu sắc:</label>
         <!--<select class="form-control filter" name="color">
-            <option value="">Đen</option>
-        </select>-->
-        <input type="text" class="filter" />
+<option value="">Đen</option>
+</select>-->
+        <input type="text" class="form-control filter" />
         <label class="label">Size:</label>
         <select class="form-control filter" name="size">
-            <option value="">Choose a size</option>
+            <option value="">All</option>
             <option value="s">Small (S)</option>
             <option value="m">Medium (M)</option>
             <option value="l">Large (L)</option>
@@ -22,13 +22,13 @@
         </select>
         <label class="label">Giá:</label>
         <select class="form-control filter" name="size">
-            <option value="100.000">Nhỏ hơn 100.000</option>
-            <option value="200.000 - 500.000">Từ 200.000 - 500.00</option>
-            <option value="500.000 - 1.000.00">Từ 500.000 - 1.000.00</option>
-            <option value="1.000.000">Lớn 1.000.000</option>
-            
+            <option value="100.000">Less than 100.000</option>
+            <option value="200.000 - 500.000">From 200.000 to 500.00</option>
+            <option value="500.000 - 1.000.00">From 500.000 to 1.000.00</option>
+            <option value="1.000.000">Greater than 1.000.000</option>
+
         </select>
-        <button class="btn btn-primary">Tìm kiếm <span class="glyphicon glyphicon-search"></span></p></button>
+        <button class="btn btn-primary">Tìm kiếm <span class="glyphicon glyphicon-search"></span></button>
     </form>
 
 </div>
@@ -38,22 +38,17 @@
 <div class="main_bg">
     <div class="wrap">	
         <div class="main">
-            <!-- start grids_of_3 -->
-            <div class="grids_of_3">
-                <div class="grid1_of_3">
-                    <a href="#/store/details/1">
-                        <img src="images/pic1.jpg" alt=""/>
-                        <h3>branded shoes</h3>
-                        <div class="price">
-                            <h4>$300<span>indulge</span></h4>
-                        </div>
-                        <span class="b_btm"></span>
-                    </a>
-                </div>
-
-                <div class="clear"></div>
-            </div>	
-            <!-- end grids_of_3 -->
+            <div class="grid1_of_3" ng-repeat="item in all">
+                <a ng-href="#/store/details/{{item.$id}}">
+                    <img ng-src="{{item.imgUrl}}" alt="ProductImage"/>
+                    <h3>{{item.name}}</h3>
+                    <div class="price">
+                        <h4>{{item.price}} VND<span>View Detail</span></h4>
+                    </div>
+                    <span class="b_btm"></span>
+                </a>
+            </div>
+            <div class="clear"></div>
         </div>
     </div>
 </div>
