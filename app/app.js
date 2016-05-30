@@ -1,82 +1,80 @@
-'use strict';
-
+/*global angular, turnOffLogin, turnOffCreate*/
 // Declare app level module which depends on views, and components
 var app = angular.module('App', ['firebase', 'ngRoute', 'App.store', 'App.cart', 'App.services', 'App.contact', 'App.details', 'App.home', 'App.providers']);
 
 app.config(['$routeProvider', function ($routeProvider) {
-    $routeProvider.otherwise(
-        {
-            redirectTo: '/home'
-        });
+    'use strict';
+    
+    $routeProvider.otherwise({
+        redirectTo: '/home'
+    });
 }]);
 
-app.controller("LoginCtrl", function ($scope, $firebaseAuth, Auth) {
-    var ref = new Firebase("https://doanungdungweb.firebaseio.com");
+app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseAuth, Auth, $anchorScroll, Ref) {
+    'use strict';
     
-    $scope.credential = {
-        "email": "",
-        "password": ""
-    }
-    
-    $scope.createData = {
-        "email": "",
-        "password": ""
-    }
-    
-    $scope.user = {
-        "name": ""
-    }
-    
-    $scope.confirm = "";
+    $scope.user = {};
     
     Auth.$onAuth(function (authData) {
-        if (authData != null) {
-            $scope.authData = authData;
+        $scope.authData = authData;
         
-            switch ($scope.authData.provider) {
-                case "facebook":
-                    $scope.user.name = $scope.authData.facebook.displayName;
-                    break;
-                case "google":
-                    $scope.user.name = $scope.authData.google.displayName;
-                    break;
-                case "twitter":
-                    $scope.user.name = $scope.authData.twitter.displayName;
-                    break;
-                case "password":
-                    $scope.user.name = "sang";
-                    break;
-            }
+        switch (authData.provider) {
+        case "facebook":
+            $scope.user.name = $scope.authData.facebook.displayName;
+            break;
+        case "google":
+            $scope.user.name = $scope.authData.google.displayName;
+            break;
+        case "twitter":
+            $scope.user.name = $scope.authData.twitter.displayName;
+            break;
+        case "password":
+            var userName = $firebaseObject(Ref.child("user/" + authData.uid + "/name"));
+            userName.$loaded().then(function () {
+                $scope.user.name = userName.$value;
+            });
+            break;
         }
     });
     
     $scope.loginEmail = function () {
-        Auth.$authWithPassword($scope.credential);
-        turnOffLogin();
+        Auth.$authWithPassword($scope.credential)["catch"](function (error) {
+            window.alert("Invalid info");
+        });
     };
     
-    $scope.loginFacebook = function() {
+    $scope.loginFacebook = function () {
         Auth.$authWithOAuthPopup("facebook");
     };
     
-    $scope.loginGoogle = function() {
+    $scope.loginGoogle = function () {
         Auth.$authWithOAuthPopup("google");
     };
     
-    $scope.loginTwitter = function() {
+    $scope.loginTwitter = function () {
         Auth.$authWithOAuthPopup("twitter");
     };
     
-    $scope.logout = function() {
+    $scope.logout = function () {
         Auth.$unauth();
     };
     
     $scope.createUser = function () {
-        if ($scope.createData.password !== $scope.confirm) {
-            window.alert("Mật khẩu không khớp!")
+        if ($scope.createData.password !== $scope.createData.confirm) {
+            window.alert("Password not match");
         } else {
-            Auth.$createUser($scope.createData);
-            turnOffCreate();
+            Auth.$createUser($scope.createData).then(function (authData) {
+                var userName = $firebaseObject(Ref.child("user/" + authData.uid + "/name"));
+                userName.$value = $scope.createData.name;
+                userName.$save();
+                turnOffCreate();
+            })["catch"](function (error) {
+                window.alert("Error");
+            });
         }
+    };
+    
+    $scope.scrollToTop = function () {
+        $anchorScroll("topwebsite");
     };
 });

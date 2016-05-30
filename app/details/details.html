@@ -16,32 +16,13 @@
                                     <div class="more-views" style="float:left;">
                                         <div class="more-views-container">
                                             <ul>
-                                                <li>
-                                                    <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width:64px;height:85px;" href=""  title="" alt="">
-                                                        <img src="" src_main=""  title="" alt="" /></a>            
-                                                </li>
-                                                <li>
-                                                    <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width:64px;height:85px;" href=""  title="" alt="">
-                                                        <img src="" src_main=""  title="" alt="" /></a>
-                                                </li>
-                                                <li>
-                                                    <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width:64px;height:85px;" href=""  title="" alt="">
-                                                        <img src="" src_main=""  title="" alt="" /></a> 
-                                                </li>
-                                                <li>
-                                                    <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width:64px;height:85px;" href=""  title="" alt="">
-                                                        <img src="" src_main="" title="" alt="" /></a>  
-                                                </li>
-                                                <li>
-                                                    <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width:64px;height:85px;" href=""  title="" alt="">
-                                                        <img src="" src_main="" title="" alt="" /></a>
-                                                </li>
+                                                
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="product-image"> 
                                         <a class="cs-fancybox-thumbs cloud-zoom" rel="adjustX:30,adjustY:0,position:'right',tint:'#202020',tintOpacity:0.5,smoothMove:2,showTitle:true,titleOpacity:0.5" data-fancybox-group="thumb" href="images/0001-2.jpg" title="Women Shorts" alt="Women Shorts">
-                                            <img src="images/0001-2.jpg" alt="Women Shorts" title="Women Shorts" />
+                                            <img alt="Large Product Image"/>
                                         </a>
                                     </div>
 
@@ -52,53 +33,35 @@
                     </div>
                     <!-- start span1_of_1 -->
                     <div class="span1_of_1_des">
-                        <div class="desc1">
-                            <h3>Lorem Ipsum is simply dummy text </h3>
-                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                            <h5>Rs. 399 <a href="#">click for offer</a></h5>
+                        <form class="desc1" ng-submit="addToCart()">
+                            <h3>{{product.basicInfo.name}}</h3>
+                            <h5>{{product.basicInfo.price}} VND</h5>
                             <div class="available">
                                 <h4>Available Options :</h4>
                                 <ul>
                                     <li>Color:
-                                        <select>
-                                            <option>Silver</option>
-                                            <option>Black</option>
-                                            <option>Dark Black</option>
-                                            <option>Red</option>
-                                        </select></li>
-                                    <li>Size:
-                                        <select>
-                                            <option>L</option>
-                                            <option>XL</option>
-                                            <option>S</option>
-                                            <option>M</option>
+                                        <select ng-model="cart.color" required>
+                                            <option disabled selected value>Select</option>
+                                            <option ng-repeat="item in product.color" value="{{item.$value}}">{{item.$value}}</option>
                                         </select>
                                     </li>
-                                    <li>Quality:
-                                        <select>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
+                                    <li>Size:
+                                        <select ng-model="cart.size" required>
+                                            <option disabled selected value>Select</option>
+                                            <option ng-repeat="item in product.size" value="{{item.$value}}">{{item.$value}}</option>
                                         </select>
+                                    </li>
+                                    <li>Quantity:
+                                        <input placeholder="Enter quantity" type="number" min="1" ng-model="cart.number" required/>
                                     </li>
                                 </ul>
                                 <div class="btn_form" style="width:100%;">
-                                    <form>
-                                        <input type="submit" value="add to cart" title="" style="width:100%;"/>
-                                    </form>
-                                </div>
-                                <div class="share-desc">
-                                    <div class="share">
-
-                                    </div>
-                                    <div class="clear"></div>
+                                    <input type="submit" value="add to cart" title="" style="width:100%;"/>
                                 </div>
                                 <div class="clear"></div>
                             </div>
 
-                        </div>
+                        </form>
                     </div>
                     <div class="clear"></div>
                     <!-- start tabs -->
@@ -116,22 +79,8 @@
 
                         <div class="content">
                             <div class="content-1">
-                                <p class="para top"><span>LOREM IPSUM</span> There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined </p>
-                                <ul>
-                                    <li>Research</li>
-                                    <li>Design and Development</li>
-                                    <li>Porting and Optimization</li>
-                                    <li>System integration</li>
-                                    <li>Verification, Validation and Testing</li>
-                                    <li>Maintenance and Support</li>
-                                </ul>
+                                <p class="para top">{{product.basicInfo.description}}</p>
                                 <div class="clear"></div>
-                            </div>
-                            <div class="content-2">
-                                
-                            </div>
-                            <div class="content-3">
-                                
                             </div>
                         </div>
                     </section>

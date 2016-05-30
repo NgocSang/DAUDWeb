@@ -796,6 +796,7 @@ p.para{
     font-size: 0.8725em;
     color: #555555;
     line-height: 1.8em;
+    white-space: pre-wrap;
 }
 
 
@@ -804,6 +805,7 @@ p.para{
     font-family: 'Source Sans Pro', sans-serif;
     display: block;
     float: right;
+    width: 100%;
 }
 .desc1 h3{
     text-shadow: 0 1px 0 #ffffff;
@@ -917,7 +919,7 @@ p.para{
     margin-top: 6%;
     float: left;
 }
-.btn_form form input[type="submit"]{
+.btn_form input[type="submit"]{
     font-family: 'Source Sans Pro', sans-serif;
     cursor:pointer;
     border:none;
@@ -933,7 +935,7 @@ p.para{
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
-.btn_form form input[type="submit"]:hover{
+.btn_form input[type="submit"]:hover{
     background: #3CC395;
 }
 .span_right{
@@ -1044,11 +1046,13 @@ p.para{
 .field select.select1 {
     width: 100%;
 }
+
 /* start tabs */
 .tabs {
     position: relative;
     margin: 40px auto;
 }
+
 .tabs input {
     position: absolute;
     z-index: 1000;
@@ -1061,12 +1065,15 @@ p.para{
     filter: alpha(opacity=0);
     cursor: pointer;
 }
+
 .tabs input#tab-2{
     left: 257px;
 }
+
 .tabs input#tab-3{
     left: 515px;
 }
+
 .tabs label {
     font-family: 'bebas_neueregular';
     cursor: pointer;
@@ -1075,7 +1082,6 @@ p.para{
     line-height: 45px;
     height: 45px;
     position: relative;
-    padding: 0 40px;
     float: left;
     display: block;
     width: 20.3333%;
@@ -1098,6 +1104,7 @@ p.para{
     -o-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
 }
+
 .tabs label:after {
     content: '';
     background: #fff;
@@ -1108,11 +1115,13 @@ p.para{
     height: 2px;
     display: block;
 }
+
 .tabs input:hover + label {
     background: #3DC4B7;
     color:#ffffff;
     font-weight: normal;
 }
+
 .tabs label:first-of-type {
     border-left: 1px solid rgb(241, 238, 238);
     z-index: 4;
@@ -1121,15 +1130,19 @@ p.para{
     -moz-box-shadow: 0px 0 2px rgba(197, 197, 197, 1);
     -o-box-shadow: 0px 0 2px rgba(197, 197, 197, 1);
 }
+
 .tab-label-2 {
     z-index: 3;
 }
+
 .tab-label-3 {
     z-index: 2;
 }
+
 .tab-label-4 {
     z-index: 1;
 }
+
 .tabs input:checked + label {
     cursor:pointer;
     color: #3DC4B6;

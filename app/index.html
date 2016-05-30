@@ -25,7 +25,7 @@
     <!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
 -->
-    <div class="header_bg" ng-controller="LoginCtrl">
+    <div class="header_bg" ng-controller="IndexCtrl">
         <div id="topwebsite">
             <div class="content-topwebsite">
                 <div data-toggle="tooltip" data-placement="bottom" title="Tam" class="content-topwebsite"><img src="images/clock.png"/>
@@ -101,7 +101,7 @@
                             <div class="form"><a id="login-page" ng-href="#" class="close">&#215</a>
                                 <form  class="login-form" ng-submit="loginEmail()">
                                     <p class="email">
-                                        <input ng-model="credential.email" name="username" type="text" placeholder="Email" id="username" class="form-control input-lg"/>
+                                        <input ng-model="credential.email" name="username" type="email" placeholder="Email" id="username" class="form-control input-lg"/>
                                     </p>
                                     <br/>
                                     <p class="password">
@@ -120,14 +120,18 @@
                         <div class="create-page">
                             <div class="form"><a id="create-page" ng-href="#" class="close">&#215</a>
                                 <form  class="login-form" ng-submit="createUser()">
-                                    <p class="email" style="margin-top:10px;">
-                                        <input ng-model="createData.email"  name="email" type="text" placeholder="Email" id="email" class="form-control input-lg"/>
+                                    <p class="userName" style="margin-top:10px;">
+                                        <input class="form-control input-lg" type="text" placeholder="Name" ng-model="createData.name" required/>
+                                    </p>
+                                    <br/>
+                                    <p class="email">
+                                        <input ng-model="createData.email"  name="email" type="email" placeholder="Email" id="email" class="form-control input-lg"/>
                                     </p>
                                     <br/>
                                     <p class="password">
                                         <input ng-model="createData.password" name="passwordcreate" type="password" placeholder="Password" id="passwordcreate" class="form-control input-lg"/>
                                         <br/>
-                                        <input ng-model="confirm" name="passwordconfirm" type="password" placeholder="Password" id="passwordconfirm" class="form-control input-lg"/>
+                                        <input ng-model="createData.confirm" name="passwordconfirm" type="password" placeholder="Password" id="passwordconfirm" class="form-control input-lg"/>
                                         <button type="submit" class="btn btn-primary" id="btnlogin">Create</button>
                                     </p>
                                 </form>
@@ -184,11 +188,11 @@
     <!-- start slider -->
 
     <!-- start footer -->
-    <div class="footer_bg1">
+    <div ng-controller="IndexCtrl" class="footer_bg1">
         <div class="wrap">
             <div class="footer">
 
-                <a ng-href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
+                <button ng-click="scrollToTop()" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></button>
                 <!--end scroll_top_btn -->
                 <div class="copy">
                     <p class="link">&copy;  All rights reserved | Template by&nbsp;&nbsp;<a href="http://teamdas.esy.es/default.html"> DAS</a></p>
