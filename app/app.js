@@ -1,7 +1,7 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-var app = angular.module('App', ['firebase', 'ngRoute', 'App.store', 'App.cart', 'App.services','App.contact','App.details','App.home']);
+var app = angular.module('App', ['firebase', 'ngRoute', 'App.store', 'App.cart', 'App.services', 'App.contact', 'App.details', 'App.home', 'App.providers']);
 
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.otherwise(
@@ -10,9 +10,8 @@ app.config(['$routeProvider', function ($routeProvider) {
         });
 }]);
 
-app.controller("LoginCtrl", function ($scope, $firebaseAuth) {
+app.controller("LoginCtrl", function ($scope, $firebaseAuth, Auth) {
     var ref = new Firebase("https://doanungdungweb.firebaseio.com");
-    $scope.auth = $firebaseAuth(ref);
     
     $scope.credential = {
         "email": "",
@@ -30,7 +29,7 @@ app.controller("LoginCtrl", function ($scope, $firebaseAuth) {
     
     $scope.confirm = "";
     
-    $scope.auth.$onAuth(function (authData) {
+    Auth.$onAuth(function (authData) {
         $scope.authData = authData;
         
         switch ($scope.authData.provider) {
@@ -50,31 +49,31 @@ app.controller("LoginCtrl", function ($scope, $firebaseAuth) {
     });
     
     $scope.loginEmail = function () {
-        $scope.auth.$authWithPassword($scope.credential);
+        Auth.$authWithPassword($scope.credential);
         turnOffLogin();
     };
     
     $scope.loginFacebook = function() {
-        $scope.auth.$authWithOAuthPopup("facebook");
+        Auth.$authWithOAuthPopup("facebook");
     };
     
     $scope.loginGoogle = function() {
-        $scope.auth.$authWithOAuthPopup("google");
+        Auth.$authWithOAuthPopup("google");
     };
     
     $scope.loginTwitter = function() {
-        $scope.auth.$authWithOAuthPopup("twitter");
+        Auth.$authWithOAuthPopup("twitter");
     };
     
     $scope.logout = function() {
-        $scope.auth.$unauth();
+        Auth.$unauth();
     };
     
     $scope.createUser = function () {
         if ($scope.createData.password !== $scope.confirm) {
             window.alert("Mật khẩu không khớp!")
         } else {
-            $scope.auth.$createUser($scope.createData);
+            Auth.$createUser($scope.createData);
             turnOffCreate();
         }
     };
