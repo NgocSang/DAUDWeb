@@ -51,8 +51,8 @@
                 <div class="logo">
                     <a href="index.html"><img height="45" width="110" src="images/logo.png" alt=""/> </a>
                 </div>
-                <div class="h_icon">
-                    <ul class="icon1 sub-icon1">
+                <div class="h_icon" style="height:70px;border:1px solid white;" >
+                    <ul class="icon1 sub-icon1" ng-show="authData">
                         <li><i id="number">0</i></li>
                         <li><a class="active-icon c1" href="index.html#/cart"></a>
                         </li>
@@ -60,10 +60,10 @@
                     </ul>
                 </div>
                 <!-- start login sang -->
-                <div id="login" ng-show="!authData">
-                    <div class="dropdown">
+                <div id="login" ng-show="!authData" >
+                    <div class="dropdown" >
                         <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Đăng nhập<span class="caret"></span></button>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu" >
                             <li>
                                 <button id = "loginbtn" class="btn btn-primary">Đăng nhập<span class="glyphicon glyphicon-log-in"></span></button>
                             </li>
@@ -165,9 +165,9 @@
                         <a href="#" id="w3-menu-trigger"> </a>
                         <ul class="nav-list" style="">
                             <li class="nav-item"><a href="/">Home</a></li>
-                            <li><a href="#/store">Store</a></li>
-                            <li><a href="#/services">Services</a></li>
-                            <li><a href="#/contact">Contact</a></li>
+                            <li class="nav-item"><a href="#/store">Store</a></li>
+                            <li class="nav-item"><a href="#/services">Services</a></li>
+                            <li class="nav-item"><a href="#/contact">Contact</a></li>
                         </ul>
                     </nav>
                     <div class="search_box">

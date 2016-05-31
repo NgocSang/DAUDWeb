@@ -3,32 +3,41 @@
 <link rel="stylesheet" href="store/store.css">
 
 <!----start-cursual---->
-<div class="hidden-xs" id="order-bar">
+<div  id="order-bar">
 
 
-    <form id="formSearch" > 
-        <label class="label">Màu sắc:</label>
-        <!--<select class="form-control filter" name="color">
-            <option value="">Đen</option>
-        </select>-->
-        <input type="text" class="filter" />
-        <label class="label">Size:</label>
-        <select class="form-control filter" name="size">
-            <option value="">Choose a size</option>
-            <option value="s">Small (S)</option>
-            <option value="m">Medium (M)</option>
-            <option value="l">Large (L)</option>
-            <option value="xl">Extra large (XL)</option>
-        </select>
-        <label class="label">Giá:</label>
-        <select class="form-control filter" name="size">
-            <option value="100.000">Nhỏ hơn 100.000</option>
-            <option value="200.000 - 500.000">Từ 200.000 - 500.00</option>
-            <option value="500.000 - 1.000.00">Từ 500.000 - 1.000.00</option>
-            <option value="1.000.000">Lớn 1.000.000</option>
-            
-        </select>
-        <button class="btn btn-primary">Tìm kiếm <span class="glyphicon glyphicon-search"></span></p></button>
+    <form id="formSearch" >
+        <div class="search">
+            <label class="label">Name:</label>
+            <input type="text" class="filter" />
+        </div>
+        <div class="search">
+            <label class="label">Color:</label>
+
+            <input type="text" class="filter" />
+        </div>
+        <div class="search">
+            <label class="label">Size:</label>
+            <select class="form-control filter" name="size">
+                <option value="">Choose a size</option>
+                <option value="s">Small (S)</option>
+                <option value="m">Medium (M)</option>
+                <option value="l">Large (L)</option>
+                <option value="xl">Extra large (XL)</option>
+            </select>
+        </div>
+        <div class="search">
+            <label class="label">Price:</label>
+            <select class="form-control filter" name="size">
+                <option value="100.000">Nhỏ hơn 100.000</option>
+                <option value="200.000 - 500.000">Từ 200.000 - 500.00</option>
+                <option value="500.000 - 1.000.00">Từ 500.000 - 1.000.00</option>
+                <option value="1.000.000">Lớn 1.000.000</option>
+
+            </select>
+        </div>
+
+        
     </form>
 
 </div>
