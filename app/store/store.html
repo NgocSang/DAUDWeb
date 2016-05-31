@@ -3,32 +3,36 @@
 <link rel="stylesheet" href="store/store.css">
 
 <!----start-cursual---->
-<div class="hidden-xs" id="order-bar">
-
-
-    <form id="formSearch" > 
-        <label class="label">Color:</label>
-        <!--<select class="form-control filter" name="color">
-<option value="">Đen</option>
-</select>-->
-        <input ng-model="filter.color" type="text" class="form-control filter" />
-        <label class="label">Size:</label>
-        <select class="form-control filter" name="size" ng-model="customFilter.size">
-            <option selected value="">All</option>
-            <option value="S">Small (S)</option>
-            <option value="M">Medium (M)</option>
-            <option value="L">Large (L)</option>
-            <option value="XL">Extra large (XL)</option>
-        </select>
-        <label class="label">Price:</label>
-        <select class="form-control filter" name="size" ng-model="customFilter.price">
-            <option selected value="">All</option>
-            <option value="1">Less than 200.000</option>
-            <option value="2">From 200.000 to 500.000</option>
-            <option value="3">From 500.000 to 1.000.00</option>
-            <option value="4">Greater than 1.000.000</option>
-        </select>
-        <button class="btn btn-primary">Tìm kiếm <span class="glyphicon glyphicon-search"></span></button>
+<div  id="order-bar">
+    <form id="formSearch" >
+        <div class="search">
+            <label class="label">Name:</label>
+            <input type="text" class="filter" />
+        </div>
+        <div class="search">
+            <label class="label">Color:</label>
+            <input ng-model="filter.color" type="text" class="filter"/>
+        </div>
+        <div class="search">
+            <label class="label">Size:</label>
+            <select class="form-control filter" name="size" ng-model="customFilter.size">
+                <option selected value="">All</option>
+                <option value="S">Small (S)</option>
+                <option value="M">Medium (M)</option>
+                <option value="L">Large (L)</option>
+                <option value="XL">Extra large (XL)</option>
+            </select>
+        </div>
+        <div class="search">
+            <label class="label">Price:</label>
+            <select class="form-control filter" name="size" ng-model="customFilter.price">
+                <option selected value="">All</option>
+                <option value="1">Less than 200.000</option>
+                <option value="2">From 200.000 to 500.000</option>
+                <option value="3">From 500.000 to 1.000.00</option>
+                <option value="4">Greater than 1.000.000</option>
+            </select>
+        </div>
     </form>
 </div>
 <!-- start main1 -->

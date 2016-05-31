@@ -22,9 +22,6 @@
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
-    <!-- In production use:
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
--->
     <div class="header_bg" ng-controller="IndexCtrl">
         <div id="topwebsite">
             <div class="content-topwebsite">
@@ -51,33 +48,33 @@
                 <div class="logo">
                     <a ng-href="#"><img height="45" width="110" src="images/logo.png" alt=""/> </a>
                 </div>
-                <div class="h_icon">
+                <div class="h_icon" style="height:70px;border:1px solid white;">
                     <ul class="icon1 sub-icon1" ng-show="authData">
                         <li><i id="number">{{quantity.$value}}</i></li>
                         <li><a class="active-icon c1" ng-href="#/cart"></a>
                         </li>
-                        <li><i id="cart">Giỏ hàng</i></li>
+                        <li><i id="cart">Cart</i></li>
                     </ul>
                 </div>
                 <!-- start login sang -->
                 <div id="login" ng-show="!authData">
                     <div class="dropdown">
-                        <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle" style="margin-right: 20px;">Đăng nhập<span class="caret"></span></button>
+                        <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Login<span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li>
-                                <button id = "loginbtn" class="btn btn-primary">Đăng nhập<span class="glyphicon glyphicon-log-in"></span></button>
+                                <button id = "loginbtn" class="btn btn-primary">Login with Email<span class="glyphicon glyphicon-log-in"></span></button>
                             </li>
                             <li>
-                                <button ng-click="loginFacebook()" class="btn btn-default" style="background: #3b5998">Đăng nhập với facebook<span class="glyphicon glyphicon-phone"></span></button>
+                                <button ng-click="loginFacebook()" class="btn btn-default" style="background: #3b5998">Login with facebook<span class="glyphicon glyphicon-phone"></span></button>
                             </li>
                             <li>
-                                <button ng-click="loginGoogle()" class="btn btn-danger">Đăng nhập với google<span class="glyphicon glyphicon-phone"></span></button>
+                                <button ng-click="loginGoogle()" class="btn btn-danger">Login with google<span class="glyphicon glyphicon-phone"></span></button>
                             </li>
                             <li>
-                                <button ng-click="loginTwitter()" class="btn btn-default" style="background:#17a4eb">Đăng nhập với twitter<span class="glyphicon glyphicon-phone"></span></button>
+                                <button ng-click="loginTwitter()" class="btn btn-default" style="background:#17a4eb">Login with twitter<span class="glyphicon glyphicon-phone"></span></button>
                             </li>
                             <li>
-                                <button id = "createbtn" class="btn btn-primary">Tạo tài khoản<span class="glyphicon glyphicon-user"></span></button>
+                                <button id = "createbtn" class="btn btn-primary">Create an account<span class="glyphicon glyphicon-user"></span></button>
                             </li>
                         </ul>
                     </div>
@@ -86,10 +83,10 @@
                 <!--- dăng xuất---->
                 <div id="login" ng-show="authData">
                     <div class="dropdown">
-                        <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Xin chào, {{userName}}<span class="caret"></span></button>
+                        <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Hello, {{userName}}<span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li>
-                                <button ng-click="logout()" class="btn btn-default" style="background: #3b5998">Đăng xuất<span class="glyphicon glyphicon-phone"></span></button>
+                                <button ng-click="logout()" class="btn btn-default" style="background: #3b5998">Logout<span class="glyphicon glyphicon-phone"></span></button>
                             </li>
                         </ul>
                     </div>
@@ -108,7 +105,6 @@
                                         <input ng-model="credential.password" name="password" type="password" placeholder="Password" id="password" class="form-control input-lg"/>
                                         <button type="submit" class="btn btn-primary" id="btnlogin">Login</button>
                                     </p>
-                                    <p class="message">Not registered? <a ng-href="#" id="refSignUp"> Create an account </a></p><br/>
                                 </form>
                             </div>
                         </div>
@@ -155,8 +151,8 @@
                 <div class="h_menu">
                     <ul>
                         <li class="active"><a ng-href="#">Home</a></li> |
-                        <li><a ng-href="#/store">store</a></li> |
-                        <li><a ng-href="#/services">services</a></li> |
+                        <li><a ng-href="#/store">Store</a></li> |
+                        <li><a ng-href="#/services">Services</a></li> |
                         <li><a ng-href="#/contact">Contact us</a></li>
 
                     </ul>
@@ -166,9 +162,9 @@
                         <a ng-href="#" id="w3-menu-trigger"> </a>
                         <ul class="nav-list" style="">
                             <li class="nav-item"><a href="/">Home</a></li>
-                            <li><a ng-href="#/store">Store</a></li>
-                            <li><a ng-href="#/services">Services</a></li>
-                            <li><a ng-href="#/contact">Contact</a></li>
+                            <li class="nav-item"><a ng-href="#/store">Store</a></li>
+                            <li class="nav-item"><a ng-href="#/services">Services</a></li>
+                            <li class="nav-item"><a ng-href="#/contact">Contact us</a></li>
                         </ul>
                     </nav>
                     <div class="search_box">
@@ -195,12 +191,15 @@
                 <button ng-click="scrollToTop()" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></button>
                 <!--end scroll_top_btn -->
                 <div class="copy">
-                    <p class="link">&copy;  All rights reserved | Template by&nbsp;&nbsp;<a href="http://teamdas.esy.es/default.html"> DAS</a></p>
+                    <p class="link">&copy;  All rights reserved | Designed by&nbsp;&nbsp;<a href="http://teamdas.esy.es/default.html"> DAS</a></p>
                 </div>
                 <div class="clear"></div>
             </div>
         </div>
     </div>
+    <!-- In production use:
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+    -->
     <link rel="stylesheet" href="app.css">
     <script src="components/angular/angular.min.js"></script>
     <script src="components/angular-route/angular-route.min.js"></script>
