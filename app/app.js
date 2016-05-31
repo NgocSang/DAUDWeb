@@ -13,32 +13,42 @@ app.config(['$routeProvider', function ($routeProvider) {
 app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseAuth, Auth, $anchorScroll, Ref) {
     'use strict';
     
-    $scope.user = {};
-    
     Auth.$onAuth(function (authData) {
         $scope.authData = authData;
         
-        switch (authData.provider) {
-        case "facebook":
-            $scope.user.name = $scope.authData.facebook.displayName;
-            break;
-        case "google":
-            $scope.user.name = $scope.authData.google.displayName;
-            break;
-        case "twitter":
-            $scope.user.name = $scope.authData.twitter.displayName;
-            break;
-        case "password":
-            var userName = $firebaseObject(Ref.child("user/" + authData.uid + "/name"));
-            userName.$loaded().then(function () {
-                $scope.user.name = userName.$value;
+        if (authData) {
+            $scope.quantity = $firebaseObject(Ref.child("user/" + authData.uid + "/quantity"));
+            $scope.quantity.$loaded().then(function () {
+                if (!$scope.quantity.$value) {
+                    $scope.quantity.$value = 0;
+                    $scope.quantity.$save();
+                }
             });
-            break;
+            
+            switch (authData.provider) {
+            case "facebook":
+                $scope.userName = $scope.authData.facebook.displayName;
+                break;
+            case "google":
+                $scope.userName = $scope.authData.google.displayName;
+                break;
+            case "twitter":
+                $scope.userName = $scope.authData.twitter.displayName;
+                break;
+            case "password":
+                var userName = $firebaseObject(Ref.child("user/" + authData.uid + "/name"));
+                userName.$loaded().then(function () {
+                    $scope.userName = userName.$value;
+                });
+                break;
+            }
         }
     });
     
     $scope.loginEmail = function () {
-        Auth.$authWithPassword($scope.credential)["catch"](function (error) {
+        Auth.$authWithPassword($scope.credential).then(function () {
+            turnOffLogin();
+        })["catch"](function (error) {
             window.alert("Invalid info");
         });
     };

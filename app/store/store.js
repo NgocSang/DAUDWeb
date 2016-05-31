@@ -1,5 +1,5 @@
 /*global angular*/
-var store = angular.module('App.store', ['ngRoute', 'firebase', 'App.providers']);
+var store = angular.module('App.store', ['ngRoute', 'firebase', 'App.providers', 'App.filters']);
 
 store.config(['$routeProvider', function ($routeProvider) {
     'use strict';
@@ -13,5 +13,9 @@ store.config(['$routeProvider', function ($routeProvider) {
 store.controller('StoreCtrl', function ($scope, $firebaseArray, Ref) {
     'use strict';
     
-    $scope.all = $firebaseArray(Ref.child("productList/all"));
+    $scope.all = $firebaseArray(Ref.child("products"));
+    $scope.customFilter = {
+        "price": "",
+        "size": ""
+    };
 });

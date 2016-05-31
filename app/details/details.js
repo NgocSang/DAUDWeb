@@ -16,14 +16,20 @@ store.controller('DetailsCtrl', function ($scope, $routeParams, $firebaseObject,
     
     Auth.$onAuth(function (authData) {
         $scope.authData = authData;
-        $scope.cart = authData !== null ? $firebaseObject(Ref.child("cart/" + $scope.authData.uid + "/" + $routeParams.id)) : null;
+        
+        if (authData) {
+            $scope.cart = $firebaseObject(Ref.child("cart/" + authData.uid + "/" + $routeParams.id));
+            $scope.quantity = $firebaseObject(Ref.child("user/" + authData.uid + "/quantity"));
+        } else {
+            $scope.cart = $scope.quantity = null;
+        }
     });
     
     $scope.product = {
-        basicInfo: $firebaseObject(Ref.child("products/basicInfo/" + $routeParams.id)),
-        color: $firebaseArray(Ref.child("products/color/" + $routeParams.id)),
-        size: $firebaseArray(Ref.child("products/size/" + $routeParams.id)),
-        imgUrl: $firebaseArray(Ref.child("products/imgUrl/" + $routeParams.id))
+        basicInfo: $firebaseObject(Ref.child("products/" + $routeParams.id + "/basicInfo")),
+        color: $firebaseArray(Ref.child("products/" + $routeParams.id + "/color")),
+        size: $firebaseArray(Ref.child("products/" + $routeParams.id + "/size")),
+        imgUrl: $firebaseArray(Ref.child("products/" + $routeParams.id + "/imgUrl"))
     };
     
     $scope.changeImg = function (index) {
@@ -35,10 +41,18 @@ store.controller('DetailsCtrl', function ($scope, $routeParams, $firebaseObject,
     });
     
     $scope.addToCart = function () {
-        if ($scope.authData !== null) {
+        if ($scope.authData) {
+            if ($scope.cart.$value === null) {
+                $scope.quantity.$value = $scope.quantity.$value + 1;
+                $scope.quantity.$save().then(function () {
+                    window.alert("Success!");
+                });
+            }
+            
             $scope.cart.name = $scope.product.basicInfo.name;
             $scope.cart.price = $scope.product.basicInfo.price;
             $scope.cart.imgUrl = $scope.product.imgUrl[0].$value;
+
             $scope.cart.$save().then(function () {
                 window.alert("Success!");
             });

@@ -52,8 +52,8 @@
                     <a ng-href="#"><img height="45" width="110" src="images/logo.png" alt=""/> </a>
                 </div>
                 <div class="h_icon">
-                    <ul class="icon1 sub-icon1">
-                        <li><i id="number">0</i></li>
+                    <ul class="icon1 sub-icon1" ng-show="authData">
+                        <li><i id="number">{{quantity.$value}}</i></li>
                         <li><a class="active-icon c1" ng-href="#/cart"></a>
                         </li>
                         <li><i id="cart">Giỏ hàng</i></li>
@@ -62,7 +62,7 @@
                 <!-- start login sang -->
                 <div id="login" ng-show="!authData">
                     <div class="dropdown">
-                        <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Đăng nhập<span class="caret"></span></button>
+                        <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle" style="margin-right: 20px;">Đăng nhập<span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li>
                                 <button id = "loginbtn" class="btn btn-primary">Đăng nhập<span class="glyphicon glyphicon-log-in"></span></button>
@@ -86,7 +86,7 @@
                 <!--- dăng xuất---->
                 <div id="login" ng-show="authData">
                     <div class="dropdown">
-                        <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Xin chào, {{user.name}}<span class="caret"></span></button>
+                        <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Xin chào, {{userName}}<span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li>
                                 <button ng-click="logout()" class="btn btn-default" style="background: #3b5998">Đăng xuất<span class="glyphicon glyphicon-phone"></span></button>
@@ -215,6 +215,7 @@
     <script src="details/details.js"></script>
     <script src="home/home.js"></script>
     <script src="components/providers/providers.js"></script>
+    <script src="components/filters/filters.js"></script>
     <script src="components/responsive-menu/responsive.menu.js"></script>
 
 </body>

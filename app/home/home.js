@@ -13,8 +13,5 @@ store.config(['$routeProvider', function ($routeProvider) {
 store.controller('HomeCtrl', function ($scope, $firebaseArray, Ref) {
     'use strict';
     
-    // Top 4
-    // $scope.top4 = $firebaseArray(Ref.child("productList/featured").limitToFirst(4).ref());
-    
-    $scope.featured = $firebaseArray(Ref.child("productList/featured"));
+    $scope.featured = $firebaseArray(Ref.child("featured"));
 });
