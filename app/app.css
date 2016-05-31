@@ -1515,7 +1515,7 @@ p.para{
     z-index:2;
     border-radius:3px;
     width:400px;
-    height:250px;
+    height:350px;
     margin-top:-130px;
     margin-left:-170px;
     border-bottom: 3px solid #5DC3A7;
@@ -1538,20 +1538,18 @@ p.para{
     background-color:rgba(50,50,50,0.5);
     display: none;
 }
-#username{
-    clear: right;
-    width: 350px;
-    margin-left: -20px;
-}
-#password{
+.password, .userName, .email{
     clear: right;
     width: 350px;
     margin-left: -20px;
 }
 #btnlogin{
-    margin-top: 10px;
+    clear: right;
+    
     width: 350px;
-    margin-left: -20px;
+    
+    margin: auto;
+    margin-top: 20px;
 }
 #cart{
 
