@@ -63,4 +63,5 @@
 .empty-cart
 {
     animation: 2s swing;
+    text-align:center;
 }
