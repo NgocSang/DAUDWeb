@@ -16,3 +16,24 @@
 	width: 44.3333%;
 	margin-left: 3.333%;
 }
+.more-views-container{
+    
+    width: 70px;
+    margin-right: 20px;
+    float: left;
+}
+.more-views-container ul li{
+    margin-top: 37px;
+}
+.more-views-container ul li:first-child {
+    margin-top: 0px;
+}
+.product-image{
+    
+    height: auto;
+    float: left;
+   
+}
+
+
+
