@@ -13,7 +13,19 @@ store.config(['$routeProvider', function ($routeProvider) {
 store.controller('StoreCtrl', function ($scope, $firebaseArray, Ref) {
     'use strict';
     
+    $scope.loading = true;
     $scope.all = $firebaseArray(Ref.child("products"));
+    $scope.all.$loaded().then(function () {
+        $scope.loading = false;
+    });
+    
+    $scope.filter = {
+        "basicInfo": {
+            "name": ""
+        },
+        "color": ""
+    };
+    
     $scope.customFilter = {
         "price": "",
         "size": ""

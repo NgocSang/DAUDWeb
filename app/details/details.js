@@ -20,16 +20,15 @@ store.controller('DetailsCtrl', function ($scope, $routeParams, $firebaseObject,
         if (authData) {
             $scope.cart = $firebaseObject(Ref.child("cart/" + authData.uid + "/" + $routeParams.id));
             $scope.quantity = $firebaseObject(Ref.child("user/" + authData.uid + "/quantity"));
-        } else {
-            $scope.cart = $scope.quantity = null;
         }
     });
     
     $scope.product = {
         basicInfo: $firebaseObject(Ref.child("products/" + $routeParams.id + "/basicInfo")),
+        detail: $firebaseObject(Ref.child("productDetail/" + $routeParams.id + "/detail")),
         color: $firebaseArray(Ref.child("products/" + $routeParams.id + "/color")),
         size: $firebaseArray(Ref.child("products/" + $routeParams.id + "/size")),
-        imgUrl: $firebaseArray(Ref.child("products/" + $routeParams.id + "/imgUrl"))
+        imgUrl: $firebaseArray(Ref.child("productDetail/" + $routeParams.id + "/imgUrl"))
     };
     
     $scope.changeImg = function (index) {
@@ -44,14 +43,12 @@ store.controller('DetailsCtrl', function ($scope, $routeParams, $firebaseObject,
         if ($scope.authData) {
             if ($scope.cart.$value === null) {
                 $scope.quantity.$value = $scope.quantity.$value + 1;
-                $scope.quantity.$save().then(function () {
-                    window.alert("Success!");
-                });
+                $scope.quantity.$save();
             }
             
             $scope.cart.name = $scope.product.basicInfo.name;
             $scope.cart.price = $scope.product.basicInfo.price;
-            $scope.cart.imgUrl = $scope.product.imgUrl[0].$value;
+            $scope.cart.imgUrl = $scope.product.basicInfo.imgUrl;
 
             $scope.cart.$save().then(function () {
                 window.alert("Success!");

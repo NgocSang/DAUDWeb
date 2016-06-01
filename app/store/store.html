@@ -1,13 +1,12 @@
 <link href="../components/slider/slider.css" rel="stylesheet" type="text/css" media="all" />
 <link rel="stylesheet" href="../components/index-css/owl.carousel.css">
 <link rel="stylesheet" href="store/store.css">
-
 <!----start-cursual---->
 <div  id="order-bar">
     <form id="formSearch" >
         <div class="search">
             <label class="label">Name:</label>
-            <input type="text" class="filter" />
+            <input ng-model="filter.basicInfo.name" type="text" class="filter" />
         </div>
         <div class="search">
             <label class="label">Color:</label>
@@ -39,11 +38,12 @@
 
 <!-- start main -->
 <div class="main_bg">
-    <div class="wrap">	
+    <div class="wrap">
         <div class="main">
-            <div class="grid1_of_3" ng-repeat="item in all | filter : filter | strictA : customFilter : 'size' | price : customFilter.price">
+            <h1 ng-show="loading" style="font-size: 50px; text-align: center;">Loading...</h1>
+            <div ng-show="!loading" class="grid1_of_3" ng-repeat="item in all | filter : filter | strictA : customFilter : 'size' | price : customFilter.price">
                 <a ng-href="#/store/details/{{item.$id}}">
-                    <img ng-src="{{item.imgUrl[0]}}" alt="ProductImage"/>
+                    <img ng-src="{{item.basicInfo.imgUrl}}" alt="ProductImage"/>
                     <h3>{{item.basicInfo.name}}</h3>
                     <div class="price">
                         <h4>{{item.basicInfo.price}} VND<span>View Detail</span></h4>
