@@ -32,7 +32,7 @@ store.controller('DetailsCtrl', function ($scope, $routeParams, $firebaseObject,
     };
     
     $scope.changeImg = function (index) {
-        $scope.product.largeImg = $scope.product.imgUrl[index];
+        $scope.product.largeImg = $scope.product.imgUrl.$getRecord(0);
     };
     
     $scope.product.imgUrl.$loaded().then(function () {
