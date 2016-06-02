@@ -13,18 +13,18 @@
                         <div class="product-view">
                             <div class="product-essential">
                                 <div class="product-img-box">
-                                        <div class="more-views-container">
-                                            <ul >
-                                                <li ng-repeat="img in product.imgUrl">
-                                                    <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width:64px;height:85px;">
-                                                        <img ng-src="{{img.$value}}"/></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    
+                                    <div class="more-views-container">
+                                        <ul >
+                                            <li ng-repeat="img in product.imgUrl">
+                                                <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width:64px;height:85px;">
+                                                    <img ng-src="{{img.$value}}"/></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
                                     <div class="product-image"> 
-                                        <a class="cs-fancybox-thumbs cloud-zoom" rel="adjustX:30,adjustY:0,position:'right',tint:'#202020',tintOpacity:0.5,smoothMove:2,showTitle:true,titleOpacity:0.5" data-fancybox-group="thumb" ng-href="{{product.largeImage}}" title="Women Shorts" alt="Women Shorts">
-                                            <img src="../10612954_365025603651016_259271260719929520_n.jpg"  alt="Large Product Image"/>
+                                        <a class="cs-fancybox-thumbs cloud-zoom"  href="../images/0001-2.jpg" title="Women Shorts" alt="Women Shorts">
+                                            <img src="../images/0001-2.jpg" alt="Women Shorts" title="Women Shorts" />
                                         </a>
                                     </div>
 
@@ -67,23 +67,84 @@
                     </div>
                     <div class="clear"></div>
                     <!-- start tabs -->
-                    <section class="tabs">
-                        <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked">
-                        <label for="tab-1" class="tab-label-1">overview</label>
-
-                        <!--<input id="tab-2" type="radio" name="radio-set" class="tab-selector-2">
-                        <label for="tab-2" class="tab-label-2">consumer electronics</label>
-
-                        <input id="tab-3" type="radio" name="radio-set" class="tab-selector-3">
-                        <label for="tab-3" class="tab-label-3">semiconductor</label>-->
-
-                        <div class="clear-shadow"></div>
-
-                        <div class="content">
-                            <p class="para top">{{product.detail.description}}</p>
+                    <div class="section">
+                        <ul class="tabs">
+                            <li class="current">OVERVIEW</li>
+                            <li>Đánh giá</li>
                             <div class="clear"></div>
+                        </ul>
+                        <div class="box visible">
+                            <p class="para top" >{{product.detail.description}}</p>
                         </div>
-                    </section>
+                        <div class="box">
+                            <div class="comments-container">
+
+
+                                <ul id="comments-list" class="comments-list">
+                                    <li>
+                                        <div class="comment-main-level">
+                                            <!-- Avatar -->
+                                            <div class="comment-avatar"><img src="../images/small/0001-2.jpg" alt=""></div>
+                                            <!-- Contenedor del Comentario -->
+                                            <div class="comment-box">
+                                                <div class="comment-head">
+                                                    <h6 class="comment-name">Agustin Ortiz</h6>
+
+                                                    <i class="fa fa-reply"></i>
+                                                    <i class="fa fa-heart"></i>
+                                                </div>
+                                                <div class="comment-content">
+                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Respuestas de los comentarios -->
+
+                                    </li>
+
+                                    <li>
+                                        <div class="comment-main-level">
+                                            <!-- Avatar -->
+                                            <div class="comment-avatar"><img src="../images/small/0001-2.jpg" alt=""></div>
+                                            <!-- Contenedor del Comentario -->
+                                            <div class="comment-box">
+                                                <div class="comment-head">
+                                                    <h6 class="comment-name">Lorena Rojero</h6>
+
+                                                    <i class="fa fa-reply"></i>
+                                                    <i class="fa fa-heart"></i>
+                                                </div>
+                                                <div class="comment-content">
+                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="comment-main-level">
+                                            <!-- Avatar -->
+                                            <div class="comment-avatar"><img src="../images/small/0001-2.jpg" alt=""></div>
+                                            <!-- Contenedor del Comentario -->
+                                            <div class="comment-box">
+                                                <div class="comment-head">
+                                                    <h6 class="comment-name">Agustin Ortiz</h6>
+
+                                                    <i class="fa fa-reply"></i>
+                                                    <i class="fa fa-heart"></i>
+                                                </div>
+                                                <div class="comment-content">
+                                                    <textarea class="form-control" rows="5"></textarea>
+                                                    <button class="btn btn-primary" style="float:right;">Send</button>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
                     <!-- end tabs -->
                 </div>
                 <div class="clear"></div>
@@ -91,6 +152,7 @@
             <!-- end content -->
         </div>
     </div>
+
 </div>
 <script type="text/javascript" src="../components/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="../components/detail-js/cloud-zoom.1.0.3.min.js"></script>
@@ -101,4 +163,4 @@
 <!-- start top_js_button -->
 <script type="text/javascript" src="../components/detail-js/move-top.js"></script>
 <script type="text/javascript" src="../components/detail-js/easing.js"></script>
-<script type="text/javascript" src="details/script.js"></script>
+<script type="text/javascript" src="../details/script.js"></script>
