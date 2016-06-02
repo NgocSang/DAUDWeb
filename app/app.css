@@ -1581,3 +1581,12 @@ p.para{
     color: white;
 }
 
+
+
+
+
+/* uQ */
+.cart-icon:hover
+{
+    animation: 2s rubberBand;
+}

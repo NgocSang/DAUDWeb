@@ -50,3 +50,23 @@
     font-size:17px;
     font-weight: bold;
 }
+
+
+
+
+/* uQ */
+.remove-item
+{
+    cursor:pointer;
+}
+
+.empty-cart
+{
+    animation: 2s swing;
+    text-align:center;
+}
+
+td.change-cart > *
+{
+    margin-right: 10px;
+}

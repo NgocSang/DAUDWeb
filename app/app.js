@@ -25,6 +25,9 @@ app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseAuth, Au
                 }
             });
             
+            
+            //uidAuth.setUid(authData.uid);
+            
             switch (authData.provider) {
             case "facebook":
                 $scope.userName = $scope.authData.facebook.displayName;
@@ -46,7 +49,8 @@ app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseAuth, Au
     });
     
     $scope.loginEmail = function () {
-        Auth.$authWithPassword($scope.credential).then(function () {
+        Auth.$authWithPassword($scope.credential).then(function (authData) {
+            //uidAuth.setUid(authData.uid);
             turnOffLogin();
         })["catch"](function (error) {
             window.alert("Invalid info");
@@ -58,7 +62,9 @@ app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseAuth, Au
     };
     
     $scope.loginGoogle = function () {
-        Auth.$authWithOAuthPopup("google");
+        Auth.$authWithOAuthPopup("google").then(function (authData) {
+            //uidAuth.setUid(authData.uid);
+        });
     };
     
     $scope.loginTwitter = function () {
@@ -78,13 +84,69 @@ app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseAuth, Au
                 userName.$value = $scope.createData.name;
                 userName.$save();
                 turnOffCreate();
-            })["catch"](function (error) {
-                window.alert("Error");
-            });
+            }).catch(function (error) {
+                switch (error.code) {
+                    case "EMAIL_TAKEN":
+                        alert("Email này đã được sử dụng");
+                        break;
+                    case "INVALID_EMAIL":
+                        alert("Email không hợp lệ");
+                        break;
+                    default:
+                        alert("Lỗi không thể tạo tài khoản: " + error);
+                }
+            })
         }
     };
     
     $scope.scrollToTop = function () {
         $anchorScroll("topwebsite");
+    };
+});
+
+
+
+
+
+
+
+
+app.service('uidAuth', function ($firebaseObject, $firebaseArray) {
+
+    var uid;
+
+
+    var getUid = function () {
+        return uid;
+    };
+
+
+    var setUid = function (uid) {
+        uid = uid.replace(":", "");
+        this.uid = uid;
+
+        var ref = new Firebase("https://fuckfirebase.firebaseio.com/cart/" + uid);
+        ref.on("value", function (snapshot) {
+            var item = snapshot.val();
+            if (item === null)
+            {
+                var ref = new Firebase("https://fuckfirebase.firebaseio.com/cart/");
+                var obj = ref.child(uid);
+                obj.set(0);
+            }
+            
+        });
+        //var item = {};
+        //item[uid] = 1;
+        //obj.set(item);
+
+        //var ref = new Firebase("https://das-shop.firebaseio.com/cart/");
+        //var obj = ref.child(uid);
+        //obj.set(0);
+    };
+
+    return {
+        getUid: getUid,
+        setUid: setUid
     };
 });
