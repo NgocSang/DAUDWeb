@@ -1252,9 +1252,7 @@ p.para{
     .desc1 h3 {
         font-size: 1.4em;
     }
-    .product-image {
-        width: 350px;
-    }
+    
 }
 @media only screen and (max-width: 1024px) {
     .wrap{
@@ -1581,3 +1579,20 @@ p.para{
     color: white;
 }
 
+.product-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 45% !important;
+}
+
+.product-img{
+    width: 80%;
+}
+
+.dots3{
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
