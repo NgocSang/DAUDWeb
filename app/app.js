@@ -10,42 +10,11 @@ app.config(['$routeProvider', function ($routeProvider) {
     });
 }]);
 
-app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseArray, $firebaseAuth, Auth, $anchorScroll, Ref) {
+app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseArray, $firebaseAuth, Auth, $anchorScroll, Ref, AuthData) {
     'use strict';
-    
+
     $scope.tag = $firebaseArray(Ref.child("tag"));
-    
-    Auth.$onAuth(function (authData) {
-        $scope.authData = authData;
-        
-        if (authData) {
-            $scope.quantity = $firebaseObject(Ref.child("user/" + authData.uid + "/quantity"));
-            $scope.quantity.$loaded().then(function () {
-                if (!$scope.quantity.$value) {
-                    $scope.quantity.$value = 0;
-                    $scope.quantity.$save();
-                }
-            });
-            
-            switch (authData.provider) {
-            case "facebook":
-                $scope.userName = $scope.authData.facebook.displayName;
-                break;
-            case "google":
-                $scope.userName = $scope.authData.google.displayName;
-                break;
-            case "twitter":
-                $scope.userName = $scope.authData.twitter.displayName;
-                break;
-            case "password":
-                var userName = $firebaseObject(Ref.child("user/" + authData.uid + "/name"));
-                userName.$loaded().then(function () {
-                    $scope.userName = userName.$value;
-                });
-                break;
-            }
-        }
-    });
+    $scope.authData = AuthData;
     
     $scope.loginEmail = function () {
         Auth.$authWithPassword($scope.credential).then(function () {
@@ -75,11 +44,24 @@ app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseArray, $
         if ($scope.createData.password !== $scope.createData.confirm) {
             window.alert("Password not match");
         } else {
-            Auth.$createUser($scope.createData).then(function (authData) {
-                var userName = $firebaseObject(Ref.child("user/" + authData.uid + "/name"));
-                userName.$value = $scope.createData.name;
-                userName.$save();
+            Auth.$createUser($scope.createData).then(function (authData1) {
                 turnOffCreate();
+                
+                return Auth.$authWithPassword({
+                    "email": $scope.createData.email,
+                    "password": $scope.createData.password
+                });
+            }).then(function (authData2) {
+                var user = $firebaseObject(Ref.child("user/" + authData2.uid + "/info"));
+
+                user.$loaded().then(function () {
+                    user.name = $scope.createData.name;
+                    user.avatar = "http://studymovie.net/Cms_Data/Sites/admin/Themes/Default/images/default-avatar.jpg";
+                    
+                    user.$save().then(function () {
+                        AuthData.doAuth(authData2);
+                    });
+                });
             })["catch"](function (error) {
                 window.alert("Error");
             });

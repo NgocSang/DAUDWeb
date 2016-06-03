@@ -49,15 +49,14 @@
                     <a ng-href="#"><img height="45" width="110" src="images/logo.png" alt=""/> </a>
                 </div>
                 <div class="h_icon" style="height:70px;border:1px solid white;">
-                    <ul class="icon1 sub-icon1" ng-show="authData">
-                        <li><i id="number">{{quantity.$value}}</i></li>
+                    <ul class="icon1 sub-icon1" ng-show="authData.data">
+                        <li><i id="number">{{authData.quantity.$value}}</i></li>
                         <li><a class="active-icon c1" ng-href="#/cart"></a>
                         </li>
-                        <li><i id="cart">Cart</i></li>
                     </ul>
                 </div>
                 <!-- start login sang -->
-                <div id="login" ng-show="!authData">
+                <div id="login" ng-show="!authData.data">
                     <div class="dropdown">
                         <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Login<span class="caret"></span></button>
                         <ul class="dropdown-menu">
@@ -81,9 +80,9 @@
                 </div>
                 <!-- form login-->
                 <!--- dăng xuất---->
-                <div id="login" ng-show="authData">
+                <div id="login" ng-show="authData.data">
                     <div class="dropdown">
-                        <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Hello, {{userName}}<span class="caret"></span></button>
+                        <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Hello, {{authData.name}}<span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li>
                                 <button ng-click="logout()" class="btn btn-default" style="background: #3b5998">Logout<span class="glyphicon glyphicon-phone"></span></button>
@@ -98,11 +97,11 @@
                             <div class="form"><a id="login-page" ng-href="#" class="close">&#215</a>
                                 <form  class="login-form" ng-submit="loginEmail()">
                                     <p class="email">
-                                        <input ng-model="credential.email" name="username" type="email" placeholder="Email" id="username" class="form-control input-lg"/>
+                                        <input ng-model="credential.email" name="username" type="email" placeholder="Email" id="username" class="form-control input-lg" required/>
                                     </p>
                                     <br/>
                                     <p class="password">
-                                        <input ng-model="credential.password" name="password" type="password" placeholder="Password" id="password" class="form-control input-lg"/>
+                                        <input ng-model="credential.password" name="password" type="password" placeholder="Password" id="password" class="form-control input-lg" required/>
                                         <button type="submit" class="btn btn-primary" id="btnlogin">Login</button>
                                     </p>
                                 </form>
@@ -121,13 +120,13 @@
                                     </p>
                                     <br/>
                                     <p class="email">
-                                        <input ng-model="createData.email"  name="email" type="email" placeholder="Email" id="email" class="form-control input-lg"/>
+                                        <input ng-model="createData.email"  name="email" type="email" placeholder="Email" id="email" class="form-control input-lg" required/>
                                     </p>
                                     <br/>
                                     <p class="password">
-                                        <input ng-model="createData.password" name="passwordcreate" type="password" placeholder="Password" id="passwordcreate" class="form-control input-lg"/>
+                                        <input ng-model="createData.password" name="passwordcreate" type="password" placeholder="Password" id="passwordcreate" class="form-control input-lg" required/>
                                         <br/>
-                                        <input ng-model="createData.confirm" name="passwordconfirm" type="password" placeholder="Password" id="passwordconfirm" class="form-control input-lg"/>
+                                        <input ng-model="createData.confirm" name="passwordconfirm" type="password" placeholder="Password" id="passwordconfirm" class="form-control input-lg" required/>
                                         <button type="submit" class="btn btn-primary" id="btnlogin">Create</button>
                                     </p>
                                 </form>
@@ -152,6 +151,7 @@
                     <ul>
                         <li class="active"><a ng-href="#">Home</a></li> |
                         <li><a ng-href="#/store">Store</a></li> |
+                        <li><a ng-href="#/store/{{item.$id}}" ng-repeat="item in tag">{{item.$value}}</a></li> |
                         <li><a ng-href="#/services">Services</a></li> |
                         <li><a ng-href="#/contact">Contact us</a></li>
                     </ul>

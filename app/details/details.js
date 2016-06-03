@@ -10,16 +10,16 @@ store.config(['$routeProvider', function ($routeProvider) {
     });
 }]);
 
-store.controller('DetailsCtrl', function ($scope, $routeParams, $firebaseObject, $firebaseArray, Ref, Auth) {
+store.controller('DetailsCtrl', function ($scope, $routeParams, $firebaseObject, $firebaseArray, Auth, Ref, AuthData) {
     'use strict';
     window.abc = $scope;
     
+    $scope.authData = AuthData;
+    
     Auth.$onAuth(function (authData) {
-        $scope.authData = authData;
-        
         if (authData) {
             $scope.cart = $firebaseObject(Ref.child("cart/" + authData.uid + "/" + $routeParams.id));
-            $scope.quantity = $firebaseObject(Ref.child("user/" + authData.uid + "/quantity"));
+            $scope.review = $firebaseObject(Ref.child("productDetail/"  + $routeParams.id + "/reviews/" + authData.uid));
         }
     });
     
@@ -28,7 +28,8 @@ store.controller('DetailsCtrl', function ($scope, $routeParams, $firebaseObject,
         detail: $firebaseObject(Ref.child("productDetail/" + $routeParams.id + "/detail")),
         color: $firebaseArray(Ref.child("products/" + $routeParams.id + "/color")),
         size: $firebaseArray(Ref.child("products/" + $routeParams.id + "/size")),
-        imgUrl: $firebaseArray(Ref.child("productDetail/" + $routeParams.id + "/imgUrl").limitToFirst(4))
+        imgUrl: $firebaseArray(Ref.child("productDetail/" + $routeParams.id + "/imgUrl").limitToFirst(4)),
+        reviews: $firebaseArray(Ref.child("productDetail/" + $routeParams.id + "/reviews"))
     };
     
     $scope.changeImg = function (index) {
@@ -40,10 +41,10 @@ store.controller('DetailsCtrl', function ($scope, $routeParams, $firebaseObject,
     });
     
     $scope.addToCart = function () {
-        if ($scope.authData) {
+        if ($scope.authData.data) {
             if ($scope.cart.$value === null) {
-                $scope.quantity.$value = $scope.quantity.$value + 1;
-                $scope.quantity.$save();
+                $scope.authData.quantity.$value = $scope.authData.quantity.$value + 1;
+                $scope.authData.quantity.$save();
             }
             
             $scope.cart.name = $scope.product.basicInfo.name;
@@ -53,6 +54,16 @@ store.controller('DetailsCtrl', function ($scope, $routeParams, $firebaseObject,
             $scope.cart.$save().then(function () {
                 window.alert("Success!");
             });
+        } else {
+            window.alert("Please login first!");
+        }
+    };
+    
+    $scope.addReview = function () {
+        if ($scope.authData.data) {
+            $scope.review.name = $scope.authData.name;
+            $scope.review.avatar = $scope.authData.avatar;
+            $scope.review.$save();
         } else {
             window.alert("Please login first!");
         }
