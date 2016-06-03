@@ -42,7 +42,7 @@
 .section{
     width:90%;
     height: auto;
-    
+    margin-top: 40px;
 }
 .tabs > li{
     float: left; 
@@ -57,9 +57,6 @@
 .tabs {
     border-bottom: 1px solid #ddd;
 }
-
-
-
 .tabs > li{
     padding-top: 8px;
     padding-bottom: 8px;
@@ -132,10 +129,9 @@ body {
 }
 .comments-container {
 	
-	width: 70%;
+	width: 90%;
+    margin-left: 10px;
     margin: auto;
-    
-    
 }
 
 .comments-container h1 {
@@ -252,8 +248,9 @@ body {
  * Caja del Comentario
  ---------------------------*/
 .comments-list .comment-box {
-	width: 680px;
-	float: right;
+	width: 90%;
+	float: left;
+    margin-left: 10px;
 	position: relative;
 	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
@@ -283,6 +280,7 @@ body {
 	width: 610px;
 }
 .comment-box .comment-head {
+    width: 100%;
 	background: #FCFCFC;
 	padding: 10px 12px;
 	border-bottom: 1px solid #E5E5E5;
@@ -290,6 +288,7 @@ body {
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
+    
 }
 
 .comment-box .comment-head i {
@@ -367,6 +366,10 @@ body {
 	.reply-list .comment-box {
 		width: 320px;
 	}
+}
+/*Đánh giá*/
+.glyphicon{
+    color: yellow;
 }
 
 
