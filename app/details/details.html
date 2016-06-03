@@ -89,11 +89,8 @@
                                                     <i class="fa fa-heart"></i>
                                                 </div>
                                                 <div class="comment-content">
-                                                    <p>
-                                                        Rating:
-                                                        <input type="number" class="rating" value="{{review.rating}}"/>
-                                                    </p>
-                                                    {{review.content}}
+                                                    <p>Rating: {{review.rating | star}}</p>
+                                                    <p>{{review.content}}</p>
                                                 </div>
                                             </div>
                                         </div>

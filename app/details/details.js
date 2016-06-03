@@ -1,5 +1,5 @@
 /*global angular*/
-var store = angular.module('App.details', ['ngRoute', 'firebase', 'App.providers']);
+var store = angular.module('App.details', ['ngRoute', 'firebase', 'App.providers', 'App.filters']);
 
 store.config(['$routeProvider', function ($routeProvider) {
     'use strict';
@@ -12,7 +12,6 @@ store.config(['$routeProvider', function ($routeProvider) {
 
 store.controller('DetailsCtrl', function ($scope, $routeParams, $firebaseObject, $firebaseArray, Auth, Ref, AuthData) {
     'use strict';
-    window.abc = $scope;
     
     $scope.authData = AuthData;
     
