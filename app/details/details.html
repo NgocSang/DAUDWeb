@@ -15,7 +15,7 @@
                                 <div class="product-img-box">
                                     <div class="more-views-container">
                                         <ul >
-                                            <li ng-repeat="img in product.imgUrl" ng-click="window.alert('abc')">
+                                            <li ng-repeat="img in product.imgUrl" ng-click="changeImg($index)">
                                                 <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width:64px;height:85px;">
                                                     <img ng-src="{{img.$value}}" alt="Product Small Image {{$index}}"/></a>
                                             </li>
