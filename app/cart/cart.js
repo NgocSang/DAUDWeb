@@ -40,14 +40,13 @@ cart.controller('CartCtrl',
 
                     $scope.total = 0;
                     for (var i = 0; i < data.length; ++i)
-                        $scope.total += data[i].price + data[i].number;
+                        $scope.total += data[i].price * data[i].number;
                 });
                 
                 
 
 $scope.updateItem = function (index) {
-    var a = 1;
-    //$scope.cart[index].number = 1;
+    $scope.cart.$save(index);
 }
 
                 $scope.removeItem = function (index) {
