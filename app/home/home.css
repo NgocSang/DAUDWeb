@@ -1,21 +1,46 @@
+/* LeQuan */
 
+.da-img
+{
+    animation:  2s flip;
+    float: left;    
+    height: 480px;
+     display:block;
+    margin:auto;
+}
 
-.da-slide h2
+.da-img img
+{
+    border-radius:30px;
+    height: 400px;
+    vertical-align: middle;
+}
+
+.slider-info
+{
+    margin-left: 50px;
+    height: 100%;
+}
+
+.slider-info h2
 {
     animation:  2s bounceInLeft;
+    font-size: 55px;
 }
 
-.da-slide p
+.slider-info p
 {
     animation:  2s bounceInRight;
+    margin-bottom: 30px;
 }
 
-.da-slide a
+.slider-info a
 {
     animation:  2s swing;
 }
 
-.da-slide div
-{
-    animation:  2s flip;
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
 }

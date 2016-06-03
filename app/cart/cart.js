@@ -15,16 +15,6 @@ cart.config(['$routeProvider', function($routeProvider) {
 cart.controller('CartCtrl',
     function ($scope, $firebaseObject, $firebaseArray, Ref, Auth) {
 
-        //var refCart = new Firebase("https://fuckfirebase.firebaseio.com/cart/" + uidAuth.uid);
-        //var objCart = $firebaseArray(refCart);
-
-
-        //objCart.$loaded().then(function (data) {
-        //    $scope.data = data;
-        //});
-
-
-
         Auth.$onAuth(function (authData) {
             $scope.authData = authData;
 
@@ -42,38 +32,41 @@ cart.controller('CartCtrl',
                     for (var i = 0; i < data.length; ++i)
                         $scope.total += data[i].price * data[i].number;
                 });
-                
-                
 
-$scope.updateItem = function (index) {
-    $scope.cart.$save(index);
-    
-    var item = $(".item-row");
-    
-                            item[index].className += " animated rubberBand";
-    
-    
-    setTimeout(function ()
-{
-    item[index].className = item[index].className.replace(" animated rubberBand", "");
-}, 1500);
-    
-}
+
+
+                $scope.updateItem = function (index) {
+                    $scope.cart.$save(index);
+
+                    $scope.total = 0;
+                    for (var i = 0; i < $scope.cart.length; ++i)
+                        $scope.total += $scope.cart[i].price * $scope.cart[i].number;
+
+                    var item = $(".item-row");
+
+                    item[index].className += " animated rubberBand";
+
+
+                    setTimeout(function () {
+                        item[index].className = item[index].className.replace(" animated rubberBand", "");
+                    }, 1500);
+
+                }
 
                 $scope.removeItem = function (index) {
-                        if ($scope.quantity.$value > 0) {
-                            $scope.quantity.$value = $scope.quantity.$value - 1;
-                            $scope.quantity.$save();
+                    if ($scope.quantity.$value > 0) {
+                        $scope.quantity.$value = $scope.quantity.$value - 1;
+                        $scope.quantity.$save();
 
-                            var item = $(".item-row");
-                            item[index].className += " animated flipOutY";
+                        var item = $(".item-row");
+                        item[index].className += " animated flipOutY";
 
-                            setTimeout(function () {
-                                objCart.$remove(index);
-                                //$scope.data.item.splice(index, 1);
-                                //$scope.$apply();
-                            }, 1000);
-                        }
+                        setTimeout(function () {
+                            objCart.$remove(index);
+                            //$scope.data.item.splice(index, 1);
+                            //$scope.$apply();
+                        }, 1000);
+                    }
                 };
 
 
@@ -103,14 +96,18 @@ $scope.updateItem = function (index) {
 
 
                     var checkout = {};
-                    checkout.user = { "name": $scope.name, "phone": $scope.phone, "email": $scope.email, "address": $scope.address };
+                    checkout.receiver = { "name": $scope.name, "phone": $scope.phone, "email": $scope.email, "address": $scope.address };
                     checkout.item = $scope.cart;
 
 
                     var refCheckout = new Firebase("https://fuckfirebase.firebaseio.com/user/" + authData.uid + "/history");
+                    var refOrder = new Firebase("https://fuckfirebase.firebaseio.com/order");
 
                     var objCheckout = $firebaseArray(refCheckout);
+                    var objOrder = $firebaseArray(refOrder);
+
                     objCheckout.$add(checkout);
+                    objOrder.$add(checkout);
                     //var obj = $firebaseObject(ref);
                     //obj.data.push(checkout);
                     //obj.$apply();
@@ -125,8 +122,6 @@ $scope.updateItem = function (index) {
                     $scope.cart = 0;
                     for (var i = 0; i < objCart.length; ++i)
                         $scope.removeItem(i);
-                    //objCart.$remove(i);
-                    //            objCart.$save(0);
 
                     alert("Đơn đặt hàng của bạn đã được lưu lại\nChúng tôi sẽ liên lạc với bạn trong thời gian sớm nhất để giao hàng");
                 };

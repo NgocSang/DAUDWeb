@@ -4,10 +4,15 @@
 
 <div class="da-slider">
     <div ng-show="slide[$index]" class="da-slide" ng-repeat="item in featured">
-        <h2 class="da-slide-title">{{item.name}}</h2>
-        <p>{{item.description}}</p>
-        <a ng-href="#/store/details/{{item.$id}}" class="da-link">View Details</a>
-        <div class="da-img"><img ng-src="{{item.imgUrl}}" alt="ProductImage"/></div>
+        <div class="da-img">
+            <img ng-src="{{item.imgUrl}}" alt="ProductImage"/>
+            <span class="helper"></span>
+        </div>
+        <div class="slider-info">
+            <h2 class="da-slide-title">{{item.name}}</h2>
+            <p>{{item.description}}</p>
+            <a ng-href="#/store/details/{{item.$id}}" class="da-link">View Details</a>
+</div>
     </div>
     
     <nav class="da-arrows">
