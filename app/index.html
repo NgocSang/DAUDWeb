@@ -26,21 +26,21 @@
         <div id="topwebsite">
             <div class="content-topwebsite">
                 <div data-toggle="tooltip" data-placement="bottom" title="Tam" class="content-topwebsite"><img src="images/clock.png"/>
-                    <h3>THỜI GIAN</h3>
-                    <p>08:30 sáng - 10:00 tối</p>
+                    <h3>Opening time</h3>
+                    <p>08:30 AM - 10:00 PM</p>
                 </div>
             </div>
-            <div class="content-topwebsite" data-toggle="tooltip" data-placement="bottom" title="Get update on what  is sharing public" ><img src="images/car.png"/>
-                <h3>GIAO HÀNG TOÀN QUỐC</h3>
-                <p>Miễn phí khi mua nhiều</p>
+            <div class="content-topwebsite" data-toggle="tooltip" data-placement="bottom"><img src="images/car.png"/>
+                <h3>Nationwide Delivery</h3>
+                <p>Free ship when buying in bulk</p>
             </div>
             <div class="content-topwebsite"><img src="images/phone.png"/>
-                <h3>ĐẶT HÀNG NHANH</h3>
+                <h3>Fast ordering</h3>
                 <p>(08) 7307 1441</p>
             </div>
             <div class="content-topwebsite">
-                <h3>BẢO HÀNH 365 NGÀY</h3>
-                <p>Đổi trả trong 7 ngày</p>
+                <h3>1-year warranty</h3>
+                <p>Refund in first week</p>
             </div>
         </div>
         <div class="wrap">
@@ -145,7 +145,7 @@
             </div>
         </div>
     </div>
-    <div class="header_btm">
+    <div class="header_btm" ng-controller="IndexCtrl">
         <div class="wrap">
             <div class="header_sub">
                 <div class="h_menu">
@@ -154,7 +154,6 @@
                         <li><a ng-href="#/store">Store</a></li> |
                         <li><a ng-href="#/services">Services</a></li> |
                         <li><a ng-href="#/contact">Contact us</a></li>
-
                     </ul>
                 </div>
                 <div class="top-nav">
@@ -163,6 +162,7 @@
                         <ul class="nav-list" style="">
                             <li class="nav-item"><a href="/">Home</a></li>
                             <li class="nav-item"><a ng-href="#/store">Store</a></li>
+                            <li class="nav-item" ng-repeat="item in tag"><a ng-href="#/store/{{item.$id}}">{{item.$value}}</a></li>
                             <li class="nav-item"><a ng-href="#/services">Services</a></li>
                             <li class="nav-item"><a ng-href="#/contact">Contact us</a></li>
                         </ul>

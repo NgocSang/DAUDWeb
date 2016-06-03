@@ -1,18 +1,41 @@
 /*global angular*/
 var mdl = angular.module("App.filters", ["firebase"]);
 
-mdl.filter('strictA', function () {
+mdl.filter('myFilter', function () {
     'use strict';
     
-    return function (items, object, attr) {
+    return function (items, object, isStrict) {
         try {
-            if (object[attr] === "") {
-                return items;
+            var keys = Object.keys(object),
+                i,
+                len1,
+                rs = items,
+                checkS = function (element, index, array) {
+                    return element[keys[i]].hasOwnProperty(object[keys[i]]);
+                },
+                checkL = function (element, index, array) {
+                    var strings = Object.keys(element[keys[i]]), j, len2;
+                    
+                    for (j = 0, len2 = strings.length; j < len2; j = j + 1) {
+                        if (strings[j].toLowerCase().indexOf(object[keys[i]].toLowerCase()) >= 0) {
+                            return true;
+                        }
+                    }
+                    
+                    return false;
+                };
+            
+            for (i = 0, len1 = keys.length; i < len1; i = i + 1) {
+                if (object[keys[i]] !== "") {
+                    if (isStrict[keys[i]]) {
+                        rs = rs.filter(checkS)
+                    } else {
+                        rs = rs.filter(checkL);
+                    }
+                }
             }
-
-            return items.filter(function (element, index, array) {
-                return element[attr] === object[attr] || element[attr].indexOf(object[attr]) >= 0;
-            });
+            
+            return rs;
         } catch (error) {
             return items;
         }

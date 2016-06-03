@@ -473,7 +473,6 @@ body {
 }
 
 .grid1_of_3 h3{
-    margin: 6% 0 8%;
     font-size: 1.8em;
     color: #999999;
     -webkit-transition: all 0.3s ease-in-out;
@@ -1413,9 +1412,9 @@ p.para{
 }
 
 .dots3{
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

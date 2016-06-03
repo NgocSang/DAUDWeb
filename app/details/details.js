@@ -28,7 +28,7 @@ store.controller('DetailsCtrl', function ($scope, $routeParams, $firebaseObject,
         detail: $firebaseObject(Ref.child("productDetail/" + $routeParams.id + "/detail")),
         color: $firebaseArray(Ref.child("products/" + $routeParams.id + "/color")),
         size: $firebaseArray(Ref.child("products/" + $routeParams.id + "/size")),
-        imgUrl: $firebaseArray(Ref.child("productDetail/" + $routeParams.id + "/imgUrl"))
+        imgUrl: $firebaseArray(Ref.child("productDetail/" + $routeParams.id + "/imgUrl").limitToFirst(4))
     };
     
     $scope.changeImg = function (index) {

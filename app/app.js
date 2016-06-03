@@ -10,8 +10,10 @@ app.config(['$routeProvider', function ($routeProvider) {
     });
 }]);
 
-app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseAuth, Auth, $anchorScroll, Ref) {
+app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseArray, $firebaseAuth, Auth, $anchorScroll, Ref) {
     'use strict';
+    
+    $scope.tag = $firebaseArray(Ref.child("tag"));
     
     Auth.$onAuth(function (authData) {
         $scope.authData = authData;
