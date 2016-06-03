@@ -42,8 +42,6 @@
 .da-slide p,
 .da-slide .da-link,
 .da-slide .da-img{
-	position: absolute;
-	opacity: 0;
 	left: 110%;
 }
 .da-slider-fb .da-slide h2,

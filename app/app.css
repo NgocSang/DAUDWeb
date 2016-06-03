@@ -1452,40 +1452,29 @@ p.para{
 }
 /*Phần CSS sáng viết*/
 #topwebsite{
-    width: 90%;
+    width: 100%;
     overflow: hidden;
     display: block;
-    height: auto;
+    height: 70px;
     margin: auto;
-    margin-top: 20px;
     border-bottom: 1px solid #f8f8f8;
-    padding-bottom: 20px;
-
 }
 .content-topwebsite{
-    width:290px;
-    height:50px;
+    width:200px;
+    height:20px;
     float: left;
     padding-right: 40px;
 }
 .content-topwebsite img{
-    margin-top: 10px;
+    width: 50px;
     float: left;
 }
+
 .content-topwebsite h3{
-    margin-top: 5px;
-    margin-left: 10px;
     color: #666;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: normal;
     font-size: 15px;
-    float: left;
-}
-.content-topwebsite p{
-    color: #666;
-    float: left;
-    margin-left: 10px;
-    font-family: 'Source Sans Pro', sans-serif;
 }
 #login{
     float: right;

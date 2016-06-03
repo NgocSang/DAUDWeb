@@ -24,24 +24,13 @@
 
     <div class="header_bg" ng-controller="IndexCtrl">
         <div id="topwebsite">
-            <div class="content-topwebsite">
-                <div data-toggle="tooltip" data-placement="bottom" title="Tam" class="content-topwebsite"><img src="images/clock.png"/>
-                    <h3>THỜI GIAN</h3>
-                    <p>08:30 sáng - 10:00 tối</p>
+            <div ng-repeat="s in service" class="content-topwebsite">
+                <div class="content-topwebsite">
+                    <img ng-src="{{s.icon}}"/>
+                    <h3>{{s.title}}</h3>
                 </div>
             </div>
-            <div class="content-topwebsite" data-toggle="tooltip" data-placement="bottom" title="Get update on what  is sharing public" ><img src="images/car.png"/>
-                <h3>GIAO HÀNG TOÀN QUỐC</h3>
-                <p>Miễn phí khi mua nhiều</p>
-            </div>
-            <div class="content-topwebsite"><img src="images/phone.png"/>
-                <h3>ĐẶT HÀNG NHANH</h3>
-                <p>(08) 7307 1441</p>
-            </div>
-            <div class="content-topwebsite">
-                <h3>BẢO HÀNH 365 NGÀY</h3>
-                <p>Đổi trả trong 7 ngày</p>
-            </div>
+           
         </div>
         <div class="wrap">
             <div class="header">
@@ -121,7 +110,7 @@
                                     </p>
                                     <br/>
                                     <p class="email">
-                                        <input ng-model="createData.email"  name="email" type="email" placeholder="Email" id="email" class="form-control input-lg"/>
+                                        <input ng-model="createData.email" name="email" type="email" placeholder="Email" id="email" class="form-control input-lg"/>
                                     </p>
                                     <br/>
                                     <p class="password">

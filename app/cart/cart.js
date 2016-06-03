@@ -47,6 +47,17 @@ cart.controller('CartCtrl',
 
 $scope.updateItem = function (index) {
     $scope.cart.$save(index);
+    
+    var item = $(".item-row");
+    
+                            item[index].className += " animated rubberBand";
+    
+    
+    setTimeout(function ()
+{
+    item[index].className = item[index].className.replace(" animated rubberBand", "");
+}, 1500);
+    
 }
 
                 $scope.removeItem = function (index) {
@@ -93,10 +104,10 @@ $scope.updateItem = function (index) {
 
                     var checkout = {};
                     checkout.user = { "name": $scope.name, "phone": $scope.phone, "email": $scope.email, "address": $scope.address };
-                    checkout.item = $scope.data;
+                    checkout.item = $scope.cart;
 
 
-                    var refCheckout = new Firebase("https://das-shop.firebaseio.com/checkout");
+                    var refCheckout = new Firebase("https://fuckfirebase.firebaseio.com/user/" + authData.uid + "/history");
 
                     var objCheckout = $firebaseArray(refCheckout);
                     objCheckout.$add(checkout);
@@ -111,7 +122,7 @@ $scope.updateItem = function (index) {
                     $scope.address = "";
                     //$scope.$apply();
 
-                    $scope.data = 0;
+                    $scope.cart = 0;
                     for (var i = 0; i < objCart.length; ++i)
                         $scope.removeItem(i);
                     //objCart.$remove(i);

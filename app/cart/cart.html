@@ -41,17 +41,17 @@
     <div id="products">
         <h4>Chi tiết sản phẩm bán hàng</h4>
         
-        <table class="table table-striped">
+        <table class="table">
             <tr class="item-row" ng-repeat="item in cart">                
-                <td>
+                <td class="cart-img">
                     <img class="img-responsive" ng-src="{{item.imgUrl}}"/>
                 </td>
                 <td>
                     <div>
-                    <b>{{item.name}}</b>
-                    <p>{{item.color}}</p>
+                    <h4>{{item.name}}</h4>
+                    <p>Color: {{item.color}}</p>
                         </div>
-                    
+                    <br>
                     <div>Đơn giá: {{item.price}}</div>
                     <div>
                         <form>
@@ -75,8 +75,8 @@
                 </td>
             </tr>
             
-            <tr ng-show="cart.length > 0">
-            <h2 class="cart-total cart-price animated bounceIn">Tổng cộng: {{total}} đ</h2>
+            <tr>
+            <h2 ng-show="cart.length > 0" class="cart-total cart-price animated bounceIn">Tổng cộng: {{total}} đ</h2>
            </tr>
         </table>
         <hr>

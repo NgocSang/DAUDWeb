@@ -1,0 +1,21 @@
+
+
+.da-slide h2
+{
+    animation:  2s bounceInLeft;
+}
+
+.da-slide p
+{
+    animation:  2s bounceInRight;
+}
+
+.da-slide a
+{
+    animation:  2s swing;
+}
+
+.da-slide div
+{
+    animation:  2s flip;
+}

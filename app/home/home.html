@@ -1,47 +1,25 @@
 <link href="../components/slider/slider.css" rel="stylesheet" type="text/css" media="all" />
 <link rel="stylesheet" href="../components/index-css/owl.carousel.css">
+<link rel="stylesheet" href="home/home.css">
 
-<div id="da-slider" class="da-slider">
-    <!--div class="da-slide" ng-repeat="item in top4">
-        <h2>{{item.name}}</h2>
+<div class="da-slider">
+    <div ng-show="slide[$index]" class="da-slide" ng-repeat="item in featured">
+        <h2 class="da-slide-title">{{item.name}}</h2>
         <p>{{item.description}}</p>
         <a ng-href="#/store/details/{{item.$id}}" class="da-link">View Details</a>
         <div class="da-img"><img ng-src="{{item.imgUrl}}" alt="ProductImage"/></div>
-    </div-->
-    <div class="da-slide">
-        <h2>{{featured[0].name}}</h2>
-        <p>{{featured[0].description}}</p>
-        <a ng-href="#/store/details/{{featured[0].$id}}" class="da-link">View</a>
-        <div class="da-img"><img ng-src="{{featured[0].imgUrl}}" alt="Product Image" /></div>
     </div>
-    <div class="da-slide">
-        <h2>{{featured[1].name}}</h2>
-        <p>{{featured[1].description}}</p>
-        <a ng-href="#/store/details/{{featured[1].$id}}" class="da-link">View</a>
-        <div class="da-img"><img ng-src="{{featured[1].imgUrl}}" alt="Product Image" /></div>
-    </div>
-    <div class="da-slide">
-        <h2>{{featured[2].name}}</h2>
-        <p>{{featured[2].description}}</p>
-        <a ng-href="#/store/details/{{featured[2].$id}}" class="da-link">View</a>
-        <div class="da-img"><img ng-src="{{featured[2].imgUrl}}" alt="Product Image" /></div>
-    </div>
-    <div class="da-slide">
-        <h2>{{featured[3].name}}</h2>
-        <p>{{featured[3].description}}</p>
-        <a ng-href="#/store/details/{{featured[3].$id}}" class="da-link">View</a>
-        <div class="da-img"><img ng-src="{{featured[3].imgUrl}}" alt="Product Image" /></div>
-    </div>
+    
     <nav class="da-arrows">
-        <span class="da-arrows-prev"></span>
-        <span class="da-arrows-next"></span>
+        <span ng-click="prevSlide()" class="da-arrows-prev"></span>
+        <span ng-click="nextSlide()" class="da-arrows-next"></span>
     </nav>
 </div>
 <!----start-cursual---->
 <div class="wrap">
     <!----start-img-cursual
     <div id="owl-demo" class="owl-carousel">
-        <div class="item" onclick="location.href='details.html';">
+        <div class="item" onclick="loc9ation.href='details.html';">
             <div class="cau_left">
                 <img class="lazyOwl" data-src="images/c1.jpg" alt="Lazy Owl Image">
             </div>
