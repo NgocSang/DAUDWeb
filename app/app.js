@@ -1,6 +1,6 @@
 /*global angular, turnOffLogin, turnOffCreate*/
 // Declare app level module which depends on views, and components
-var app = angular.module('App', ['firebase', 'ngRoute', 'App.store', 'App.cart', 'App.services', 'App.contact', 'App.details', 'App.home', 'App.providers']);
+var app = angular.module('App', ['firebase', 'ngRoute', 'App.store', 'App.cart', 'App.services', 'App.contact', 'App.details', 'App.history', 'App.home', 'App.providers']);
 
 app.config(['$routeProvider', function ($routeProvider) {
     'use strict';

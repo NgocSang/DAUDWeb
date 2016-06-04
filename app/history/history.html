@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="history/history.css"/>
+
+<table class="table" ng-repeat="order in history">
+            <tr class="item-row" ng-repeat="item in order.item">                
+                <td class="cart-img">
+                    <img class="img-responsive" ng-src="{{item.imgUrl}}"/>
+                </td>
+                <td>
+                    <div>
+                    <h4>{{item.name}}</h4>
+                    <p>Color: {{item.color}}</p>
+                        </div>
+                    <br>
+                    <div>Đơn giá: {{item.price}}</div>
+                    <div>
+                        <form>
+                            <table>
+                                <tr>
+                                    <td class="change-cart">
+                                        <input ng-model="item.number" type="number" class="cart-amount form-control" min="1" max="10">
+                                    </td>
+                                    <td class="change-cart">
+                                        <button ng-click="updateItem($index)" type="button" class="btn btn-update" title="f" data-toggle="popover" data-trigger="focus" data-content="Đã cập nhật số lượng">Update</button>
+                                    </td>
+                                    <td class="remove-item change-cart" ng-click="removeItem($index)">
+                                        <a class="glyphicon glyphicon-remove" style="margin-left:10px;"></a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                    <b class="cart-price">{{item.price * item.number}}</b>
+                    <span>đ</span>
+                </td>
+            </tr>
+            
+            <tr>
+            <h2 ng-show="order.length > 0" class="cart-total cart-price animated bounceIn">Tổng cộng: {{total}} đ</h2>
+           </tr>
+        </table>

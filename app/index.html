@@ -39,10 +39,16 @@
                 </div>
                 <div class="h_icon" style="height:70px;border:1px solid white;">
                     <ul class="icon1 sub-icon1" ng-show="authData">
-                        <li><i id="number">{{quantity.$value}}</i></li>
+                        <li><i class="number">{{quantity.$value}}</i></li>
                         <li><a class="active-icon c1" ng-href="#/cart"></a>
                         </li>
-                        <li><i id="cart">Cart</i></li>
+                        <li><i class="cart">Cart</i></li>
+                    </ul>
+                    <ul class="icon1 sub-icon1" ng-show="authData">
+                        <li>
+                            <a class="active-icon c2" ng-href="#/history"></a>
+                        </li>
+                        <li><i class="cart">History</i></li>
                     </ul>
                 </div>
                 <!-- start login sang -->
@@ -203,6 +209,7 @@
     <script src="services/services.js"></script>
     <script src="contact/contact.js"></script>
     <script src="details/details.js"></script>
+    <script src="history/history.js"></script>
     <script src="home/home.js"></script>
     <script src="components/providers/providers.js"></script>
     <script src="components/filters/filters.js"></script>

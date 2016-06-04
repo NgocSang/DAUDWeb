@@ -1540,7 +1540,7 @@ p.para{
     margin: auto;
     margin-top: 20px;
 }
-#cart{
+.cart{
 
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 15px;
@@ -1548,7 +1548,7 @@ p.para{
     width: 15px;
     height: auto;
 }
-#number{
+.number{
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 15px;
     min-width: 10px;
@@ -1574,8 +1574,18 @@ p.para{
 
 
 
-/* uQ */
+/* LeQuan */
 .cart-icon:hover
 {
     animation: 2s rubberBand;
+}
+
+.c2
+{
+    background: url(../images/checkout.png) no-repeat ;
+    width: 46px;
+    height: 46px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 2px;
 }
