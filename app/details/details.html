@@ -13,18 +13,17 @@
                         <div class="product-view">
                             <div class="product-essential">
                                 <div class="product-img-box">
-                                        <div class="more-views-container">
-                                            <ul >
-                                                <li ng-repeat="img in product.imgUrl">
-                                                    <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width:64px;height:85px;">
-                                                        <img ng-src="{{img.$value}}"/></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    
+                                    <div class="more-views-container">
+                                        <ul >
+                                            <li ng-repeat="img in product.imgUrl" ng-click="changeImg($index)">
+                                                <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width:64px;height:85px;">
+                                                    <img ng-src="{{img.$value}}" alt="Product Small Image {{$index}}"/></a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                     <div class="product-image"> 
-                                        <a class="cs-fancybox-thumbs cloud-zoom" rel="adjustX:30,adjustY:0,position:'right',tint:'#202020',tintOpacity:0.5,smoothMove:2,showTitle:true,titleOpacity:0.5" data-fancybox-group="thumb" ng-href="{{product.largeImage}}" title="Women Shorts" alt="Women Shorts">
-                                            <img ng-src="{{product.largeImage}}"  alt="Large Product Image"/>
+                                        <a class="cs-fancybox-thumbs cloud-zoom" ng-href="{{product.largeImg.$value}}">
+                                            <img ng-src="{{product.largeImg.$value}}" alt="Product Large Image"/>
                                         </a>
                                     </div>
 
@@ -67,23 +66,63 @@
                     </div>
                     <div class="clear"></div>
                     <!-- start tabs -->
-                    <section class="tabs">
-                        <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked">
-                        <label for="tab-1" class="tab-label-1">overview</label>
-
-                        <!--<input id="tab-2" type="radio" name="radio-set" class="tab-selector-2">
-                        <label for="tab-2" class="tab-label-2">consumer electronics</label>
-
-                        <input id="tab-3" type="radio" name="radio-set" class="tab-selector-3">
-                        <label for="tab-3" class="tab-label-3">semiconductor</label>-->
-
-                        <div class="clear-shadow"></div>
-
-                        <div class="content">
-                            <p class="para top">{{product.detail.description}}</p>
+                    <div class="section">
+                        <ul class="tabs">
+                            <li class="current">OVERVIEW</li>
+                            <li>PRODUCT REVIEWS</li>
                             <div class="clear"></div>
+                        </ul>
+                        <div class="box visible">
+                            <p class="para top" >{{product.detail.description}}</p>
                         </div>
-                    </section>
+                        <div class="box">
+                            <div class="comments-container">
+                                <h1 ng-hide="product.reviews.length" style="text-align: center;">Nothing here yet. Be the first to reivew.</h1>
+                                <ul id="comments-list" class="comments-list">
+                                    <li ng-repeat="review in product.reviews">
+                                        <div class="comment-main-level">
+                                            <div class="comment-avatar"><img ng-src="{{review.avatar}}" alt="Avatar"></div>
+                                            <div class="comment-box">
+                                                <div class="comment-head">
+                                                    <h6 class="comment-name">{{review.name}}</h6>
+                                                    <i class="fa fa-reply"></i>
+                                                    <i class="fa fa-heart"></i>
+                                                </div>
+                                                <div class="comment-content">
+                                                    <p>Rating: {{review.rating | star}}</p>
+                                                    <p>{{review.content}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li ng-show="review.$value === null">
+                                        <div class="comment-main-level">
+                                            <div class="comment-avatar"><img ng-src="{{authData.avatar}}" alt="Avatar"></div>
+                                            <div class="comment-box">
+                                                <div class="comment-head">
+                                                    <h6 class="comment-name">{{authData.name}}</h6>
+                                                    <i class="fa fa-reply"></i>
+                                                    <i class="fa fa-heart"></i>
+                                                </div>
+                                                <div class="comment-content">
+                                                    <form ng-submit="addReview()">
+                                                        <p>
+                                                            Rating:
+                                                            <span ng-repeat="number in [1, 2, 3, 4, 5]">
+                                                                <input type="radio" name="rating" ng-model="review.rating" ng-value="number" required/> {{number}}
+                                                            </span>
+                                                        </p>
+                                                        <textarea class="form-control" rows="5" ng-model="review.content" required></textarea>
+                                                        <button type="submit" class="btn btn-primary" style="float:right;">Send</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <!-- end tabs -->
                 </div>
                 <div class="clear"></div>
@@ -101,4 +140,5 @@
 <!-- start top_js_button -->
 <script type="text/javascript" src="../components/detail-js/move-top.js"></script>
 <script type="text/javascript" src="../components/detail-js/easing.js"></script>
-<script type="text/javascript" src="details/script.js"></script>
+<script type="text/javascript" src="../components/rating-box/bootstrap-rating-input.js"></script>
+<script type="text/javascript" src="../details/script.js"></script>

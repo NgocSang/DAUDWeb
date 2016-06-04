@@ -10,7 +10,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     });
 }]);
 
-app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseAuth, Auth, $anchorScroll, Ref) {
+app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseArray, $firebaseAuth, Auth, $anchorScroll, Ref, AuthData) {
     'use strict';
     
     Auth.$onAuth(function (authData) {
@@ -45,6 +45,9 @@ app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseAuth, Au
             }
         }
     });
+
+    $scope.tag = $firebaseArray(Ref.child("tag"));
+    $scope.authData = AuthData;
     
     $scope.loginEmail = function () {
         Auth.$authWithPassword($scope.credential).then(function (authData) {
@@ -75,10 +78,7 @@ app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseAuth, Au
         if ($scope.createData.password !== $scope.createData.confirm) {
             window.alert("Password not match");
         } else {
-            Auth.$createUser($scope.createData).then(function (authData) {
-                var userName = $firebaseObject(Ref.child("user/" + authData.uid + "/name"));
-                userName.$value = $scope.createData.name;
-                userName.$save();
+            Auth.$createUser($scope.createData).then(function (authData1) {
                 turnOffCreate();
             }).catch(function (error) {
                 switch (error.code) {
@@ -92,6 +92,24 @@ app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseAuth, Au
                         alert("Lỗi không thể tạo tài khoản: " + error);
                 }
             })
+                
+                return Auth.$authWithPassword({
+                    "email": $scope.createData.email,
+                    "password": $scope.createData.password
+            }).then(function (authData2) {
+                var user = $firebaseObject(Ref.child("user/" + authData2.uid + "/info"));
+
+                user.$loaded().then(function () {
+                    user.name = $scope.createData.name;
+                    user.avatar = "http://studymovie.net/Cms_Data/Sites/admin/Themes/Default/images/default-avatar.jpg";
+                    
+                    user.$save().then(function () {
+                        AuthData.doAuth(authData2);
+                    });
+                });
+            })["catch"](function (error) {
+                window.alert("Error");
+            });
         }
     };
     
@@ -104,7 +122,7 @@ app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseAuth, Au
     
     
     // load service
-    var ref = new Firebase("https://das-shop.firebaseio.com/service");
+    var ref = new Firebase("https://fuckfirebase.firebaseio.com/service");
         var obj = $firebaseObject(ref);
         obj.$bindTo($scope, "service");
     

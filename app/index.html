@@ -21,7 +21,7 @@
     <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
-
+    
     <div class="header_bg" ng-controller="IndexCtrl">
         <div id="topwebsite">
             <div ng-repeat="s in service" class="content-topwebsite">
@@ -29,8 +29,7 @@
                     <img ng-src="{{s.icon}}"/>
                     <h3>{{s.title}}</h3>
                 </div>
-            </div>
-           
+            </div>           
         </div>
         <div class="wrap">
             <div class="header">
@@ -38,21 +37,21 @@
                     <a ng-href="#"><img height="45" width="110" src="images/logo.png" alt=""/> </a>
                 </div>
                 <div class="h_icon" style="height:70px;border:1px solid white;">
-                    <ul class="icon1 sub-icon1" ng-show="authData">
-                        <li><i class="number">{{quantity.$value}}</i></li>
-                        <li><a class="active-icon c1" ng-href="#/cart"></a>
-                        </li>
-                        <li><i class="cart">Cart</i></li>
-                    </ul>
+                   
                     <ul class="icon1 sub-icon1" ng-show="authData">
                         <li>
                             <a class="active-icon c2" ng-href="#/history"></a>
                         </li>
                         <li><i class="cart">History</i></li>
+                         </ul>
+                    <ul class="icon1 sub-icon1" ng-show="authData.data">
+                        <li><i id="number">{{authData.quantity.$value}}</i></li>
+                        <li><a class="active-icon c1" ng-href="#/cart"></a>
+                        </li>
                     </ul>
                 </div>
                 <!-- start login sang -->
-                <div id="login" ng-show="!authData">
+                <div id="login" ng-show="!authData.data">
                     <div class="dropdown">
                         <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Login<span class="caret"></span></button>
                         <ul class="dropdown-menu">
@@ -76,9 +75,9 @@
                 </div>
                 <!-- form login-->
                 <!--- dăng xuất---->
-                <div id="login" ng-show="authData">
+                <div id="login" ng-show="authData.data">
                     <div class="dropdown">
-                        <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Hello, {{userName}}<span class="caret"></span></button>
+                        <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Hello, {{authData.name}}<span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li>
                                 <button ng-click="logout()" class="btn btn-default" style="background: #3b5998">Logout<span class="glyphicon glyphicon-phone"></span></button>
@@ -93,11 +92,11 @@
                             <div class="form"><a id="login-page" ng-href="#" class="close">&#215</a>
                                 <form  class="login-form" ng-submit="loginEmail()">
                                     <p class="email">
-                                        <input ng-model="credential.email" name="username" type="email" placeholder="Email" id="username" class="form-control input-lg"/>
+                                        <input ng-model="credential.email" name="username" type="email" placeholder="Email" id="username" class="form-control input-lg" required/>
                                     </p>
                                     <br/>
                                     <p class="password">
-                                        <input ng-model="credential.password" name="password" type="password" placeholder="Password" id="password" class="form-control input-lg"/>
+                                        <input ng-model="credential.password" name="password" type="password" placeholder="Password" id="password" class="form-control input-lg" required/>
                                         <button type="submit" class="btn btn-primary" id="btnlogin">Login</button>
                                     </p>
                                 </form>
@@ -117,12 +116,13 @@
                                     <br/>
                                     <p class="email">
                                         <input ng-model="createData.email" name="email" type="email" placeholder="Email" id="email" class="form-control input-lg"/>
+                                        <input ng-model="createData.email"  name="email" type="email" placeholder="Email" id="email" class="form-control input-lg" required/>
                                     </p>
                                     <br/>
                                     <p class="password">
-                                        <input ng-model="createData.password" name="passwordcreate" type="password" placeholder="Password" id="passwordcreate" class="form-control input-lg"/>
+                                        <input ng-model="createData.password" name="passwordcreate" type="password" placeholder="Password" id="passwordcreate" class="form-control input-lg" required/>
                                         <br/>
-                                        <input ng-model="createData.confirm" name="passwordconfirm" type="password" placeholder="Password" id="passwordconfirm" class="form-control input-lg"/>
+                                        <input ng-model="createData.confirm" name="passwordconfirm" type="password" placeholder="Password" id="passwordconfirm" class="form-control input-lg" required/>
                                         <button type="submit" class="btn btn-primary" id="btnlogin">Create</button>
                                     </p>
                                 </form>
@@ -140,16 +140,16 @@
             </div>
         </div>
     </div>
-    <div class="header_btm">
+    <div class="header_btm" ng-controller="IndexCtrl">
         <div class="wrap">
             <div class="header_sub">
                 <div class="h_menu">
                     <ul>
                         <li class="active"><a ng-href="#">Home</a></li> |
                         <li><a ng-href="#/store">Store</a></li> |
+                        <li><a ng-href="#/store/{{item.$id}}" ng-repeat="item in tag">{{item.$value}}</a></li> |
                         <li><a ng-href="#/services">Services</a></li> |
                         <li><a ng-href="#/contact">Contact us</a></li>
-
                     </ul>
                 </div>
                 <div class="top-nav">
@@ -158,6 +158,7 @@
                         <ul class="nav-list" style="">
                             <li class="nav-item"><a href="/">Home</a></li>
                             <li class="nav-item"><a ng-href="#/store">Store</a></li>
+                            <li class="nav-item" ng-repeat="item in tag"><a ng-href="#/store/{{item.$id}}">{{item.$value}}</a></li>
                             <li class="nav-item"><a ng-href="#/services">Services</a></li>
                             <li class="nav-item"><a ng-href="#/contact">Contact us</a></li>
                         </ul>

@@ -406,7 +406,7 @@
 	}
 	.da-slide h2 {
 		margin-left:10px;
-		font-size: 50px;
+		font-size: 50px; 
 	}
 	.da-slide p {
 		margin-left:10px;
@@ -439,7 +439,7 @@
 	}
 	.da-slide {
 		padding: 0 5%;
-		width: 80%;
+		width: 100%;
 	}
 }
 @media only screen and (max-width:480px) and (min-width:320px) {

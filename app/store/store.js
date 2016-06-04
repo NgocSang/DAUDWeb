@@ -7,10 +7,13 @@ store.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/store', {
         templateUrl: 'store/store.html',
         controller: 'StoreCtrl'
+    }).when('/store/:tag', {
+        templateUrl: 'store/store.html',
+        controller: 'StoreCtrl'
     });
 }]);
 
-store.controller('StoreCtrl', function ($scope, $firebaseArray, Ref) {
+store.controller('StoreCtrl', function ($scope, $firebaseArray, Ref, $routeParams) {
     'use strict';
     
     $scope.loading = true;
@@ -19,15 +22,14 @@ store.controller('StoreCtrl', function ($scope, $firebaseArray, Ref) {
         $scope.loading = false;
     });
     
-    $scope.filter = {
-        "basicInfo": {
-            "name": ""
-        },
-        "color": ""
+    $scope.size = $firebaseArray(Ref.child("size"));
+    $scope.filterObject = {
+        "tag": $routeParams.tag
     };
+    $scope.customFilter = {};
     
-    $scope.customFilter = {
-        "price": "",
-        "size": ""
+    $scope.isStrict = {
+        "size": true,
+        "color": false
     };
 });

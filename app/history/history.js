@@ -1,8 +1,8 @@
 'use strict';
 
-var history = angular.module('App.history', ['ngRoute', 'firebase', 'App.providers']);
+var checkout = angular.module('App.history', ['ngRoute', 'firebase', 'App.providers']);
 
-history.config(['$routeProvider', function($routeProvider) {
+checkout.config(['$routeProvider', function($routeProvider) {
      'use strict';
   $routeProvider.when('/history', {
     templateUrl: 'history/history.html',
@@ -13,7 +13,7 @@ history.config(['$routeProvider', function($routeProvider) {
 
 
 
-history.controller('HistoryCtrl',
+checkout.controller('HistoryCtrl',
     function ($scope, $firebaseObject, $firebaseArray, Ref, Auth) {
 
         Auth.$onAuth(function (authData) {
