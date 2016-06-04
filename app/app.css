@@ -1390,8 +1390,6 @@ p.para{
     color: white;
 }
 
-<<<<<<< HEAD
-
 
 
 
@@ -1409,7 +1407,14 @@ p.para{
     display: inline-block;
     vertical-align: middle;
     margin-top: 2px;
-=======
+}
+
+
+
+
+
+/* Phuc */
+
 .product-name {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1426,5 +1431,4 @@ p.para{
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
->>>>>>> refs/remotes/origin/home-store-index-details
 }

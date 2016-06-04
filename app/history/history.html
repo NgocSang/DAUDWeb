@@ -1,6 +1,50 @@
 <link rel="stylesheet" href="history/history.css"/>
 
-<table class="table" ng-repeat="order in history">
+
+
+<div class="history">
+<div class="table col-lg-3" ng-repeat="order in history">
+     <h2 class="cart-total cart-price animated bounceIn">Tổng cộng: {{order.total}} đ</h2>
+            <div class="item-row col-lg-12" ng-repeat="item in order.item">        
+                <div class="cart-img col-lg-4">
+                    <img class="img-responsive" ng-src="{{item.imgUrl}}"/>
+                </div>
+                <div class="cart-info col-lg-8">
+                    <div>
+                        <h4>{{item.name}}</h4>
+                        <p>Color: {{item.color}}</p>
+                    </div>
+                    <br>
+                    <div>Đơn giá: {{item.price}}</div>
+                    <div>
+                        <form>
+                            <div>
+                                <div>
+                                    <div class="change-cart">
+                                        <input ng-model="item.number" type="number" class="cart-amount form-control" min="1" max="10">
+                                    </div>
+                                    <div class="change-cart">
+                                        <button ng-click="updateItem($index)" type="button" class="btn btn-update" title="f" data-toggle="popover" data-trigger="focus" data-content="Đã cập nhật số lượng">Update</button>
+                                    </div>
+                                    <div class="remove-item change-cart" ng-click="removeItem($index)">
+                                        <a class="glyphicon glyphicon-remove" style="margin-left:10px;"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <b class="cart-price">{{item.price * item.number}}</b>
+                    <span>đ</span>
+                </div>
+            </div>
+
+            <div>
+
+           </div>
+        </div>
+</div>
+
+<!--<table class="table col-lg-3" ng-repeat="order in history">
             <tr class="item-row" ng-repeat="item in order.item">                
                 <td class="cart-img">
                     <img class="img-responsive" ng-src="{{item.imgUrl}}"/>
@@ -33,8 +77,8 @@
                     <span>đ</span>
                 </td>
             </tr>
-            
+
             <tr>
-            <h2 ng-show="order.length > 0" class="cart-total cart-price animated bounceIn">Tổng cộng: {{total}} đ</h2>
+            <h2 class="cart-total cart-price animated bounceIn">Tổng cộng: {{order.total}} đ</h2>
            </tr>
-        </table>
+        </table>-->

@@ -52,7 +52,7 @@ app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseArray, $
     $scope.loginEmail = function () {
         Auth.$authWithPassword($scope.credential).then(function (authData) {
             turnOffLogin();
-        })["catch"](function (error) {
+        }).catch(function (error) {
             window.alert("Invalid info");
         });
     };
@@ -122,9 +122,12 @@ app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseArray, $
     
     
     // load service
-    var ref = new Firebase("https://fuckfirebase.firebaseio.com/service");
+    var ref = new Firebase("https://das-shop.firebaseio.com/service");
         var obj = $firebaseObject(ref);
-        obj.$bindTo($scope, "service");
+        obj.$bindTo($scope, "service").then(function(data)
+        {
+            var a = 1;
+        });
     
     
 });
