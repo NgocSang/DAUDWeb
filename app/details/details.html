@@ -13,35 +13,17 @@
                         <div class="product-view">
                             <div class="product-essential">
                                 <div class="product-img-box">
-                                    <div class="more-views" style="float:left;">
-                                        <div class="more-views-container">
-                                            <ul>
-                                                <li>
-                                                    <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width:64px;height:85px;" href=""  title="" alt="">
-                                                        <img src="" src_main=""  title="" alt="" /></a>            
-                                                </li>
-                                                <li>
-                                                    <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width:64px;height:85px;" href=""  title="" alt="">
-                                                        <img src="" src_main=""  title="" alt="" /></a>
-                                                </li>
-                                                <li>
-                                                    <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width:64px;height:85px;" href=""  title="" alt="">
-                                                        <img src="" src_main=""  title="" alt="" /></a> 
-                                                </li>
-                                                <li>
-                                                    <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width:64px;height:85px;" href=""  title="" alt="">
-                                                        <img src="" src_main="" title="" alt="" /></a>  
-                                                </li>
-                                                <li>
-                                                    <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width:64px;height:85px;" href=""  title="" alt="">
-                                                        <img src="" src_main="" title="" alt="" /></a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                    <div class="more-views-container">
+                                        <ul >
+                                            <li ng-repeat="img in product.imgUrl" ng-click="changeImg($index)">
+                                                <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width:64px;height:85px;">
+                                                    <img ng-src="{{img.$value}}" alt="Product Small Image {{$index}}"/></a>
+                                            </li>
+                                        </ul>
                                     </div>
                                     <div class="product-image"> 
-                                        <a class="cs-fancybox-thumbs cloud-zoom" rel="adjustX:30,adjustY:0,position:'right',tint:'#202020',tintOpacity:0.5,smoothMove:2,showTitle:true,titleOpacity:0.5" data-fancybox-group="thumb" href="images/0001-2.jpg" title="Women Shorts" alt="Women Shorts">
-                                            <img src="images/0001-2.jpg" alt="Women Shorts" title="Women Shorts" />
+                                        <a class="cs-fancybox-thumbs cloud-zoom" ng-href="{{product.largeImg.$value}}">
+                                            <img ng-src="{{product.largeImg.$value}}" alt="Product Large Image"/>
                                         </a>
                                     </div>
 
@@ -52,89 +34,95 @@
                     </div>
                     <!-- start span1_of_1 -->
                     <div class="span1_of_1_des">
-                        <div class="desc1">
-                            <h3>Lorem Ipsum is simply dummy text </h3>
-                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                            <h5>Rs. 399 <a href="#">click for offer</a></h5>
+                        <form class="desc1" ng-submit="addToCart()">
+                            <h3>{{product.basicInfo.name}}</h3>
+                            <h5>{{product.basicInfo.price}} VND</h5>
                             <div class="available">
                                 <h4>Available Options :</h4>
                                 <ul>
                                     <li>Color:
-                                        <select>
-                                            <option>Silver</option>
-                                            <option>Black</option>
-                                            <option>Dark Black</option>
-                                            <option>Red</option>
-                                        </select></li>
-                                    <li>Size:
-                                        <select>
-                                            <option>L</option>
-                                            <option>XL</option>
-                                            <option>S</option>
-                                            <option>M</option>
+                                        <select ng-model="cart.color" required>
+                                            <option disabled selected value>Select</option>
+                                            <option ng-repeat="item in product.color" value="{{item.$value}}">{{item.$value}}</option>
                                         </select>
                                     </li>
-                                    <li>Quality:
-                                        <select>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
+                                    <li>Size:
+                                        <select ng-model="cart.size" required>
+                                            <option disabled selected value>Select</option>
+                                            <option ng-repeat="item in product.size" value="{{item.$value}}">{{item.$value}}</option>
                                         </select>
+                                    </li>
+                                    <li>Quantity:
+                                        <input style="height: 28px;" placeholder="Enter quantity" type="number" min="1" ng-model="cart.number" required/>
                                     </li>
                                 </ul>
                                 <div class="btn_form" style="width:100%;">
-                                    <form>
-                                        <input type="submit" value="add to cart" title="" style="width:100%;"/>
-                                    </form>
-                                </div>
-                                <div class="share-desc">
-                                    <div class="share">
-
-                                    </div>
-                                    <div class="clear"></div>
+                                    <input type="submit" value="add to cart" title="" style="width:100%;"/>
                                 </div>
                                 <div class="clear"></div>
                             </div>
 
-                        </div>
+                        </form>
                     </div>
                     <div class="clear"></div>
                     <!-- start tabs -->
-                    <section class="tabs">
-                        <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked">
-                        <label for="tab-1" class="tab-label-1">overview</label>
-
-                        <!--<input id="tab-2" type="radio" name="radio-set" class="tab-selector-2">
-<label for="tab-2" class="tab-label-2">consumer electronics</label>
-
-<input id="tab-3" type="radio" name="radio-set" class="tab-selector-3">
-<label for="tab-3" class="tab-label-3">semiconductor</label>-->
-
-                        <div class="clear-shadow"></div>
-
-                        <div class="content">
-                            <div class="content-1">
-                                <p class="para top"><span>LOREM IPSUM</span> There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined </p>
-                                <ul>
-                                    <li>Research</li>
-                                    <li>Design and Development</li>
-                                    <li>Porting and Optimization</li>
-                                    <li>System integration</li>
-                                    <li>Verification, Validation and Testing</li>
-                                    <li>Maintenance and Support</li>
+                    <div class="section">
+                        <ul class="tabs">
+                            <li class="current">OVERVIEW</li>
+                            <li>PRODUCT REVIEWS</li>
+                            <div class="clear"></div>
+                        </ul>
+                        <div class="box visible">
+                            <p class="para top" >{{product.detail.description}}</p>
+                        </div>
+                        <div class="box">
+                            <div class="comments-container">
+                                <h1 ng-hide="product.reviews.length" style="text-align: center;">Nothing here yet. Be the first to reivew.</h1>
+                                <ul id="comments-list" class="comments-list">
+                                    <li ng-repeat="review in product.reviews">
+                                        <div class="comment-main-level">
+                                            <div class="comment-avatar"><img ng-src="{{review.avatar}}" alt="Avatar"></div>
+                                            <div class="comment-box">
+                                                <div class="comment-head">
+                                                    <h6 class="comment-name">{{review.name}}</h6>
+                                                    <i class="fa fa-reply"></i>
+                                                    <i class="fa fa-heart"></i>
+                                                </div>
+                                                <div class="comment-content">
+                                                    <p>Rating: {{review.rating | star}}</p>
+                                                    <p>{{review.content}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li ng-show="review.$value === null">
+                                        <div class="comment-main-level">
+                                            <div class="comment-avatar"><img ng-src="{{authData.avatar}}" alt="Avatar"></div>
+                                            <div class="comment-box">
+                                                <div class="comment-head">
+                                                    <h6 class="comment-name">{{authData.name}}</h6>
+                                                    <i class="fa fa-reply"></i>
+                                                    <i class="fa fa-heart"></i>
+                                                </div>
+                                                <div class="comment-content">
+                                                    <form ng-submit="addReview()">
+                                                        <p>
+                                                            Rating:
+                                                            <span ng-repeat="number in [1, 2, 3, 4, 5]">
+                                                                <input type="radio" name="rating" ng-model="review.rating" ng-value="number" required/> {{number}}
+                                                            </span>
+                                                        </p>
+                                                        <textarea class="form-control" rows="5" ng-model="review.content" required></textarea>
+                                                        <button type="submit" class="btn btn-primary" style="float:right;">Send</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
                                 </ul>
-                                <div class="clear"></div>
-                            </div>
-                            <div class="content-2">
-                                
-                            </div>
-                            <div class="content-3">
-                                
                             </div>
                         </div>
-                    </section>
+                    </div>
                     <!-- end tabs -->
                 </div>
                 <div class="clear"></div>
@@ -152,4 +140,5 @@
 <!-- start top_js_button -->
 <script type="text/javascript" src="../components/detail-js/move-top.js"></script>
 <script type="text/javascript" src="../components/detail-js/easing.js"></script>
-<script type="text/javascript" src="details/script.js"></script>
+<script type="text/javascript" src="../components/rating-box/bootstrap-rating-input.js"></script>
+<script type="text/javascript" src="../details/script.js"></script>
