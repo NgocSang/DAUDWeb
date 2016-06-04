@@ -37,21 +37,17 @@
                 <a ng-href="#"><img height="45" width="110" src="images/logo.png" alt=""/> </a>
             </div>
             <div class="h_icon" style="height:70px;border:1px solid white;">
-
-
-                <ul class="icon1 sub-icon1" ng-show="authData">
-                    <li><i class="number">{{quantity.$value}}</i></li>
+                <ul class="icon1 sub-icon1" ng-show="authData.data">
+                    <li><i class="number">{{authData.quantity.$value}}</i></li>
                     <li><a class="active-icon c1" ng-href="#/cart"></a>
                     </li>
                 </ul>                   
 
-                   <ul class="icon1 sub-icon1" ng-show="authData">
-                    <li>
-                        <a class="active-icon c2" ng-href="#/history"></a>
-                    </li>
-                    <li><i class="cart">History</i></li>
-                     </ul>                    
-
+                   <ul class="icon1 sub-icon1" ng-show="authData.data">
+                        <li>
+                            <a class="active-icon c2" ng-href="#/history"></a>
+                        </li>
+                </ul>
             </div>
             <!-- start login sang -->
             <div id="login" ng-show="!authData.data">

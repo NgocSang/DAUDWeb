@@ -10,8 +10,6 @@ cart.config(['$routeProvider', function($routeProvider) {
 }]);
 
 
-
-
 cart.controller('CartCtrl',
     function ($scope, $firebaseObject, $firebaseArray, Ref, Auth) {
 
@@ -101,7 +99,7 @@ cart.controller('CartCtrl',
 
 
                     var refCheckout = new Firebase("https://fuckfirebase.firebaseio.com/user/" + authData.uid + "/history");
-                    var refOrder = new Firebase("https://fuckfirebase.firebaseio.com/order");
+                    var refOrder = new Firebase("https://fuckfirebase.firebaseio.com/order/" + authData.uid);
 
                     var objCheckout = $firebaseArray(refCheckout);
                     var objOrder = $firebaseArray(refOrder);
