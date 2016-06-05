@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="App" class="no-js"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Cửa hàng DAS</title>
+<meta name="description" content="Bán hàng online">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="components/boostrap/bootstrap.min.css">
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+<script type="text/javascript" src="components/jquery/jquery.min.js"></script>
+
+<script type="text/javascript" src="components/boostrap-js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="header_bg" ng-controller="IndexCtrl">
+    <div id="topwebsite">
+        <div ng-repeat="s in service" class="content-topwebsite">
+            <div class="content-topwebsite">
+                <img ng-src="{{s.icon}}"/>
+                <h3>{{s.title}}</h3>
+            </div>
+        </div>           
+    </div>
+    <div class="wrap">
+        <div class="header">
+            <div class="logo">
+                <a ng-href="#"><img height="45" width="110" src="images/logo.png" alt=""/> </a>
+            </div>
+            <div class="h_icon" style="height:70px;border:1px solid white;">
+                <ul class="icon1 sub-icon1" ng-show="authData.data">
+                    <li><i class="number">{{authData.quantity.$value}}</i></li>
+                    <li><a class="active-icon c1" ng-href="#/cart"></a>
+                    </li>
+                </ul>
+                <ul class="icon1 sub-icon1" ng-show="authData.data">
+                    <li>
+                        <a class="active-icon c2" ng-href="#/history"></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- start login sang -->
+            <div id="login" ng-show="!authData.data">
+                <div class="dropdown">
+                    <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Login<span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <button id = "loginbtn" class="btn btn-primary">Login with Email<span class="glyphicon glyphicon-log-in"></span></button>
+                        </li>
+                        <li>
+                            <button ng-click="loginFacebook()" class="btn btn-default" style="background: #3b5998">Login with facebook<span class="glyphicon glyphicon-phone"></span></button>
+                        </li>
+                        <li>
+                            <button ng-click="loginGoogle()" class="btn btn-danger">Login with google<span class="glyphicon glyphicon-phone"></span></button>
+                        </li>
+                        <li>
+                            <button ng-click="loginTwitter()" class="btn btn-default" style="background:#17a4eb">Login with twitter<span class="glyphicon glyphicon-phone"></span></button>
+                        </li>
+                        <li>
+                            <button id = "createbtn" class="btn btn-primary">Create an account<span class="glyphicon glyphicon-user"></span></button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- form login-->
+            <!--- dăng xuất---->
+            <div id="login" ng-show="authData.data">
+                <div class="dropdown">
+                    <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Hello, {{authData.name}}<span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <button ng-click="logout()" class="btn btn-default" style="background: #3b5998">Logout<span class="glyphicon glyphicon-phone"></span></button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--- dăng xuất---->
+            <div class="modal-bg">
+                <div id="modal-login">
+                    <div class="login-page">
+                        <div class="form"><a id="login-page" ng-href="#" class="close">&#215</a>
+                            <form  class="login-form" ng-submit="loginEmail()">
+                                <p class="email">
+                                    <input ng-model="credential.email" name="username" type="email" placeholder="Email" id="username" class="form-control input-lg" required/>
+                                </p>
+                                <br/>
+                                <p class="password">
+                                    <input ng-model="credential.password" name="password" type="password" placeholder="Password" id="password" class="form-control input-lg" required/>
+                                    <button type="submit" class="btn btn-primary" id="btnlogin">Login</button>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end login sang -->
+            <div class="modalcreate-bg">
+                <div id="modal-create">
+                    <div class="create-page">
+                        <div class="form"><a id="create-page" ng-href="#" class="close">&#215</a>
+                            <form  class="login-form" ng-submit="createUser()">
+                                <p class="userName" >
+                                    <input class="form-control input-lg" type="text" placeholder="Name" ng-model="createData.name" required/>
+                                </p>
+                                <br/>
+                                <p class="email">
+                                    <input ng-model="createData.email"  name="email" type="email" placeholder="Email" id="email" class="form-control input-lg" required/>
+                                </p>
+                                <br/>
+                                <p class="password">
+                                    <input ng-model="createData.password" name="passwordcreate" type="password" placeholder="Password" id="passwordcreate" class="form-control input-lg" required/>
+                                    <br/>
+                                    <input ng-model="createData.confirm" name="passwordconfirm" type="password" placeholder="Password" id="passwordconfirm" class="form-control input-lg" required/>
+                                    <button type="submit" class="btn btn-primary" id="btnlogin">Create</button>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="h_search">
+                <form>
+                    <input type="text" value="">
+                    <input type="submit" value="">
+                </form>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<div class="header_btm" ng-controller="IndexCtrl">
+    <div class="wrap">
+        <div class="header_sub">
+            <div class="h_menu">
+                <ul>
+                    <li class="active"><a ng-href="#">Home</a></li> |
+                    <li><a ng-href="#/store">Store</a></li> |
+                    <li><a ng-href="#/store/{{item.$id}}" ng-repeat="item in tag">{{item.$value}}</a></li> |
+                    <li><a ng-href="#/services">Services</a></li> |
+                    <li><a ng-href="#/contact">Contact us</a></li>
+                </ul>
+            </div>
+            <div class="top-nav">
+                <nav class="nav">	        	
+                    <a ng-href="#" id="w3-menu-trigger"> </a>
+                    <ul class="nav-list" style="">
+                        <li class="nav-item"><a href="/">Home</a></li>
+                        <li class="nav-item"><a ng-href="#/store">Store</a></li>
+                        <li class="nav-item" ng-repeat="item in tag"><a ng-href="#/store/{{item.$id}}">{{item.$value}}</a></li>
+                        <li class="nav-item"><a ng-href="#/services">Services</a></li>
+                        <li class="nav-item"><a ng-href="#/contact">Contact us</a></li>
+                    </ul>
+                </nav>
+                <div class="search_box">
+                    <form>
+                        <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
+                    </form>
+                </div>
+                <div class="clear"> </div>
+
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<div ng-view></div>
+<!-- //r -->
+<!-- start slider -->
+
+<!-- start footer -->
+<div ng-controller="IndexCtrl" class="footer_bg1">
+    <div class="wrap">
+        <div class="footer">
+
+            <button ng-click="scrollToTop()" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></button>
+            <!--end scroll_top_btn -->
+            <div class="copy">
+                <p class="link">&copy;  All rights reserved | Designed by&nbsp;&nbsp;<a href="http://teamdas.esy.es/default.html"> DAS</a></p>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<!-- In production use:
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+-->
+<link rel="stylesheet" href="app.css">
+<link href="animation/animate.css" rel="stylesheet" />
+<link href="animation/ng-animation.css" rel="stylesheet" />
+<script src="components/angular/angular.min.js"></script>
+<script src="components/angular-route/angular-route.min.js"></script>
+<script src="components/firebase/firebase.js"></script>
+<script src="components/angularfire/angularfire.min.js"></script>
+    <script src="https://api.filestackapi.com/filestack.js"></script>
+<script src="app.js"></script>
+<script src="components/login/script.js"></script>
+<script src="store/store.js"></script>
+<script src="cart/cart.js"></script>
+<script src="services/services.js"></script>
+<script src="contact/contact.js"></script>
+<script src="details/details.js"></script>
+<script src="history/history.js"></script>
+<script src="home/home.js"></script>
+<script src="components/providers/providers.js"></script>
+<script src="components/filters/filters.js"></script>
+<script src="components/responsive-menu/responsive.menu.js"></script>
+
+</body>
+</html>

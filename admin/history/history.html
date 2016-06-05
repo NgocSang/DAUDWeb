@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="history/history.css"/>
+
+
+
+<div class="history">
+<div class="table col-lg-3" ng-repeat="order in history">
+     <h2 class="cart-total cart-price animated bounceIn">Tổng cộng: {{order.total}} đ</h2>
+            <div class="item-row col-lg-12" ng-repeat="item in order.item">        
+                <div class="cart-img col-lg-4">
+                    <img class="img-responsive" ng-src="{{item.imgUrl}}"/>
+                </div>
+                <div class="cart-info col-lg-8">
+                    <div>
+                        <h4>{{item.name}}</h4>
+                        <p>Color: {{item.color}}</p>
+                    </div>
+                    <br>
+                    <div>
+                        {{item.number}} x {{item.price}}đ = <b class="cart-price">{{item.price * item.number}}đ</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

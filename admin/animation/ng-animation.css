@@ -1,0 +1,58 @@
+﻿
+
+button:hover
+{
+    animation: 2s rubberBand
+}
+
+.ser-grid-list, .ser-grid-list:hover
+{
+    animation: 1s rubberBand;
+}
+
+tr
+{
+    animation: 2s fadeIn;
+}
+
+.ng-show
+{
+    animation: 2s fadeIn;
+}
+
+.ng-hide
+{
+    animation: 1s bounceOut;
+}
+
+.empty-cart
+{
+    animation: 2s swing;
+}
+
+h3.ng-show
+{
+    animation: 3s fadeIn;
+}
+
+
+/*.ser-grid-list.ng-move,
+.ser-grid-list.ng-enter,
+.ser-grid-list.ng-leave {
+  -webkit-transition:all linear 2.5s;
+  transition:all linear 2.5s;
+}
+
+.ser-grid-list.ng-leave.ng-leave-active,
+.ser-grid-list.ng-move,
+.ser-grid-list.ng-enter {
+  opacity:0;
+  max-height:0;
+}
+ 
+.ser-grid-list.ng-leave,
+.ser-grid-list.ng-move.ng-move-active,
+.ser-grid-list.ng-enter.ng-enter-active {
+  opacity:1;
+  max-height:40px;
+}*/

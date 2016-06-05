@@ -1,0 +1,104 @@
+<link rel="stylesheet" type="text/css" href="../components/details-css/productviewgallery.css" media="all" />
+<link rel="stylesheet" type="text/css" href="details/details.css" media="all" />
+<!-- start main -->
+<div class="main_bg">
+    <div class="wrap">	
+        <div class="main">
+            <!-- start content -->
+            <div class="single">
+                <!-- start span1_of_1 -->
+                <div class="left_content">
+                    <div class="span1_of_1">
+                        <!-- start product_slider -->
+                        <div class="product-view">
+                            <div class="product-essential">
+                                <div class="product-img-box">
+                                    <div class="more-views-container">
+                                        <ul >
+                                            <li ng-repeat="img in product.imgUrl" ng-click="changeImg($index)">
+                                                <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width:64px;height:85px;">
+                                                    <img ng-src="{{img.$value}}" alt="Product Small Image {{$index}}"/></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-image"> 
+                                        <a class="cs-fancybox-thumbs cloud-zoom" ng-href="{{product.largeImg.$value}}">
+                                            <img ng-src="{{product.largeImg.$value}}" alt="Product Large Image"/>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end product_slider -->
+                    </div>
+                    <!-- start span1_of_1 -->
+                    <div class="span1_of_1_des">
+                        <form class="desc1">
+                            <input type="text" ng-model="product.basicInfo.name"/>
+                            <input type="text" ng-model="product.basicInfo.price"/>
+                            <div class="available">
+                                <h4>Available Options :</h4>
+                                <ul>
+                                    <li>Color:
+                                        <select ng-model="cart.color" required>
+                                            <option disabled selected value>Select</option>
+                                            <option ng-repeat="item in product.color" value="{{item.$value}}">{{item.$value}}</option>
+                                        </select>
+                                    </li>
+                                    <li>Size:
+                                        <select ng-model="cart.size" required>
+                                            <option disabled selected value>Select</option>
+                                            <option ng-repeat="item in product.size" value="{{item.$value}}">{{item.$value}}</option>
+                                        </select>
+                                    </li>
+                                </ul>
+                                <div class="btn_form" style="width:100%;">
+                                    <input ng-click="addToCart()" type="submit" value="add to cart" title="" style="width:100%;"/>
+                                    
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+
+                        </form>
+                        
+                        <button type="filepicker" ng-click="browseImage()" style="width:100%;">
+                                        <span class="glyphicon glyphicon-plus"></span> Add image
+                                    </button>
+                        
+                        <button ng-click="removeItem()" style="width:100%;">
+                                        <span class="glyphicon glyphicon-plus"></span> Delete Product
+                                    </button>
+                        
+                    </div>
+                    <div class="clear"></div>
+                    <!-- start tabs -->
+                    <div class="section">
+                        <ul class="tabs">
+                            <li class="current">OVERVIEW</li>
+                            <li>PRODUCT REVIEWS</li>
+                        </ul>
+                        <div class="box visible">
+                            <textarea ng-model="product.detail.description" class="para top" ></textarea>
+                        </div>
+                        
+                    </div>
+                    <!-- end tabs -->
+                </div>
+                <div class="clear"></div>
+            </div>	
+            <!-- end content -->
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../components/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../components/detail-js/cloud-zoom.1.0.3.min.js"></script>
+<script type="text/javascript" src="../components/detail-js/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="../components/detail-js/jquery.fancybox-buttons.js"></script>
+<script type="text/javascript" src="../components/detail-js/jquery.fancybox-thumbs.js"></script>
+<script type="text/javascript" src="../components/detail-js/productviewgallery.js"></script>
+<!-- start top_js_button -->
+<script type="text/javascript" src="../components/detail-js/move-top.js"></script>
+<script type="text/javascript" src="../components/detail-js/easing.js"></script>
+<script type="text/javascript" src="../components/rating-box/bootstrap-rating-input.js"></script>
+<script type="text/javascript" src="../details/script.js"></script>
