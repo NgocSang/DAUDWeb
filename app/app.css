@@ -747,7 +747,7 @@ h2.top{
 }
 .ser-main{
     float: left;
-    width: 68.33333%;
+    width: 100%;
     margin-right: 2.3333%;
     font-family: 'Source Sans Pro', sans-serif;
 }
@@ -769,7 +769,7 @@ h2.top{
 .ser-grid-list{
     float: left;
     width: 28.33333%;
-    margin-left: 6.33333%;
+    margin-left: 4.33333%;
 }
 .ser-grid-list:first-child{
     margin-left: 0;
@@ -1418,7 +1418,8 @@ p.para{
 .product-name {
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 45% !important;
+    width: 100% !important;
+    margin-top:40px;
 }
 
 .product-img{
@@ -1426,9 +1427,12 @@ p.para{
 }
 
 .dots3{
+    width: 100%!important;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-top: 50px;
+    margin-bottom: 60px!important;
 }

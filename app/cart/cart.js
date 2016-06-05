@@ -96,7 +96,8 @@ cart.controller('CartCtrl',
                     var checkout = {};
                     checkout.receiver = { "name": $scope.name, "phone": $scope.phone, "email": $scope.email, "address": $scope.address };
                     checkout.item = $scope.cart;
-
+                    var today = new Date();
+                    checkout.date = "" + today.getHours() + "h" + today.getMinutes() + "p " + today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear();
 
                     var refCheckout = new Firebase("https://fuckfirebase.firebaseio.com/user/" + authData.uid + "/history");
                     var refOrder = new Firebase("https://fuckfirebase.firebaseio.com/order/" + authData.uid);

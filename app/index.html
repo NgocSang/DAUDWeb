@@ -41,12 +41,6 @@
                     <li><i class="number">{{authData.quantity.$value}}</i></li>
                     <li><a class="active-icon c1" ng-href="#/cart"></a>
                     </li>
-                </ul>                   
-
-                   <ul class="icon1 sub-icon1" ng-show="authData.data">
-                        <li>
-                            <a class="active-icon c2" ng-href="#/history"></a>
-                        </li>
                 </ul>
             </div>
             <!-- start login sang -->
@@ -80,6 +74,9 @@
                     <ul class="dropdown-menu">
                         <li>
                             <button ng-click="logout()" class="btn btn-default" style="background: #3b5998">Logout<span class="glyphicon glyphicon-phone"></span></button>
+                        </li>
+                        <li>
+                            <a  class="btn btn-default" style="width: 200px;margin-top:10px;height:33px;background: #3b5998"href="#/history">History cart<span class="glyphicon glyphicon-shopping-cart"></span></a>
                         </li>
                     </ul>
                 </div>

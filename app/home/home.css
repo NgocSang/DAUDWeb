@@ -1,12 +1,13 @@
 /* LeQuan */
-
 .da-img
 {
     animation:  2s flip;
     float: left;    
     height: 480px;
-     display:block;
-    margin:auto;
+    display:block;
+    width: 30%;
+    height: 30%;
+    margin-top: 40px;
 }
 
 .da-img img
@@ -18,8 +19,12 @@
 
 .slider-info
 {
-    margin-left: 50px;
-    height: 100%;
+    
+    width: 60%;
+    height: auto;
+    margin-left: 100px;
+    float: left;
+    
 }
 
 .slider-info h2

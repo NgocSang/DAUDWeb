@@ -20,6 +20,7 @@
 	-o-transition: background-position 1.4s ease-in-out 0.3s;
 	-ms-transition: background-position 1.4s ease-in-out 0.3s;
 	transition: background-position 1.4s ease-in-out 0.3s;
+    
 }
 .da-slide{
 	padding:0 10%;
