@@ -18,7 +18,7 @@ store.controller('DetailsCtrl', function ($scope, $routeParams, $firebaseObject,
     Auth.$onAuth(function (authData) {
         if (authData) {
             $scope.cart = $firebaseObject(Ref.child("cart/" + authData.uid + "/" + $routeParams.id));
-            $scope.review = $firebaseObject(Ref.child("productDetail/"  + $routeParams.id + "/reviews/" + authData.uid));
+            $scope.review = $firebaseObject(Ref.child("reviews/"  + $routeParams.id + "/" + authData.uid));
         }
     });
     
@@ -28,7 +28,7 @@ store.controller('DetailsCtrl', function ($scope, $routeParams, $firebaseObject,
         color: $firebaseArray(Ref.child("products/" + $routeParams.id + "/color")),
         size: $firebaseArray(Ref.child("products/" + $routeParams.id + "/size")),
         imgUrl: $firebaseArray(Ref.child("productDetail/" + $routeParams.id + "/imgUrl").limitToFirst(4)),
-        reviews: $firebaseArray(Ref.child("productDetail/" + $routeParams.id + "/reviews"))
+        reviews: $firebaseArray(Ref.child("reviews/" + $routeParams.id))
     };
     
     $scope.changeImg = function (index) {
