@@ -232,16 +232,21 @@ body {
     float:left;
     color:#ffffff;
     font-size: 1.2em;
+    height: 50px;
 }
 .h_menu ul li{
     display: inline-block;
+    border-right: 2px solid white;
+    height: 22px;
+    margin-top:15px;
 }
+
 .h_menu ul li:first-child a{
     padding-left: 0px;
 }
 .h_menu ul li a{
     display: block;
-    padding: 14px 18px;
+    
     font-size: 1.2em;
     text-transform: uppercase;
     color: #ffffff;
@@ -1054,7 +1059,7 @@ p.para{
         width:95%;
     }
     .h_menu ul li a {
-        padding: 10px 12px;
+        padding: 0px 12px;
     }
     .span1_of_1 {
         width: 52.3333%;
