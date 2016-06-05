@@ -20,6 +20,7 @@
 	-o-transition: background-position 1.4s ease-in-out 0.3s;
 	-ms-transition: background-position 1.4s ease-in-out 0.3s;
 	transition: background-position 1.4s ease-in-out 0.3s;
+    
 }
 .da-slide{
 	padding:0 10%;
@@ -42,8 +43,6 @@
 .da-slide p,
 .da-slide .da-link,
 .da-slide .da-img{
-	position: absolute;
-	opacity: 0;
 	left: 110%;
 }
 .da-slider-fb .da-slide h2,
@@ -77,14 +76,7 @@
 	overflow: hidden;
 	margin-left: 30px;
 }
-.da-slide .da-img{
-	text-align: center;
-	width: 30%;
-	top: 70px;
-	height: 256px;
-	line-height: 320px;
-	left: 110%; /*60%*/
-}
+
 .da-slide .da-link{
 	margin-left: 30px;
 	top: 270px;
@@ -734,3 +726,10 @@
 	90%{ left: 0%;  opacity: 0; }
 	100%{ left: -50%; opacity: 0; }
 }
+
+
+
+
+
+
+/* LeQuan */

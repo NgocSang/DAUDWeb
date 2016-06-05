@@ -89,7 +89,7 @@
                                                     <i class="fa fa-heart"></i>
                                                 </div>
                                                 <div class="comment-content">
-                                                    <p >Rating:<span style="color:#e4bb24;">{{review.rating | star}}</span> </p>
+                                                    <p>Rating: {{review.rating | star}}</p>
                                                     <p>{{review.content}}</p>
                                                 </div>
                                             </div>
@@ -112,7 +112,7 @@
                                                                 <input type="radio" name="rating" ng-model="review.rating" ng-value="number" required/> {{number}}
                                                             </span>
                                                         </p>
-                                                        <textarea class="form-control" rows="5" ng-model="review.content" style="resize: vertical;" required></textarea>
+                                                        <textarea class="form-control" rows="5" ng-model="review.content" required></textarea>
                                                         <button type="submit" class="btn btn-primary" style="float:right;">Send</button>
                                                     </form>
                                                 </div>

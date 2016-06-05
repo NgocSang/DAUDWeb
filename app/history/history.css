@@ -1,5 +1,5 @@
 /*css trang cart*/
-.row{
+/*.row{
     font-family: 'Source Sans Pro', sans-serif;
     width: 90%;
     margin: auto;
@@ -30,12 +30,6 @@
     width: 100%;
     margin-bottom: 25px;
 }
-.breadcrumb{
-    margin-bottom: 0!important;
-    background: #e4e4e4;
-    padding-left: 0;
-    
-}
 .breadcrumb a{
     color: #9d9d9d;
 }
@@ -55,27 +49,17 @@
 
 
 
-/* uQ */
-.remove-item
+
+
+
+
+.item-row
 {
-    cursor:pointer;
+    margin: 10px;
+    
 }
 
-.empty-cart
-{
-    animation: 2s swing;
-    text-align:center;
-}
 
-td.change-cart > *
-{
-    margin-right: 10px;
-}
-
-.btn-update
-{
-    background: #40C4B2 ;
-}
 
 .cart-total
 {
@@ -90,5 +74,50 @@ td.change-cart > *
 
 .cart-img
 {
-    width: 40%;
+    width: 14%;
 }
+
+.cart-amount
+{
+    width: 50px;
+}
+/*.cart-info
+{
+    margin-left: 250px;
+}*/
+.title{
+    font-family: 'bebas_neueregular';
+    color: #777777;
+    text-shadow: 0 1px 0 #ffffff;
+    margin-left:70px;
+    font-size: 2em;
+    margin-bottom: 25px;
+}
+.history
+{
+    font-family: 'Source Sans Pro', sans-serif;
+    background: white;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+.details{
+    
+    width: 90%;
+    height: auto;
+    margin: auto;
+    padding: 10px;
+    
+}
+.details thead tr{
+    font-size: 20px;
+    text-align: center!important;
+    font-weight: bold;
+}
+/**/
+
+
+
+
