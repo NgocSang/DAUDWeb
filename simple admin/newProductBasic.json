@@ -1,0 +1,14 @@
+{
+    "basicInfo": {
+        "name": "Test",
+        "price": 50000,
+        "tag": "Hat", // Tag phải tồn tại trong CSDL
+        "imgUrl": "Fucking Test"
+    },
+    "color": {
+        "Test": "Test" // Key phải trùng với value
+    },
+    "size": {
+        "S": "S" // Key phải trùng với value
+    }
+}

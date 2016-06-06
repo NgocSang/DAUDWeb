@@ -1,0 +1,10 @@
+{
+    "basicInfo": 
+    // imgUrl, name, price phải trùng với sản phẩm đang muốn thêm hoặc cập nhật
+    {
+        "imgUrl": "Fucking Test",
+        "name": "Test",
+        "price": 50000,
+        "description": "abc"
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "detail": {
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis tortor posuere ligula ullamcorper fermentum. Pellentesque nibh enim, suscipit non tortor non, vehicula bibendum justo. Aliquam aliquet aliquet augue, nec vulputate magna congue vel. Nunc sed finibus metus. Etiam vulputate varius maximus. Donec aliquam nulla nec scelerisque mattis. Integer ac turpis eros. Ut finibus diam ac risus viverra luctus. In rutrum eros augue, at sollicitudin justo auctor a. Sed a iaculis ante, aliquet auctor ipsum."
+    },
+    "imgUrl": 
+    // Mảng, bao nhiêu phần tử cũng đc
+    [
+        "http://i.ebayimg.com/images/g/x1cAAOSwnDZUGYGE/s-l1600.jpg",
+        "http://i.ebayimg.com/images/g/x1cAAOSwnDZUGYGE/s-l1600.jpg",
+        "http://i.ebayimg.com/images/g/x1cAAOSwnDZUGYGE/s-l1600.jpg",
+        "http://i.ebayimg.com/images/g/x1cAAOSwnDZUGYGE/s-l1600.jpg"
+    ]
+}

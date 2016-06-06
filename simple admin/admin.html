@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html ng-app="App">
+    <head>
+        <meta charset="UTF-8">
+        <title>Untitled Document</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+        <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+        <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+        <script src="script.js"></script>
+        <style>
+            body {
+                padding: 0px 100px;
+            }
+            
+            h1 {
+                text-align: center;
+            }
+            
+            pre {
+                border: 1px solid red;
+            }
+            
+            .scroll {
+                overflow: scroll;
+                border: 1px dashed black;
+                height: 500px;
+            }
+            
+            button {
+                display: block;
+            }
+        </style>
+    </head>
+    <body ng-controller="testCtrl">
+        <div>
+            <h1>############## Admin Authentication ##############</h1>
+            <button ng-hide="authData" ng-click="login()">Login</button>
+            <button ng-show="authData" ng-click="logout()">Logout</button>
+        </div>
+
+        <div>
+            <h1>############## Product Basic ##############</h1>
+            <h3>I. Show</h3>
+            <div class="scroll">
+                <pre ng-repeat="product in productsA">{{product | json}}</pre>
+            </div>
+            <h3>II. Add</h3>
+            <pre>{{newProductBasic | json}}</pre>
+            <input placeholder="json location" type="text" ng-model="newProductBasicPath" ng-model-options="{ updateOn: 'blur' }" ng-change="importJson(newProductBasicPath, 'newProductBasic')"/>
+            <button ng-click="newProductBasicId = arrayAdd(productsA, newProductBasic, 'newProductBasicId')">Add product's basic info</button>
+            {{newProductBasicId}}
+            <h3>III. Delete</h3>
+            <button ng-repeat="product in productsA" ng-click="arrayDelete(productsA, product)">Delete basic info of product "{{product.$id}}"</button>
+            <h3>IV. Update</h3>
+            <pre>{{updateProductBasic | json}}</pre>
+            <input placeholder="json location" type="text" ng-model="updateProductBasicPath" ng-model-options="{ updateOn: 'blur' }" ng-change="importJson(updateProductBasicPath, 'updateProductBasic')"/>
+            <button ng-repeat="product in productsA" ng-click="arrayAddUpdate(productsO, updateProductBasic, product.$id)">Update basic info of product "{{product.$id}}"</button>
+        </div>
+        
+        <div>
+            <h1>############## Product Detail ##############</h1>
+            <h3>I. Show</h3>
+            <div class="scroll">
+                <pre ng-repeat="product in productDetailA">{{product | json}}</pre>
+            </div>
+            <h3>II. Add or Update</h3>
+            <pre>{{newProductDetail | json}}</pre>
+            <input placeholder="json location" type="text" ng-model="newProductDetailPath" ng-model-options="{ updateOn: 'blur' }" ng-change="importJson(newProductDetailPath, 'newProductDetail')"/>
+            <button ng-repeat="product in productsA" ng-click="arrayAddUpdate(productDetailO, newProductDetail, product.$id)">Add or update detail of product "{{product.$id}}"</button>
+            <h3>III. Delete</h3>
+            <button ng-repeat="product in productDetailA" ng-click="arrayDelete(productDetailA, product)">Delete detail of product "{{product.$id}}"</button>
+        </div>
+        
+        <div>
+            <h1>############## Featured Product ##############</h1>
+            <h3>I. Show</h3>
+            <div class="scroll">
+                <pre ng-repeat="product in featuredA">{{product | json}}</pre>
+            </div>
+            <h3>II. Add or Update</h3>
+            <pre>{{newFeatured | json}}</pre>
+            <input placeholder="json location" type="text" ng-model="newFeaturedPath" ng-model-options="{ updateOn: 'blur' }" ng-change="importJson(newFeaturedPath, 'newFeatured')"/>
+            <button ng-repeat="product in productsA" ng-click="arrayAddUpdate(featuredO, newFeatured, product.$id)">Add or update product "{{product.$id}}" as featured</button>
+            <h3>III. Delete</h3>
+            <button ng-repeat="product in featuredA" ng-click="arrayDelete(featuredA, product)">Delete product "{{product.$id}}" as featured</button>
+        </div>
+        
+        <div>
+            <h1>############## Order ##############</h1>
+            <h3>I. Show</h3>
+            <div class="scroll">
+                <div ng-repeat="user in orderA" style="border: 1px solid blue;">
+                    User: {{user.$id}}
+                    <pre ng-repeat="order in keys = (getKeys(user) | filter : simplifyObject)">{{user[order] | json}}</pre>
+                </div>
+            </div>
+            <h3>II. Delete</h3>
+            <div ng-repeat="user in orderA">
+                User: {{user.$id}}
+                <button ng-repeat="order in keys = (getKeys(user) | filter : simplifyObject)" ng-click="deleteOrder(user, order)">Delete order "{{order}}" of user "{{user.$id}}"</button>
+            </div>
+        </div>
+    </body>
+</html>
