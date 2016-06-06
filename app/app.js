@@ -76,10 +76,9 @@ app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseArray, $
     
     
     
+    
     // load service
     var ref = new Firebase("https://das-shop.firebaseio.com/service");
         var obj = $firebaseObject(ref);
         obj.$bindTo($scope, "service");
-    
-    
 });
