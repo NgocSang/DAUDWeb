@@ -237,7 +237,7 @@ body {
 .h_menu ul li{
     display: inline-block;
     border-right: 2px solid white;
-    height: 22px;
+    height: auto;
     margin-top:15px;
 }
 
@@ -1074,7 +1074,7 @@ p.para{
         width:95%;
     }
     .h_menu ul li a {
-        padding: 10px 10px;
+        padding: 0px 10px;
     }
     .desc1 h3 {
         font-size: 1.4em;
@@ -1089,7 +1089,7 @@ p.para{
         width: 10.33%;
     }
     .h_menu ul li a {
-        padding: 10px 4px;
+        padding: 0px 4px;
     }
     .grid1_of_3 h3 {
         font-size: 1.5em;
@@ -1280,13 +1280,15 @@ p.para{
     width: 100%;
     overflow: hidden;
     display: block;
-    height: 70px;
+    height: auto;
     margin: auto;
+    padding-left: 20px;
+    padding-bottom: 15px;
     border-bottom: 1px solid #f8f8f8;
 }
 .content-topwebsite{
-    width:200px;
-    height:20px;
+    width:16.5%;
+    height:auto;
     float: left;
     padding-right: 40px;
 }
@@ -1299,7 +1301,11 @@ p.para{
     color: #666;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: normal;
-    font-size: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    padding-top: 5px;
+    text-transform: uppercase;
+
 }
 .content-topwebsite p{
     color: #666;
@@ -1420,7 +1426,11 @@ p.para{
     width: 100% !important;
     margin: 20px 0px 20px 0px;
 }
-
+@media only screen and (max-width: 480px){
+    .content-topwebsite h3{
+        font-size: 8px;
+    }
+}
 
 
 
