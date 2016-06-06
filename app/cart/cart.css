@@ -28,6 +28,7 @@
 }
 #order{
     width: 100%;
+    margin-bottom: 25px;
 }
 .breadcrumb{
     margin-bottom: 0!important;
@@ -49,4 +50,45 @@
 #products h4{
     font-size:17px;
     font-weight: bold;
+}
+
+
+
+
+/* uQ */
+.remove-item
+{
+    cursor:pointer;
+}
+
+.empty-cart
+{
+    animation: 2s swing;
+    text-align:center;
+}
+
+td.change-cart > *
+{
+    margin-right: 10px;
+}
+
+.btn-update
+{
+    background: #40C4B2 ;
+}
+
+.cart-total
+{
+    font-size: 25px;
+}
+
+.cart-price
+{
+    color:red;
+    font-weight: bold;
+}
+
+.cart-img
+{
+    width: 40%;
 }

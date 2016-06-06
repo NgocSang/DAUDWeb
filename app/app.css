@@ -232,21 +232,16 @@ body {
     float:left;
     color:#ffffff;
     font-size: 1.2em;
-    height: 50px;
 }
 .h_menu ul li{
     display: inline-block;
-    border-right: 2px solid white;
-    height: 22px;
-    margin-top:15px;
 }
-
 .h_menu ul li:first-child a{
     padding-left: 0px;
 }
 .h_menu ul li a{
     display: block;
-    
+    padding: 14px 18px;
     font-size: 1.2em;
     text-transform: uppercase;
     color: #ffffff;
@@ -752,7 +747,7 @@ h2.top{
 }
 .ser-main{
     float: left;
-    width: 68.33333%;
+    width: 100%;
     margin-right: 2.3333%;
     font-family: 'Source Sans Pro', sans-serif;
 }
@@ -774,7 +769,7 @@ h2.top{
 .ser-grid-list{
     float: left;
     width: 28.33333%;
-    margin-left: 6.33333%;
+    margin-left: 4.33333%;
 }
 .ser-grid-list:first-child{
     margin-left: 0;
@@ -1059,7 +1054,7 @@ p.para{
         width:95%;
     }
     .h_menu ul li a {
-        padding: 0px 12px;
+        padding: 10px 12px;
     }
     .span1_of_1 {
         width: 52.3333%;
@@ -1277,40 +1272,29 @@ p.para{
 }
 /*Phần CSS sáng viết*/
 #topwebsite{
-    width: 90%;
+    width: 100%;
     overflow: hidden;
     display: block;
-    height: auto;
+    height: 70px;
     margin: auto;
-    margin-top: 20px;
     border-bottom: 1px solid #f8f8f8;
-    padding-bottom: 20px;
-
 }
 .content-topwebsite{
-    width:290px;
-    height:50px;
+    width:200px;
+    height:20px;
     float: left;
     padding-right: 40px;
 }
 .content-topwebsite img{
-    margin-top: 10px;
+    width: 50px;
     float: left;
 }
+
 .content-topwebsite h3{
-    margin-top: 5px;
-    margin-left: 10px;
     color: #666;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: normal;
     font-size: 15px;
-    float: left;
-}
-.content-topwebsite p{
-    color: #666;
-    float: left;
-    margin-left: 10px;
-    font-family: 'Source Sans Pro', sans-serif;
 }
 #login{
     float: right;
@@ -1376,7 +1360,7 @@ p.para{
     margin: auto;
     margin-top: 20px;
 }
-#cart{
+.cart{
 
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 15px;
@@ -1384,7 +1368,7 @@ p.para{
     width: 15px;
     height: auto;
 }
-#number{
+.number{
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 15px;
     min-width: 10px;
@@ -1406,10 +1390,36 @@ p.para{
     color: white;
 }
 
+
+
+
+/* LeQuan */
+.cart-icon:hover
+{
+    animation: 2s rubberBand;
+}
+
+.c2
+{
+    background: url(../images/checkout.png) no-repeat ;
+    width: 46px;
+    height: 46px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 2px;
+}
+
+
+
+
+
+/* Ryan */
+
 .product-name {
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 45% !important;
+    width: 100% !important;
+    margin-top:40px;
 }
 
 .product-img{
@@ -1417,9 +1427,12 @@ p.para{
 }
 
 .dots3{
+    width: 100%!important;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-top: 50px;
+    margin-bottom: 60px!important;
 }
