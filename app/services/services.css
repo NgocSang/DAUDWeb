@@ -1,5 +1,6 @@
 .service{
 	margin: 2% 0;
+    border: 1px solid red;
 }
 .ser-main{
 	float: left;

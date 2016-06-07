@@ -1,0 +1,56 @@
+/* LeQuan */
+.da-img
+{
+    animation:  2s flip;
+    float: left;    
+    height: 480px;
+    display:block;
+    width: 40%;
+    height: auto;
+    margin-top: 40px;
+}
+
+.da-img img
+{
+    border-radius:30px;
+    width: 100%;
+    vertical-align: middle;
+}
+
+.slider-info
+{
+    
+    width: 60%;
+    height: auto;
+    padding: 50px;
+    float: left;
+    margin-top: 20px;
+}
+
+.slider-info h2
+{
+    animation:  2s bounceInLeft;
+    font-size: 55px;
+}
+
+.slider-info p
+{
+    animation:  2s bounceInRight;
+    margin-bottom: 30px;
+}
+
+.slider-info a
+{
+    animation:  2s swing;
+}
+
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.main_bg1
+{
+    background: #f2f2f2;
+}

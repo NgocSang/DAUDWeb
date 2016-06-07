@@ -1,81 +1,81 @@
-'use strict';
-
+/*global angular, turnOffLogin, turnOffCreate*/
 // Declare app level module which depends on views, and components
-var app = angular.module('App', ['firebase', 'ngRoute', 'App.store', 'App.cart', 'App.services','App.contact','App.details']);
+var app = angular.module('App', ['firebase', 'ngRoute', 'App.store', 'App.cart', 'App.services', 'App.contact', 'App.details', 'App.history', 'App.home', 'App.providers', 'App.validators']);
+var imgCtrl;
 
 app.config(['$routeProvider', function ($routeProvider) {
-    $routeProvider.otherwise(
-        {
-            redirectTo: '/store'
-        });
+    'use strict';
+    
+    $routeProvider.otherwise({
+        redirectTo: '/home'
+    });
 }]);
 
-app.controller("LoginCtrl", function ($scope, $firebaseAuth) {
-    var ref = new Firebase("https://doanungdungweb.firebaseio.com");
-    $scope.auth = $firebaseAuth(ref);
+app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseArray, $firebaseAuth, Auth, $anchorScroll, Ref, AuthData, Global) {
+    'use strict';
     
-    $scope.credential = {
-        "email": "",
-        "password": ""
-    }
-    
-    $scope.createData = {
-        "email": "",
-        "password": ""
-    }
-    
-    $scope.user = {
-        "name": ""
-    }
-    
-    $scope.confirm = "";
-    
-    $scope.auth.$onAuth(function (authData) {
-        $scope.authData = authData;
-        
-        switch ($scope.authData.provider) {
-            case "facebook":
-                $scope.user.name = $scope.authData.facebook.displayName;
-                break;
-            case "google":
-                $scope.user.name = $scope.authData.google.displayName;
-                break;
-            case "twitter":
-                $scope.user.name = $scope.authData.twitter.displayName;
-                break;
-            case "password":
-                $scope.user.name = "sang";
-                break;
-        }
-    });
+    imgCtrl = $scope;
+    $scope.tag = $firebaseArray(Ref.child("tag"));
+    $scope.authData = AuthData;
+    $scope.search = Global;
     
     $scope.loginEmail = function () {
-        $scope.auth.$authWithPassword($scope.credential);
-        turnOffLogin();
+        Auth.$authWithPassword($scope.credential).then(function () {
+            turnOffLogin();
+        })["catch"](function (error) {
+            window.alert("Invalid info");
+        });
     };
     
-    $scope.loginFacebook = function() {
-        $scope.auth.$authWithOAuthPopup("facebook");
+    $scope.loginFacebook = function () {
+        Auth.$authWithOAuthPopup("facebook");
     };
     
-    $scope.loginGoogle = function() {
-        $scope.auth.$authWithOAuthPopup("google");
+    $scope.loginGoogle = function () {
+        Auth.$authWithOAuthPopup("google");
     };
     
-    $scope.loginTwitter = function() {
-        $scope.auth.$authWithOAuthPopup("twitter");
+    $scope.loginTwitter = function () {
+        Auth.$authWithOAuthPopup("twitter");
     };
     
-    $scope.logout = function() {
-        $scope.auth.$unauth();
+    $scope.logout = function () {
+        Auth.$unauth();
     };
     
     $scope.createUser = function () {
-        if ($scope.createData.password !== $scope.confirm) {
-            window.alert("Mật khẩu không khớp!")
+        if ($scope.createData.password !== $scope.createData.confirm) {
+            window.alert("Password not match");
         } else {
-            $scope.auth.$createUser($scope.createData);
-            turnOffCreate();
+            Auth.$createUser($scope.createData).then(function (authData1) {
+                turnOffCreate();
+                
+                return Auth.$authWithPassword({
+                    "email": $scope.createData.email,
+                    "password": $scope.createData.password
+                });
+            }).then(function (authData2) {
+                var user = $firebaseObject(Ref.child("user/" + authData2.uid + "/info"));
+
+                user.$loaded().then(function () {
+                    user.name = $scope.createData.name;
+                    user.avatar = "http://studymovie.net/Cms_Data/Sites/admin/Themes/Default/images/default-avatar.jpg";
+
+                    user.$save().then(function () {
+                        AuthData.doAuth(authData2);
+                    });
+                });
+            })["catch"](function (error) {
+                window.alert("Error");
+            });
         }
     };
+    
+    $scope.scrollToTop = function () {
+        $anchorScroll("topwebsite");
+    };
+    
+    // load service
+    var obj = $firebaseObject(Ref.child("service"));
+    obj.$bindTo($scope, "service");
 });

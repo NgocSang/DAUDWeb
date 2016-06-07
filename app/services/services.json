@@ -1,0 +1,34 @@
+{
+  "service": [
+    {
+      "title": "24/7 customer support",
+      "description": "It is a long established fact that a reader will be distracted by the page when looking at its layout",
+      "icon": "images/icon1.png"
+    },
+    {
+      "title": "hygienic branded",
+      "description": "The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters",
+      "icon": "images/icon2.png"
+    },
+    {
+      "title": "safely dispatch",
+      "description": "It is a long established fact that a reader will be distracted by the page when looking at its layout",
+      "icon": "images/icon3.png"
+    },
+    {
+      "title": "100% look book",
+      "description": "It is a long established fact that a reader will be distracted by the page when looking at its layout",
+      "icon": "images/icon4.png"
+    },
+    {
+      "title": "authentic products",
+      "description": "The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters",
+      "icon": "images/icon5.png"
+    },
+    {
+      "title": "100% guarantee",
+      "description": "It is a long established fact that a reader will be distracted by the page when looking at its layout",
+      "icon": "images/icon6.png"
+    }
+  ]
+}
