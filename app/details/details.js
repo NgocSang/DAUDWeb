@@ -13,12 +13,15 @@ store.config(['$routeProvider', function ($routeProvider) {
 store.controller('DetailsCtrl', function ($scope, $routeParams, $firebaseObject, $firebaseArray, Auth, Ref, AuthData) {
     'use strict';
     
+    window.abc = $scope;
     $scope.authData = AuthData;
     
     Auth.$onAuth(function (authData) {
         if (authData) {
             $scope.cart = $firebaseObject(Ref.child("cart/" + authData.uid + "/" + $routeParams.id));
             $scope.review = $firebaseObject(Ref.child("reviews/"  + $routeParams.id + "/" + authData.uid));
+        } else {
+            $scope.cart = $scope.review = null;
         }
     });
     
