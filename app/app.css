@@ -76,8 +76,9 @@ body {
     font-size: 0.8725em;
     text-transform: capitalize;
 }
-.h_search input[type="submit"]{ 
+.h_search a{
     -webkit-appearance: none;
+    color: white;
     background: url('../images/search.png') no-repeat 10px 5px;
     padding: 6px 0px;
     border: none;
@@ -88,7 +89,7 @@ body {
     position: absolute;
     right: 0px;
 }
-.h_search input[type="submit"]:hover {
+.h_search a:hover {
     background: url('../images/search_h.png') no-repeat 10px 5px;
 }
 /*------start-top-nav------*/
@@ -192,7 +193,8 @@ body {
     -moz-border-radius: 2px;
     -o-border-radius: 2px;
 }
-.search_box form input[type="text"] {
+
+.search_box input[type="text"] {
     -webkit-appearance: none;
     padding: 6px 16px;
     outline: none;
@@ -205,8 +207,26 @@ body {
     font-size: 0.8725em;
     text-transform: capitalize;
 }
-.search_box form input[type="submit"] {
+
+.search_box input[type="text"]::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: white;
+}
+
+.search_box input[type="text"]:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: white;
+}
+
+.search_box input[type="text"]::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: white;
+}
+
+.search_box input[type="text"]:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: white;
+}
+
+.search_box a {
     -webkit-appearance: none;
+    color: #4CCFC1;
     background: url('../images/search.png') no-repeat 10px 5px;
     padding: 6px 0px;
     border: none;
@@ -237,7 +257,11 @@ body {
 .h_menu ul li{
     display: inline-block;
     border-right: 2px solid white;
+<<<<<<< HEAD
     height: 22px;
+=======
+    height: auto;
+>>>>>>> 166019d10dbd94da10397a47cbb03980f49bf5fc
     margin-top:15px;
 }
 
@@ -473,7 +497,7 @@ body {
 }
 
 .grid1_of_3 img{
-    height: 200px;
+    height: 250px;
     margin-top: 8%;
 }
 
@@ -752,8 +776,8 @@ h2.top{
 }
 .ser-main{
     float: left;
-    width: 68.33333%;
-    margin-right: 2.3333%;
+    width: 100%;
+    margin-right: 1.3333%;
     font-family: 'Source Sans Pro', sans-serif;
 }
 .ser-main h4{
@@ -764,7 +788,7 @@ h2.top{
     margin-bottom: 2%;
 }
 .ser-grid{
-    padding: 4% 0;
+    padding: 3% 0;
     text-align: center;
     border-bottom: 1px solid rgb(238, 238, 238);
 }
@@ -774,7 +798,7 @@ h2.top{
 .ser-grid-list{
     float: left;
     width: 28.33333%;
-    margin-left: 6.33333%;
+    margin-left: 4.33333%;
 }
 .ser-grid-list:first-child{
     margin-left: 0;
@@ -1074,7 +1098,7 @@ p.para{
         width:95%;
     }
     .h_menu ul li a {
-        padding: 10px 10px;
+        padding: 0px 10px;
     }
     .desc1 h3 {
         font-size: 1.4em;
@@ -1089,7 +1113,7 @@ p.para{
         width: 10.33%;
     }
     .h_menu ul li a {
-        padding: 10px 4px;
+        padding: 0px 4px;
     }
     .grid1_of_3 h3 {
         font-size: 1.5em;
@@ -1277,34 +1301,35 @@ p.para{
 }
 /*Phần CSS sáng viết*/
 #topwebsite{
-    width: 90%;
+    width: 100%;
     overflow: hidden;
     display: block;
     height: auto;
     margin: auto;
-    margin-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 15px;
     border-bottom: 1px solid #f8f8f8;
-    padding-bottom: 20px;
-
 }
 .content-topwebsite{
-    width:290px;
-    height:50px;
+    width:16.5%;
+    height:auto;
     float: left;
     padding-right: 40px;
 }
 .content-topwebsite img{
-    margin-top: 10px;
+    width: 50px;
     float: left;
 }
+
 .content-topwebsite h3{
-    margin-top: 5px;
-    margin-left: 10px;
     color: #666;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: normal;
-    font-size: 15px;
-    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    padding-top: 5px;
+    text-transform: uppercase;
+
 }
 .content-topwebsite p{
     color: #666;
@@ -1409,7 +1434,7 @@ p.para{
 .product-name {
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 45% !important;
+    width: 100% !important;
 }
 
 .product-img{
@@ -1422,4 +1447,27 @@ p.para{
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    width: 100% !important;
+    margin: 20px 0px 20px 0px;
+}
+@media only screen and (max-width: 480px){
+    .content-topwebsite h3{
+        font-size: 8px;
+    }
+}
+
+/* LeQuan */
+.cart-icon:hover
+{
+    animation: 2s rubberBand;
+}
+
+.c2
+{
+    background: url(../images/checkout.png) no-repeat ;
+    width: 46px;
+    height: 46px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 2px;
 }

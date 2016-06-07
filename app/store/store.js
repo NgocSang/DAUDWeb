@@ -13,10 +13,12 @@ store.config(['$routeProvider', function ($routeProvider) {
     });
 }]);
 
-store.controller('StoreCtrl', function ($scope, $firebaseArray, Ref, $routeParams) {
+store.controller('StoreCtrl', function ($scope, $firebaseArray, Ref, $routeParams, Global) {
     'use strict';
     
     $scope.loading = true;
+    $scope.search = Global;
+    
     $scope.all = $firebaseArray(Ref.child("products"));
     $scope.all.$loaded().then(function () {
         $scope.loading = false;

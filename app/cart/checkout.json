@@ -1,0 +1,71 @@
+﻿[{
+  "item": [
+    {
+      "count": 1,
+      "description": "It is a long established fact that a reader will be distracted by the page when looking at its layout",
+      "icon": "images/icon1.png",
+      "title": "24/7 customer support"
+    },
+    {
+      "count": 1,
+      "description": "The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters",
+      "icon": "images/icon2.png",
+      "title": "hygienic branded"
+    },
+    {
+      "count": 1,
+      "description": "It is a long established fact that a reader will be distracted by the page when looking at its layout",
+      "icon": "images/icon4.png",
+      "title": "100% look book"
+    },
+    {
+      "description": "The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters",
+      "icon": "images/icon5.png",
+      "title": "authentic products"
+    },
+    {
+      "description": "It is a long established fact that a reader will be distracted by the page when looking at its layout",
+      "icon": "images/icon6.png",
+      "title": "100% guarantee"
+    }
+  ],
+  "user": {
+    "address": "3123123",
+    "email": "312312@gmail.com",
+    "name": "123",
+    "phone": "12312"
+  }
+},
+{
+  "item" : [ {
+    "count" : 1,
+    "description" : "It is a long established fact that a reader will be distracted by the page when looking at its layout",
+    "icon" : "images/icon1.png",
+    "title" : "24/7 customer support"
+  }, {
+    "count" : 1,
+    "description" : "The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters",
+    "icon" : "images/icon2.png",
+    "title" : "hygienic branded"
+  }, {
+    "count" : 1,
+    "description" : "It is a long established fact that a reader will be distracted by the page when looking at its layout",
+    "icon" : "images/icon4.png",
+    "title" : "100% look book"
+  }, {
+    "description" : "The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters",
+    "icon" : "images/icon5.png",
+    "title" : "authentic products"
+  }, {
+    "description" : "It is a long established fact that a reader will be distracted by the page when looking at its layout",
+    "icon" : "images/icon6.png",
+    "title" : "100% guarantee"
+  } ],
+  "user" : {
+    "address" : "3123123",
+    "email" : "312312@gmail.com",
+    "name" : "123",
+    "phone" : "12312"
+  }
+}
+]

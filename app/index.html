@@ -21,26 +21,14 @@
     <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
-    
-    <div class="header_bg" ng-controller="IndexCtrl">
+
+    <div ng-controller="IndexCtrl" class="header_bg">
         <div id="topwebsite">
-            <div class="content-topwebsite">
-                <div data-toggle="tooltip" data-placement="bottom" title="Tam" class="content-topwebsite"><img src="images/clock.png"/>
-                    <h3>Opening time</h3>
-                    <p>08:30 AM - 10:00 PM</p>
+            <div ng-repeat="s in service">
+                <div class="content-topwebsite">
+                    <img ng-src="{{s.icon}}"/>
+                    <h3>{{s.title}}</h3>
                 </div>
-            </div>
-            <div class="content-topwebsite" data-toggle="tooltip" data-placement="bottom"><img src="images/car.png"/>
-                <h3>Nationwide Delivery</h3>
-                <p>Free ship when buying in bulk</p>
-            </div>
-            <div class="content-topwebsite"><img src="images/phone.png"/>
-                <h3>Fast ordering</h3>
-                <p>(08) 7307 1441</p>
-            </div>
-            <div class="content-topwebsite">
-                <h3>1-year warranty</h3>
-                <p>Refund in first week</p>
             </div>
         </div>
         <div class="wrap">
@@ -85,6 +73,12 @@
                         <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Hello, {{authData.name}}<span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li>
+                                <a class="btn btn-default" style="width: 200px;margin-top:10px;height:33px;background: #3b5998"href="#/history">Oder History<span class="glyphicon glyphicon-shopping-cart"></span></a>
+                            </li>
+                            <li ng-show="authData.data.provider=='password'">
+                                <imagepicker></imagepicker>
+                            </li>
+                            <li>
                                 <button ng-click="logout()" class="btn btn-default" style="background: #3b5998">Logout<span class="glyphicon glyphicon-phone"></span></button>
                             </li>
                         </ul>
@@ -114,7 +108,7 @@
                     <div id="modal-create">
                         <div class="create-page">
                             <div class="form"><a id="create-page" ng-href="#" class="close">&#215</a>
-                                <form  class="login-form" ng-submit="createUser()">
+                                <form name="createForm" class="login-form" ng-submit="!createForm.$invalid && createUser()">
                                     <p class="userName" >
                                         <input class="form-control input-lg" type="text" placeholder="Name" ng-model="createData.name" required/>
                                     </p>
@@ -124,9 +118,10 @@
                                     </p>
                                     <br/>
                                     <p class="password">
-                                        <input ng-model="createData.password" name="passwordcreate" type="password" placeholder="Password" id="passwordcreate" class="form-control input-lg" required/>
+                                        <input ng-model="createData.password" name="passwordcreate" type="password" placeholder="Password" id="passwordcreate" class="form-control input-lg" ng-model-options="{ updateOn: 'blur' }" required/>
                                         <br/>
-                                        <input ng-model="createData.confirm" name="passwordconfirm" type="password" placeholder="Password" id="passwordconfirm" class="form-control input-lg" required/>
+                                        <input ng-model="createData.confirm" name="passwordconfirm" type="password" placeholder="Password" id="passwordconfirm" class="form-control input-lg" ng-model-options="{ updateOn: 'blur' }" required match-value="createData.password"/>
+                                        <span style="font-size:15px; color: red; position: absolute;" ng-show="createForm.passwordconfirm.$error.matchValue">Password not match</span>
                                         <button type="submit" class="btn btn-primary" id="btnlogin">Create</button>
                                     </p>
                                 </form>
@@ -136,15 +131,15 @@
                 </div>
                 <div class="h_search">
                     <form>
-                        <input type="text" value="">
-                        <input type="submit" value="">
+                        <input placeholder="Search" type="text" ng-model="search.name">
+                        <a ng-href="#/store">i</a>
                     </form>
                 </div>
                 <div class="clear"></div>
             </div>
         </div>
     </div>
-    <div class="header_btm" ng-controller="IndexCtrl">
+    <div ng-controller="IndexCtrl" class="header_btm">
         <div class="wrap">
             <div class="header_sub">
                 <div class="h_menu">
@@ -168,9 +163,8 @@
                         </ul>
                     </nav>
                     <div class="search_box">
-                        <form>
-                            <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
-                        </form>
+                        <input type="text" placeholder="Search" ng-model="search.name"/>
+                        <a ng-href="#/store">i</a>
                     </div>
                     <div class="clear"> </div>
 
@@ -187,24 +181,82 @@
     <div ng-controller="IndexCtrl" class="footer_bg1">
         <div class="wrap">
             <div class="footer">
-
-                <button ng-click="scrollToTop()" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></button>
-                <!--end scroll_top_btn -->
-                <div class="copy">
-                    <p class="link">&copy;  All rights reserved | Designed by&nbsp;&nbsp;<a href="http://teamdas.esy.es/default.html"> DAS</a></p>
+                <div class="grids_of_4">
+                    <div class="grid1_of_4">
+                        <h4>FEATURED SALE</h4>
+                        <ul class="f_nav">
+                            <li><a href="">alexis Hudson</a></li>
+                            <li><a href="">american apparel</a></li>
+                            <li><a href="">ben sherman</a></li>
+                            <li><a href="">big buddha</a></li>
+                            <li><a href="">channel</a></li>
+                            <li><a href="">christian audigier</a></li>
+                            <li><a href="">coach</a></li>
+                            <li><a href="">cole haan</a></li>
+                        </ul>
+                    </div>
+                    <div class="grid1_of_4">
+                        <h4>MENS STORE</h4>
+                        <ul class="f_nav">
+                            <li><a href="">alexis Hudson</a></li>
+                            <li><a href="">american apparel</a></li>
+                            <li><a href="">ben sherman</a></li>
+                            <li><a href="">big buddha</a></li>
+                            <li><a href="">channel</a></li>
+                            <li><a href="">christian audigier</a></li>
+                            <li><a href="">coach</a></li>
+                            <li><a href="">cole haan</a></li>
+                        </ul>
+                    </div>
+                    <div class="grid1_of_4">
+                        <h4>WOMEN STORE</h4>
+                        <ul class="f_nav">
+                            <li><a href="">alexis Hudson</a></li>
+                            <li><a href="">american apparel</a></li>
+                            <li><a href="">ben sherman</a></li>
+                            <li><a href="">big buddha</a></li>
+                            <li><a href="">channel</a></li>
+                            <li><a href="">christian audigier</a></li>
+                            <li><a href="">coach</a></li>
+                            <li><a href="">cole haan</a></li>
+                        </ul>
+                    </div>
+                    <div class="grid1_of_4">
+                        <h4>QUICK LINK</h4>
+                        <ul class="f_nav">
+                            <li><a href="">alexis Hudson</a></li>
+                            <li><a href="">american apparel</a></li>
+                            <li><a href="">ben sherman</a></li>
+                            <li><a href="">big buddha</a></li>
+                            <li><a href="">channel</a></li>
+                            <li><a href="">christian audigier</a></li>
+                            <li><a href="">coach</a></li>
+                            <li><a href="">cole haan</a></li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
                 </div>
-                <div class="clear"></div>
             </div>
+            <button ng-click="scrollToTop()" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></button>
+            <!--end scroll_top_btn -->
+            <div class="copy">
+                <p class="link">&copy;  All rights reserved | Designed by&nbsp;&nbsp;<a href="http://teamdas.esy.es/default.html"> DAS</a></p>
+            </div>
+            <div class="clear"></div>
         </div>
     </div>
     <!-- In production use:
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
     -->
     <link rel="stylesheet" href="app.css">
+    <link href="animation/animate.css" rel="stylesheet" />
+    <link href="animation/ng-animation.css" rel="stylesheet" />
     <script src="components/angular/angular.min.js"></script>
     <script src="components/angular-route/angular-route.min.js"></script>
     <script src="components/firebase/firebase.js"></script>
     <script src="components/angularfire/angularfire.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://api.filestackapi.com/filestack.js"></script>
     <script src="app.js"></script>
     <script src="components/login/script.js"></script>
     <script src="store/store.js"></script>
@@ -212,10 +264,13 @@
     <script src="services/services.js"></script>
     <script src="contact/contact.js"></script>
     <script src="details/details.js"></script>
+    <script src="history/history.js"></script>
     <script src="home/home.js"></script>
     <script src="components/providers/providers.js"></script>
     <script src="components/filters/filters.js"></script>
+    <script src="components/validators/validators.js"></script>
     <script src="components/responsive-menu/responsive.menu.js"></script>
     <script type="text/javascript" src="components/product/product.js"></script>
+    <script type="text/javascript" src="components/imagepicker/imagepicker.js"></script>
 </body>
 </html>
