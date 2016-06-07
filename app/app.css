@@ -247,7 +247,6 @@ body {
 }
 .header_sub{
     padding: 0 3%;
-
     margin-left: 30px;
 }
 /* start menu */
@@ -261,11 +260,7 @@ body {
 .h_menu ul li{
     display: inline-block;
     border-right: 2px solid white;
-<<<<<<< HEAD
-    height: 22px;
-=======
     height: auto;
->>>>>>> 166019d10dbd94da10397a47cbb03980f49bf5fc
     margin-top:15px;
 }
 
