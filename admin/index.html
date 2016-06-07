@@ -33,10 +33,10 @@
                     <a class="navbar-brand" href="#"><span>SHOP</span>DAS</a>
                     <ul class="user-menu">
                         <li class="dropdown pull-right">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User <span class="caret"></span></a>
+                            <a ng-show="authData" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 
-                                <li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Logout</a></li>
+                                <li><a ng-click="logout()"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Logout</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -67,11 +67,7 @@
                     <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
                     <li class="active">Icons</li>
                 </ol>
-            </div><!--/.row-->
-            <button  ng-click="login()">Login</button>
-            <button ng-click="logout()">Logout</button>
-            <!--/.row-->
-
+            </div>
             
             <div ng-view></div>
         </div><!--/.col-->
@@ -92,7 +88,6 @@
         <script type="text/javascript" src="order/order.js"></script>
         <script type="text/javascript" src="login/login.js"></script>
         <script src="components/providers/providers.js"></script>
-        <script src="components/filters/filters.js"></script>
         <script src="components/responsive-menu/responsive.menu.js"></script>
         <script type="text/javascript" src="components/product/product.js"></script>
         <script type="text/javascript" src="components/imagepicker/imagepicker.js"></script>

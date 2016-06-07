@@ -5,20 +5,20 @@ order.config(['$routeProvider', function ($routeProvider) {
 
     $routeProvider.when('/order', {
         templateUrl: 'order/order.html',
-        controller: 'OrderCtrl'
+        controller: 'OrderCtrl',
+        resolve: {
+            checkAdmin: function (AdminCheck) {
+                return AdminCheck.check();
+            }
+        }
     });
 }]);
 
 order.controller('OrderCtrl', function ($scope, $firebaseArray, Ref) {
-    'use strict';    
-    
-   
-    
-    console.log($scope.orderA);
+    'use strict';
     
     $scope.deleteOrder = function (record, id) {
-        record[id] = null;
-        $scope.orderA.$save(record);
+        Ref.child("order/" + record.$id + "/" + id).set(null);
     };  
 });
 

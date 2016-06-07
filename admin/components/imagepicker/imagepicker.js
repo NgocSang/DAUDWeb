@@ -1,4 +1,4 @@
-function ImagePickerController($scope, $firebaseObject, Ref, AuthData) {
+function ImagePickerController($scope, $firebaseObject, Ref) {
 
     filepicker.setKey("ADYHQMOM0RQCsBxO1R6kQz");
 

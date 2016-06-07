@@ -8,28 +8,49 @@ app.config(['$routeProvider', function ($routeProvider) {
     });
 }]);
 
-app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseArray, $firebaseAuth, Auth, $anchorScroll, Ref, AuthData) {
+app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseArray, Auth, Ref, $location) {
 
-    $scope.productDetailO = $firebaseObject(Ref.child("productDetail"));
-    $scope.productsA = $firebaseArray(Ref.child("products"));
+    $scope.admin = {};
 
     $scope.login = function () {
-        window.alert("vo");
-        Auth.$authWithPassword({
-            "email": "test2@gmail.com",
-            "password": "1"
-        });
+        Auth.$authWithPassword($scope.admin);
     };
-    Auth.$onAuth(function (data){
-        if (data) {
-            $scope.orderA = $firebaseArray(Ref.child("order"));
+    
+    Auth.$onAuth(function (data) {
+        if (data !== null) {
+            $firebaseObject(Ref.child("adminTest")).$loaded().then(function () {
+                $scope.authData = data;
+
+                if ($location.url() === "/login") {
+                    $location.url("home");
+                }
+
+                $scope.orderA = $firebaseArray(Ref.child("order"));
+                $scope.productDetailO = $firebaseObject(Ref.child("productDetail"));
+                $scope.productsA = $firebaseArray(Ref.child("products"));
+                $scope.productDetailA = $firebaseArray(Ref.child("productDetail"));
+            })["catch"](function (error) {
+                $scope.authData = null;
+                $scope.orderA = null;
+                $scope.productDetailO = null;
+                $scope.productsA = null;
+
+                $scope.logout();
+                window.alert("Not admin!");
+                $location.url("login");
+            });
+        } else {
+            $location.url("login");
         }
+        
     });
+    
     $scope.logout = function () {
-        window.alert("vo");
         Auth.$unauth();
     };
+    
     $scope.all = $firebaseArray(Ref.child("products"));
+    
     $scope.getKeys = function (object) {
         return Object.keys(object); // Tra ve tat ca key cua objct
     };
@@ -39,25 +60,27 @@ app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseArray, $
     $scope.deleteKey = function (object, key) {
         delete object[key];
     };
+    
     $scope.arrayAddUpdate = function (arrayO, object, id) {
         if (typeof object === "undefined" || object === null) {
             window.alert("Error!");
             return;
         }
-        console.log(arrayO);
-        console.log(object);
-        console.log(id);
-        arrayO[id] = object;
-        console.log(arrayO[id]);
-        arrayO.$save().then(function (ref) {
-            window.alert("Success! Id = " + id);
-        })["catch"](function (error) {
-            window.alert(error);
+        
+        arrayO.$ref().child(id).set(object, function (error) {
+            if (error === null) {
+                window.alert("Success! Id = " + id);
+            } else {
+                $scope.productsA.$remove($scope.productsA.$getRecord(id));
+                window.alert(error);
+            }
         });
+        
     };
+    
     $scope.objectUpdate = function (object) {
         object.$save().then(function (data) {
-            window.alert("Sucess")
+            window.alert("Success for '" + object.$ref().parent().key() + "'!")
         }).catch(function (error) {
             window.alert(error);
         });

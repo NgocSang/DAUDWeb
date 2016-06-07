@@ -11,52 +11,25 @@ mdl.factory("Auth", function (Ref, $firebaseAuth) {
     return $firebaseAuth(Ref);
 });
 
-mdl.factory("AuthData", function (Ref, Auth, $firebaseObject) {
+mdl.factory("AdminCheck", function (Auth, Ref, $location, $firebaseObject, $q) {
     'use strict';
-    
-    var authData = {
-        doAuth: function (data) {
-            authData.data = data;
+    return {
+        check: function () {
+            var deferred = $q.defer();
 
-            if (data) {
-                authData.quantity = $firebaseObject(Ref.child("user/" + data.uid + "/quantity"));
-                authData.quantity.$loaded().then(function () {
-                    if (!authData.quantity.$value) {
-                        authData.quantity.$value = 0;
-                        authData.quantity.$save();
-                    }
+            Auth.$requireAuth().then(function (data) {
+                $firebaseObject(Ref.child("adminTest")).$loaded().then(function () {
+                    deferred.resolve(data);
+                })["catch"](function (error) {
+                    Auth.$unauth();
+                    window.alert("Not admin!");
+                    $location.url("login");
                 });
+            })["catch"](function (error) {
+                $location.url("login");
+            });
 
-                switch (data.provider) {
-                case "facebook":
-                    authData.name = data.facebook.displayName;
-                    authData.avatar = data.facebook.profileImageURL;
-                    break;
-                case "google":
-                    authData.name = data.google.displayName;
-                    authData.avatar = data.google.profileImageURL;
-                    break;
-                case "twitter":
-                    authData.name = data.twitter.displayName;
-                    authData.avatar = data.twitter.profileImageURL;
-                    break;
-                case "password":
-                    var user = $firebaseObject(Ref.child("user/" + data.uid + "/info"));
-                    
-                    user.$loaded().then(function () {
-                        authData.name = user.name;
-                        authData.avatar = user.avatar;
-                    });
-                    
-                    break;
-                }
-            } else {
-                authData.quantity = null;
-            }
+            return deferred.promise;
         }
     };
-    
-    Auth.$onAuth(authData.doAuth);
-    
-    return authData;
 });

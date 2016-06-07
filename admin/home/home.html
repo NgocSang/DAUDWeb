@@ -26,7 +26,7 @@
                 <td>{{item.basicInfo.price}}</td>
                 <td><p ng-repeat="size in item.size">{{size}},</p></td>
                 <td><a class="btn btn-primary btn-xs" data-title="Edit" ng-href="#details/{{item.$id}}" ><span class="glyphicon glyphicon-pencil"></span></a></td>
-                <td><a class="btn btn-danger btn-xs" data-title="Delete" ng-click="arrayDelete(all,item)" ><span class="glyphicon glyphicon-trash"></span></a></td>
+                <td><a class="btn btn-danger btn-xs" data-title="Delete" ng-click="arrayDelete(all, item); arrayDelete(productDetailA, productDetailA.$getRecord(item.$id));" ><span class="glyphicon glyphicon-trash"></span></a></td>
             </tr>
         </tbody>
     </table>

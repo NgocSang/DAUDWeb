@@ -1,14 +1,14 @@
 <link rel="stylesheet" href="login/login.css" >
 <div class = "container">
 	<div class="wrapper">
-		<form  name="Login_Form" class="form-signin">       
+		<form  name="Login_Form" class="form-signin" ng-submit="login()">       
 		    <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
 			  <hr class="colorgraph"><br>
 			  
-			  <input type="text" class="form-control" name="Username" placeholder="Username"  />
-			  <input type="password" class="form-control" name="Password" placeholder="Password" required=""/>     		  
+			  <input type="text" class="form-control" name="Username" placeholder="Username" required ng-model="admin.email"/>
+			  <input type="password" class="form-control" name="Password" placeholder="Password" required ng-model="admin.password"/>     		  
 			 
-			  <button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" >Login</button>  			
+			  <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" >Login</button>  			
 		</form>			
 	</div>
 </div>
