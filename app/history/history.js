@@ -34,17 +34,18 @@ checkout.controller('HistoryCtrl', function ($scope, $firebaseObject, $firebaseA
                 $scope.history = data
                 for (var i = 0; i < data.length; ++i)
                 {
-                    $scope.history[i].total = 0;
-                    for (var j = 0; j < $scope.history[i].item.length; ++j)
+                    var cart = $scope.history[i];
+                    cart.total = 0;
+                    for (var property in cart.item) 
                     {
-                        var item = $scope.history[i].item[j];
-                        $scope.history[i].total += item.price * item.number;
+                        var item = cart.item;
+                        if (item.hasOwnProperty(property)) 
+                        {
+                            cart.total += item[property].price * item[property].number;
+                        }
                     }
                 }
             });
-
-
-
         }
     });
 });

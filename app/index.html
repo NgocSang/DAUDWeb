@@ -73,16 +73,13 @@
                         <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Hello, {{authData.name}}<span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li>
-                                <button ng-click="logout()" class="btn btn-default" style="background: #3b5998">Logout<span class="glyphicon glyphicon-phone"></span></button>
-                            </li>
-                            <li>
-                                <a  class="btn btn-default" style="width: 200px;margin-top:10px;height:33px;background: #3b5998"href="#/history">History cart<span class="glyphicon glyphicon-shopping-cart"></span></a>
+                                <a class="btn btn-default" style="width: 200px;margin-top:10px;height:33px;background: #3b5998"href="#/history">Oder History<span class="glyphicon glyphicon-shopping-cart"></span></a>
                             </li>
                             <li ng-show="authData.data.provider=='password'">
                                 <imagepicker></imagepicker>
                             </li>
                             <li>
-                                <button ng-click="changeavatar()">sdhsdhgsdhf</button>
+                                <button ng-click="logout()" class="btn btn-default" style="background: #3b5998">Logout<span class="glyphicon glyphicon-phone"></span></button>
                             </li>
                         </ul>
                     </div>

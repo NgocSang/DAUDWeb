@@ -57,8 +57,7 @@ app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseArray, $
 
                 user.$loaded().then(function () {
                     user.name = $scope.createData.name;
-                    //user.avatar = "http://studymovie.net/Cms_Data/Sites/admin/Themes/Default/images/default-avatar.jpg";
-                    user.avatar = "https://cdn.filestackcontent.com/rDrJFjYNTKmo6G4F0FHY"
+                    user.avatar = "http://studymovie.net/Cms_Data/Sites/admin/Themes/Default/images/default-avatar.jpg";
                     user.$save().then(function () {
                         AuthData.doAuth(authData2);
                     });
