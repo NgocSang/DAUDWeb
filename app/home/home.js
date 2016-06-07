@@ -41,4 +41,5 @@ store.controller('HomeCtrl', function ($scope, $firebaseArray, Ref) {
     }
     
     setInterval($scope.nextSlide,6000);
+    
 });
