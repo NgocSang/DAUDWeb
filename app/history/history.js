@@ -10,7 +10,7 @@ checkout.config(['$routeProvider', function($routeProvider) {
         controller: 'HistoryCtrl',
         resolve: {
             "checkLogin": function (Auth, $location) {
-                Auth.$requireAuth()["catch"](function (error) {
+                return Auth.$requireAuth()["catch"](function (error) {
                     $location.url("home");
                     window.alert("Please login first");
                 });

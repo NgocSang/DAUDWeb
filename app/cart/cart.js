@@ -8,7 +8,7 @@ cart.config(['$routeProvider', function ($routeProvider) {
         controller: 'CartCtrl',
         resolve: {
             "checkLogin": function (Auth, $location) {
-                Auth.$requireAuth()["catch"](function (error) {
+                return Auth.$requireAuth()["catch"](function (error) {
                     $location.url("home");
                     window.alert("Please login first");
                 });
