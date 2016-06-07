@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="order/order.css" >
+<h1>Edit product</h1>
+<div class="order" >
+
+    <div  ng-repeat="user in orderA">
+        <h2>User id: {{user.$id}} </h2>
+        <div class="order" ng-repeat="order in keys = (getKeys(user) | filter : simplifyObject)">
+            <h2>Order {{$index + 1}}</h2>
+            <table class="table table-hover details" >
+                <thead>
+                    <tr>
+                        <th>ID order</th>
+                        <th>Name customer</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{order}}</td>
+                        <td>{{user[order].receiver.name}}</td>
+                        <td>{{user[order].receiver.address}}</td>
+                        <td>{{user[order].receiver.phone}}</td>
+                        <td>{{user[order].receiver.email}}</td>
+                        <td><a class="btn btn-danger btn-xs" data-title="Delete" ng-click="deleteOrder(user, order)" ><span class="glyphicon glyphicon-trash"></span></a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <table class="table table-hover details" >
+                    <thead>
+                        <tr>
+                            <th>Picture</th>
+                            <th>Name product</th>
+                            <th>Color</th>
+                            <th>Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="product in user[order].item">
+
+                            <td><img ng-src="{{product.imgUrl}}" height="70" width="70"></td>
+                            <td>{{product.name}}</td>
+                            <td>{{product.color}}</td>
+                            <td>{{product.number}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
