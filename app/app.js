@@ -1,6 +1,7 @@
 /*global angular, turnOffLogin, turnOffCreate*/
 // Declare app level module which depends on views, and components
-var app = angular.module('App', ['firebase', 'ngRoute', 'App.store', 'App.cart', 'App.services', 'App.contact', 'App.details', 'App.history', 'App.home', 'App.providers']);
+var app = angular.module('App', ['firebase', 'ngRoute', 'App.store', 'App.cart', 'App.services', 'App.contact', 'App.details', 'App.history', 'App.home', 'App.providers', 'App.validators']);
+var imgCtrl;
 
 app.config(['$routeProvider', function ($routeProvider) {
     'use strict';
@@ -10,11 +11,13 @@ app.config(['$routeProvider', function ($routeProvider) {
     });
 }]);
 
-app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseArray, $firebaseAuth, Auth, $anchorScroll, Ref, AuthData) {
+app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseArray, $firebaseAuth, Auth, $anchorScroll, Ref, AuthData, Global) {
     'use strict';
-
+    
+    imgCtrl = $scope;
     $scope.tag = $firebaseArray(Ref.child("tag"));
     $scope.authData = AuthData;
+    $scope.search = Global;
     
     $scope.loginEmail = function () {
         Auth.$authWithPassword($scope.credential).then(function () {
@@ -57,7 +60,7 @@ app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseArray, $
                 user.$loaded().then(function () {
                     user.name = $scope.createData.name;
                     user.avatar = "http://studymovie.net/Cms_Data/Sites/admin/Themes/Default/images/default-avatar.jpg";
-                    
+
                     user.$save().then(function () {
                         AuthData.doAuth(authData2);
                     });
@@ -72,14 +75,7 @@ app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseArray, $
         $anchorScroll("topwebsite");
     };
     
-    
-    
-    
-    
     // load service
-    var ref = new Firebase("https://das-shop.firebaseio.com/service");
-        var obj = $firebaseObject(ref);
-        obj.$bindTo($scope, "service");
-    
-    
+    var obj = $firebaseObject(Ref.child("service"));
+    obj.$bindTo($scope, "service");
 });

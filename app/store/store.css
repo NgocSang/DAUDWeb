@@ -10,25 +10,27 @@
 }
 
 #order-bar{
-    width: 100%;
     height: auto;
     margin-top:20px;
-
+    margin-bottom:20px;
 }
 #formSearch{
-    width: 95%;
     height: auto;
     overflow:hidden;
     margin: auto;
+    text-align: center;
 }
+
+#formSearch * {
+    display: inline-block;
+}
+
 #formSearch .filter{
     width: 65%;
     height: 30px;
-    float: left;
     margin-right: 20px;
 }
 #formSearch .label{
-    float:left; 
     font-weight:bold;
     color: black;
     font-size: 17px;
@@ -38,8 +40,9 @@
     width: 23%;
     height: auto;
     overflow:hidden;
-    float: left;
+    animation: 6s;
 }
+
 /*
 #formSearch .filter{
 display: block;
@@ -80,4 +83,9 @@ height: auto;
         margin-right: 20px;
     }
 
+}
+
+.loading-bar
+{
+    animation: infinite pulse;
 }

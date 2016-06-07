@@ -11,9 +11,8 @@ store.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 store.controller('HomeCtrl', function ($scope, $firebaseArray, Ref) {
-    'use strict';    
+    'use strict';
     
-   
     $scope.featured = $firebaseArray(Ref.child("featured"));
     
     var i = 0;
@@ -27,6 +26,7 @@ store.controller('HomeCtrl', function ($scope, $firebaseArray, Ref) {
         else
             i++;
         $scope.slide[i] = true;
+        $scope.$apply();
     }
     
     $scope.prevSlide = function()
@@ -37,6 +37,8 @@ store.controller('HomeCtrl', function ($scope, $firebaseArray, Ref) {
         else
             i--;
         $scope.slide[i] = true;
+        $scope.$apply();
     }
     
+    setInterval($scope.nextSlide,6000);
 });

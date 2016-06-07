@@ -40,7 +40,7 @@
     clear:both;
 }
 .section{
-    width:90%;
+    width:100%;
     height: auto;
     margin-top: 40px;
 }
@@ -52,6 +52,7 @@
     margin-right: 2px;
     line-height: 14px;
     cursor:pointer;
+    
 }
 
 .tabs {
@@ -71,7 +72,7 @@
     -webkit-border-radius: 4px 4px 0 0;
     -moz-border-radius: 4px 4px 0 0;
     border-radius: 4px 4px 0 0;
-
+    
 }
 
 .tabs > li:hover {
@@ -91,6 +92,9 @@
     display:none;
     border: 1px solid #ddd;
     border-top:none;
+    padding: 17px;
+    height: auto;
+    overflow: hidden;
 }
 .box.visible{
     display:block;
@@ -129,7 +133,7 @@ body {
 }
 .comments-container {
 	
-	width: 90%;
+	width: 100%;
     margin-left: 10px;
     margin: auto;
 }
@@ -148,6 +152,7 @@ body {
 .comments-list {
 	margin-top: 30px;
 	position: relative;
+    height: auto;
 }
 
 /**
@@ -179,7 +184,7 @@ body {
 
 .reply-list:before, .reply-list:after {display: none;}
 .reply-list li:before {
-	content: '';
+	
 	width: 60px;
 	height: 2px;
 	background: #c7cacb;
@@ -212,8 +217,8 @@ body {
  * Avatar
  ---------------------------*/
 .comments-list .comment-avatar {
-	width: 65px;
-	height: 65px;
+	width: 7%;
+	height: 7%;
 	position: relative;
 	z-index: 99;
 	float: left;
@@ -238,7 +243,7 @@ body {
 }
 
 .comment-main-level:after {
-	content: '';
+	
 	width: 0;
 	height: 0;
 	display: block;
@@ -258,7 +263,7 @@ body {
 }
 
 .comments-list .comment-box:before, .comments-list .comment-box:after {
-	content: '';
+	
 	height: 0;
 	width: 0;
 	position: absolute;
@@ -335,6 +340,7 @@ body {
 	-webkit-border-radius: 0 0 4px 4px;
 	-moz-border-radius: 0 0 4px 4px;
 	border-radius: 0 0 4px 4px;
+	border-radius: 0 0 4px 4px;
 }
 
 .comment-box .comment-name.by-author, .comment-box .comment-name.by-author a {color: #03658c;}
@@ -356,19 +362,52 @@ body {
  ========================*/
 @media only screen and (max-width: 766px) {
 	.comments-container {
-		width: 480px;
+		width: 100%;
 	}
 
 	.comments-list .comment-box {
-		width: 390px;
+		width: 80%;
 	}
 
 	.reply-list .comment-box {
-		width: 320px;
+		width: 80%;
 	}
+    .comments-list .comment-avatar {
+        width: 65px;
+        height: 65px;
+    }
+}
+@media only screen and (max-width: 523px){
+    .comments-list .comment-avatar {
+        width: 30px;
+        height: 30px;
+    }
+}
+@media only screen and (max-width: 806px){
+    .tabs > li{
+        width: 100px;
+        height: 60px;
+    }
+}
+@media only screen and (max-width: 523px){
+    .comments-list .comment-avatar {
+        width: 20px;
+        height: 20px;
+    }
+    .comments-list li:after {
+	   content: '';
+	   display: none;
+	   clear: both;
+	   height: 0;
+	   width: 0;
+    }
+    .comments-list:after {
+        
+       display: none;
+    }
 }
 /*Đánh giá*/
-.glyphicon{
+.glyphicon-star{
     color: yellow;
 }
 

@@ -5,7 +5,7 @@
     float: left;    
     height: 480px;
     display:block;
-    width: 35%;
+    width: 40%;
     height: auto;
     margin-top: 40px;
 }
@@ -24,7 +24,7 @@
     height: auto;
     padding: 50px;
     float: left;
-    
+    margin-top: 20px;
 }
 
 .slider-info h2
@@ -48,4 +48,9 @@
     display: inline-block;
     height: 100%;
     vertical-align: middle;
+}
+
+.main_bg1
+{
+    background: #f2f2f2;
 }
