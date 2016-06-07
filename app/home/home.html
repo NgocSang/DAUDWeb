@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="../components/index-css/owl.carousel.css">
 <link rel="stylesheet" href="home/home.css">
 <div class="da-slider">
-    <div ng-show="slide[$index]" class="da-slide" ng-repeat="item in featured">
+    <div ng-show="slide[$index]" class="da-slide" ng-repeat="item in featured | limitTo : 4 : 0">
         
         <div class="da-img">
             <img ng-src="{{item.basicInfo.imgUrl}}" alt="ProductImage"/>

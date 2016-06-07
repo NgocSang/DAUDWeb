@@ -22,10 +22,6 @@
 <div  id="order-bar">
     <form id="formSearch" >
         <div class="search">
-            <label class="label">Name:</label>
-            <input ng-model="filterObject.name" type="text" class="filter" />
-        </div>
-        <div class="search">
             <label class="label">Color:</label>
             <input ng-model="customFilter.color" type="text" class="filter"/>
         </div>
@@ -56,7 +52,7 @@
         <div class="main">
             <h1 ng-show="loading" style="font-size: 50px; text-align: center;">Loading...</h1>
             <h1 ng-hide="loading || filteredAll.length" style="font-size: 50px; text-align: center;">Nothing found</h1>
-            <product ng-repeat="item in filteredAll = (all | filter : {basicInfo : {name : filterObject.name, tag : filterObject.tag}} | myFilter : customFilter : isStrict | price : filterObject.price)" product="item"></product>
+            <product ng-repeat="item in filteredAll = (all | filter : {basicInfo : {name : search.name, tag : filterObject.tag}} | myFilter : customFilter : isStrict | price : filterObject.price)" product="item"></product>
             <!--<div class="grid1_of_3" ng-repeat="item in filteredAll = (all | filter : {basicInfo : {name : filterObject.name, tag : filterObject.tag}} | myFilter : customFilter : isStrict | price : filterObject.price)">
                 <a ng-href="#/store/details/{{item.$id}}" title="{{item.basicInfo.name}}">
                     <img ng-src="{{item.basicInfo.imgUrl}}" alt="ProductImage"/>

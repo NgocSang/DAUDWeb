@@ -3,7 +3,7 @@ var mdl = angular.module("App.providers", ["firebase"]);
 
 mdl.factory("Ref", function () {
     'use strict';
-    return new Firebase("https://doanungdungweb.firebaseio.com/");
+    return new Firebase("https://test2207.firebaseio.com/");
 });
 
 mdl.factory("Auth", function (Ref, $firebaseAuth) {
@@ -17,7 +17,7 @@ mdl.factory("AuthData", function (Ref, Auth, $firebaseObject) {
     var authData = {
         doAuth: function (data) {
             authData.data = data;
-
+            
             if (data) {
                 authData.quantity = $firebaseObject(Ref.child("user/" + data.uid + "/quantity"));
                 authData.quantity.$loaded().then(function () {
@@ -59,4 +59,10 @@ mdl.factory("AuthData", function (Ref, Auth, $firebaseObject) {
     Auth.$onAuth(authData.doAuth);
     
     return authData;
+});
+
+mdl.factory("Global", function () {
+    'use strict';
+    
+    return {};
 });

@@ -1,6 +1,6 @@
 /*global angular, turnOffLogin, turnOffCreate*/
 // Declare app level module which depends on views, and components
-var app = angular.module('App', ['firebase', 'ngRoute', 'App.store', 'App.cart', 'App.services', 'App.contact', 'App.details', 'App.history', 'App.home', 'App.providers']);
+var app = angular.module('App', ['firebase', 'ngRoute', 'App.store', 'App.cart', 'App.services', 'App.contact', 'App.details', 'App.history', 'App.home', 'App.providers', 'App.validators']);
 var imgCtrl;
 app.config(['$routeProvider', function ($routeProvider) {
     'use strict';
@@ -10,11 +10,12 @@ app.config(['$routeProvider', function ($routeProvider) {
     });
 }]);
 
-app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseArray, $firebaseAuth, Auth, $anchorScroll, Ref, AuthData) {
+app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseArray, $firebaseAuth, Auth, $anchorScroll, Ref, AuthData, Global) {
     'use strict';
     imgCtrl = $scope;
     $scope.tag = $firebaseArray(Ref.child("tag"));
     $scope.authData = AuthData;
+    $scope.search = Global;
     
     $scope.loginEmail = function () {
         Auth.$authWithPassword($scope.credential).then(function () {
@@ -67,17 +68,12 @@ app.controller("IndexCtrl", function ($scope, $firebaseObject, $firebaseArray, $
             });
         }
     };
+    
     $scope.scrollToTop = function () {
         $anchorScroll("topwebsite");
     };
     
-    
-    
-    
-    
-    
     // load service
-    var ref = new Firebase("https://das-shop.firebaseio.com/service");
-        var obj = $firebaseObject(ref);
-        obj.$bindTo($scope, "service");
+    var obj = $firebaseObject(Ref.child("service"));
+    obj.$bindTo($scope, "service");
 });

@@ -16,13 +16,13 @@
 
     <script type="text/javascript" src="components/boostrap-js/bootstrap.min.js"></script>
 </head>
-<body ng-controller="IndexCtrl">
+<body>
 
     <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
-    <div class="header_bg">
+    <div ng-controller="IndexCtrl" class="header_bg">
         <div id="topwebsite">
             <div ng-repeat="s in service">
                 <div class="content-topwebsite">
@@ -111,7 +111,7 @@
                     <div id="modal-create">
                         <div class="create-page">
                             <div class="form"><a id="create-page" ng-href="#" class="close">&#215</a>
-                                <form  class="login-form" ng-submit="createUser()">
+                                <form name="createForm" class="login-form" ng-submit="!createForm.$invalid && createUser()">
                                     <p class="userName" >
                                         <input class="form-control input-lg" type="text" placeholder="Name" ng-model="createData.name" required/>
                                     </p>
@@ -121,9 +121,10 @@
                                     </p>
                                     <br/>
                                     <p class="password">
-                                        <input ng-model="createData.password" name="passwordcreate" type="password" placeholder="Password" id="passwordcreate" class="form-control input-lg" required/>
+                                        <input ng-model="createData.password" name="passwordcreate" type="password" placeholder="Password" id="passwordcreate" class="form-control input-lg" ng-model-options="{ updateOn: 'blur' }" required/>
                                         <br/>
-                                        <input ng-model="createData.confirm" name="passwordconfirm" type="password" placeholder="Password" id="passwordconfirm" class="form-control input-lg" required/>
+                                        <input ng-model="createData.confirm" name="passwordconfirm" type="password" placeholder="Password" id="passwordconfirm" class="form-control input-lg" ng-model-options="{ updateOn: 'blur' }" required match-value="createData.password"/>
+                                        <span style="font-size:15px; color: red; position: absolute;" ng-show="createForm.passwordconfirm.$error.matchValue">Password not match</span>
                                         <button type="submit" class="btn btn-primary" id="btnlogin">Create</button>
                                     </p>
                                 </form>
@@ -133,15 +134,15 @@
                 </div>
                 <div class="h_search">
                     <form>
-                        <input type="text" value="">
-                        <input type="submit" value="">
+                        <input placeholder="Search" type="text" ng-model="search.name">
+                        <a ng-href="#/store">i</a>
                     </form>
                 </div>
                 <div class="clear"></div>
             </div>
         </div>
     </div>
-    <div class="header_btm">
+    <div ng-controller="IndexCtrl" class="header_btm">
         <div class="wrap">
             <div class="header_sub">
                 <div class="h_menu">
@@ -150,7 +151,7 @@
                         <li><a ng-href="#/store">Store</a></li>
                         <li ng-repeat="item in tag"><a ng-href="#/store/{{item.$id}}" >{{item.$value}}</a></li>
                         <li><a ng-href="#/services">Services</a></li>
-                        <li><a ng-href="#/contact">Contact</a></li>
+                        <li><a ng-href="#/contact">Contact us</a></li>
                     </ul>
                 </div>
                 <div class="top-nav">
@@ -165,9 +166,8 @@
                         </ul>
                     </nav>
                     <div class="search_box">
-                        <form>
-                            <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
-                        </form>
+                        <input type="text" placeholder="Search" ng-model="search.name"/>
+                        <a ng-href="#/store">i</a>
                     </div>
                     <div class="clear"> </div>
 
@@ -181,7 +181,7 @@
     <!-- start slider -->
 
     <!-- start footer -->
-    <div class="footer_bg1">
+    <div ng-controller="IndexCtrl" class="footer_bg1">
         <div class="wrap">
             <div class="footer">
                 <div class="grids_of_4">
@@ -271,6 +271,7 @@
     <script src="home/home.js"></script>
     <script src="components/providers/providers.js"></script>
     <script src="components/filters/filters.js"></script>
+    <script src="components/validators/validators.js"></script>
     <script src="components/responsive-menu/responsive.menu.js"></script>
     <script type="text/javascript" src="components/product/product.js"></script>
     <script type="text/javascript" src="components/imagepicker/imagepicker.js"></script>
