@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="details/details.css" >
+<h1>Add new product</h1>
+<div id="editproduct">
+    <div class="image">
+        
+        <img ng-src="{{imgList[0]}}" height="449"/>
+        <imagepicker style="width:100%;" ></imagepicker>
+    </div>
+    <div class="eidtinformation">
+        <form>
+            <div class="rightinfor">
+                <label class="label">Name product:</label>
+                <textarea class="form-control" rows="2" ng-model="product.basicInfo.name"></textarea>
+            </div>
+
+            <br>
+            <div class="rightinfor">
+                <label class="label">Price product:</label>
+                <input type="number" class="form-control" ng-model="product.basicInfo.price">
+            </div>
+            <hr  width="100%" align="center" /> 
+            <div class="edit">
+                <div>
+                    <label class="label"> Add Color:</label>
+                    <input class="form-control" ng-model="colorTemp" style="width:70% !important;" />
+                    <button class="btn btn-primary" ng-click="product.color[colorTemp] = colorTemp">Add color</button>
+                </div>
+                <div>
+                    <label class="label"> Delete Color:</label>
+
+                    <ul ng-repeat="colorA in getKeys(product.color)" class="listcolor">
+                        <li>
+                            <button class="btn btn-info" ng-click="deleteKey(product.color, colorA)">Delete color {{colorA}}</button>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="edit">
+                <div>
+                    <label class="label">Size:</label>
+                    <select class="select" ng-model="sizeTemp" style="width:75% !important;" >
+                        <option value="{{size.$id}}" ng-repeat="size in sizes">{{size.$value}}</option>
+                    </select>
+                    <button class="btn btn-primary" ng-click="product.size[sizeTemp] = sizeTemp">Add size</button>
+                </div>
+
+                
+                <div>
+                    <label class="label"> Delete size:</label>
+
+                    <ul ng-repeat="sizeA in getKeys(product.size)" class="listcolor">
+                        <li>
+                            <button class="btn btn-info" ng-click="deleteKey(product.size, sizeA)">Delete size {{sizeA}}</button>
+                        </li>
+                    </ul>
+
+                </div>
+                
+                
+            </div>
+            <div class="edit">
+                <div>
+                    <label class="label">Tag:</label>
+                    <select ng-model="product.basicInfo.tag" class="select" style="width:75% !important;" >
+                        <option value="{{tagA.$value}}" ng-repeat="tagA in tag">{{tagA.$value}}</option>
+                    </select>
+                    
+                </div>
+
+                
+                
+                
+            </div>
+            
+        </form>
+        <div>
+            <label class="label">Description</label>
+            <textarea class="description" ng-model="productDetail.detail.description"></textarea>
+            <button class="btn btn-primary" ng-click="arrayAdd(productsA, product, transaction)" style="width:100%"> Save <span class="glyphicon glyphicon-floppy-disk"></span></button>
+        </div>
+        
+    </div>
+
+</div>

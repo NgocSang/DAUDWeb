@@ -1,0 +1,34 @@
+#editproduct{
+    margin-top:100px;
+}
+.form-control{
+    width: 500px;
+}
+.rightinfor{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+.edit{
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+.listcolor li{
+    list-style:none;
+    float: left;
+    margin-left: 5px;
+}
+.listcolor li button{
+    color: black;
+}
+.description{
+    width: 100%;
+    height: 200px;
+    resize: both;
+    overflow: auto;
+}
+.image{
+    width: 37%;
+    height: auto;
+}
