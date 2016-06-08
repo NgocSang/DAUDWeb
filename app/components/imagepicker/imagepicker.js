@@ -1,6 +1,6 @@
 function ImagePickerController($scope, $firebaseObject, Ref, AuthData) {
 
-    filepicker.setKey("ADYHQMOM0RQCsBxO1R6kQz");
+    filepicker.setKey("A0tLkm81fRyGmg7JlmqJez");
 
     $scope.browseImage = function () {
         filepicker.pickMultiple(
