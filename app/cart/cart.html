@@ -8,7 +8,7 @@
                         <a href="#"><i class="glyphicon glyphicon-home"></i> DAS</a>
                     </li>
                     <li class="active">
-                        Thông tin giỏ hàng của bạn
+                        Your cart
                     </li>
                 </ol>
             </div>
@@ -17,14 +17,14 @@
 </div>
 <div class="row">
     <div id="information" class="col-sm-12 col-md-6">
-        <h4>Thông tin người mua/nhận hàng</h4>
+        <h4>Receiver's information</h4>
         <form name="contactForm">
             <div class="form-group">
-                <label>Tên</label>
+                <label>Name</label>
                 <input ng-model="name" type="text" class="required form-control" id="txtCustomerName"/>
             </div>
             <div class="form-group">
-                <label>Điện thoại liên lạc</label>
+                <label>Phone number</label>
                 <input ng-model="phone" type="text" class="required form-control" id="txtPhone"/>
             </div>
             <div class="form-group">
@@ -32,14 +32,14 @@
                 <input name="email" ng-model="email" type="email" class="required form-control" id="txtEmail"/>
             </div>
             <div class="form-group">
-                <label>Địa chỉ</label>
+                <label>Address</label>
                 <textarea ng-model="address" row="4" class="required form-control" id="txtNote"></textarea>
             </div>
 
         </form>
     </div>
     <div id="products">
-        <h4>Chi tiết sản phẩm bán hàng</h4>
+        <h4>Order details</h4>
         
         <table class="table">
             <tr class="item-row" ng-repeat="item in cart">                
@@ -52,7 +52,7 @@
                     <p>Color: {{item.color}}</p>
                         </div>
                     <br>
-                    <div>Đơn giá: {{item.price}}</div>
+                    <div>Price: {{item.price}}</div>
                     <div>
                         <form>
                             <table>
@@ -71,18 +71,18 @@
                         </form>
                     </div>
                     <b class="cart-price">{{item.price * item.number}}</b>
-                    <span>đ</span>
+                    <span>VND</span>
                 </td>
             </tr>
             
             <tr>
-            <h2 ng-show="cart.length > 0" class="cart-total cart-price animated bounceIn">Tổng cộng: {{total}} đ</h2>
+            <h2 ng-show="cart.length > 0" class="cart-total cart-price animated bounceIn">Total: {{total}} VND</h2>
            </tr>
         </table>
         <hr>
 
-        <h3 class="empty-cart" ng-show="cart == 0">Hiện bạn chưa chọn mặt hàng. Hãy quay về shop để chọn mua hàng</h3>
-        <button ng-show="cart.length > 0" ng-click="checkout()" class="js-btnPlaceOrder btn btn-info fw" id="order">Đặt hàng</button>
+        <h3 class="empty-cart" ng-show="cart == 0">Your cart is empty. Please go back to shop and add product.</h3>
+        <button ng-show="cart.length > 0" ng-click="checkout()" class="js-btnPlaceOrder btn btn-info fw" id="order">Order</button>
         
     </div>
 </div>
